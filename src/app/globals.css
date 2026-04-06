@@ -1,0 +1,747 @@
+@import "tailwindcss";
+
+@theme inline {
+  /* FigJam canvas */
+  --color-canvas: #F5F5F0;
+  --color-dot: #C4C4BA;
+
+  /* Text */
+  --color-charcoal: #1B1B18;
+  --color-body: #3C3C37;
+  --color-muted: #8C8C84;
+  --color-faint: #ADADA5;
+
+  /* FigJam sticky palette */
+  --color-sticky-yellow: #FEF3B7;
+  --color-sticky-orange: #FDDEB5;
+  --color-sticky-pink: #F9CDD3;
+  --color-sticky-violet: #E0D4F7;
+  --color-sticky-blue: #C7DFF7;
+  --color-sticky-green: #C4E8C2;
+  --color-sticky-gray: #E6E6E0;
+
+  /* Accents */
+  --color-ink: #4A4AE9;
+  --color-green: #15803D;
+  --color-red: #D44;
+
+  /* Code */
+  --color-code-bg: #1E1E1E;
+  --color-code-fg: #D4D4D4;
+
+  /* Surfaces */
+  --color-toolbar: #2C2C2C;
+  --color-surface: #ECECEC;
+  --color-section-border: #D6D6CE;
+
+  /* Fonts */
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --font-sans: "Inter", system-ui, sans-serif;
+}
+
+/* ─── Base ─── */
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: var(--color-canvas);
+  color: var(--color-body);
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ─── FigJam dot grid ─── */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: radial-gradient(circle, var(--color-dot) 1px, transparent 1px);
+  background-size: 20px 20px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+::selection { background: rgba(74, 74, 233, 0.12); }
+
+h1, h2, h3 {
+  color: var(--color-charcoal);
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+
+/* ─── FigJam Section ─── */
+.fj-section {
+  border: 1.5px dashed var(--color-section-border);
+  border-radius: 12px;
+  padding: 20px;
+  position: relative;
+}
+
+.fj-section-label {
+  position: absolute;
+  top: -10px;
+  left: 16px;
+  background: var(--color-canvas);
+  padding: 0 8px;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* ─── FigJam Sticky ─── */
+.fj-sticky {
+  border-radius: 3px;
+  padding: 16px 18px;
+  position: relative;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.2s ease;
+  cursor: default;
+}
+
+.fj-sticky:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+}
+
+.fj-sticky.clickable { cursor: pointer; }
+.fj-sticky.clickable:hover { transform: translateY(-2px) scale(1.01); }
+
+.fj-yellow { background: var(--color-sticky-yellow); }
+.fj-orange { background: var(--color-sticky-orange); }
+.fj-pink { background: var(--color-sticky-pink); }
+.fj-violet { background: var(--color-sticky-violet); }
+.fj-blue { background: var(--color-sticky-blue); }
+.fj-green { background: var(--color-sticky-green); }
+.fj-gray { background: var(--color-sticky-gray); }
+
+/* ─── Toolbar (floating bottom bar) ─── */
+.toolbar {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--color-toolbar);
+  border-radius: 12px;
+  padding: 8px 6px;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  z-index: 50;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15), 0 0 0 1px rgba(255,255,255,0.05) inset;
+}
+
+.toolbar a, .toolbar button {
+  color: #999;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  padding: 6px 14px;
+  border-radius: 8px;
+  transition: all 0.15s ease;
+  text-decoration: none;
+  border: none;
+  background: none;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.toolbar a:hover, .toolbar button:hover {
+  color: #fff;
+  background: rgba(255,255,255,0.08);
+}
+
+.toolbar a.active {
+  color: #fff;
+  background: rgba(255,255,255,0.12);
+}
+
+.toolbar .divider {
+  width: 1px;
+  height: 20px;
+  background: rgba(255,255,255,0.1);
+  margin: 0 4px;
+}
+
+/* ─── Code block ─── */
+.code-block {
+  background: var(--color-code-bg);
+  color: var(--color-code-fg);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 1.7;
+  padding: 20px 24px;
+  border-radius: 8px;
+  overflow-x: auto;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+}
+
+.code-block .cm { color: #6A9955; font-style: italic; }
+.code-block .kw { color: #C586C0; }
+.code-block .str { color: #CE9178; }
+.code-block .prop { color: #9CDCFE; }
+.code-block .fn { color: #DCDCAA; }
+.code-block .punc { color: #808080; }
+.code-block .val { color: #569CD6; }
+
+/* ─── Code titlebar ─── */
+.code-titlebar {
+  background: #2D2D2D;
+  padding: 10px 14px;
+  border-radius: 8px 8px 0 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.code-dots { display: flex; gap: 6px; }
+.code-dots span {
+  width: 10px; height: 10px; border-radius: 50%;
+}
+.code-dots .r { background: #FF5F57; }
+.code-dots .y { background: #FEBC2E; }
+.code-dots .g { background: #28C840; }
+
+.code-titlebar .filename {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: #808080;
+  margin-left: 4px;
+}
+
+/* ─── Tag ─── */
+.tag {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  background: rgba(0,0,0,0.05);
+  color: var(--color-muted);
+}
+
+/* ─── Link ─── */
+.link {
+  color: var(--color-ink);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(74,74,233,0.2);
+  transition: border-color 0.2s;
+}
+.link:hover { border-color: var(--color-ink); }
+
+/* ─── Connector (dashed line) ─── */
+.connector-v {
+  width: 1.5px;
+  background-image: repeating-linear-gradient(
+    to bottom,
+    var(--color-section-border) 0px,
+    var(--color-section-border) 5px,
+    transparent 5px,
+    transparent 10px
+  );
+}
+
+/* ─── Prose (case studies) ─── */
+.prose h2 {
+  font-size: 1.3rem; font-weight: 600;
+  margin-top: 2.5rem; margin-bottom: 0.75rem;
+}
+.prose h3 {
+  font-size: 1.1rem; font-weight: 600;
+  margin-top: 2rem; margin-bottom: 0.5rem;
+}
+.prose p { margin-bottom: 1.25rem; }
+.prose ul { margin-bottom: 1.25rem; padding-left: 1.25rem; }
+.prose li { margin-bottom: 0.4rem; }
+.prose blockquote {
+  border-left: 3px solid var(--color-ink);
+  padding: 10px 14px;
+  background: var(--color-sticky-blue);
+  border-radius: 0 6px 6px 0;
+  font-style: italic;
+  margin: 1.5rem 0;
+}
+.prose a { color: var(--color-ink); text-decoration: underline; text-underline-offset: 3px; }
+.prose strong { font-weight: 600; color: var(--color-charcoal); }
+
+/* ─── Pinned image ─── */
+.pinned {
+  background: white;
+  padding: 5px;
+  border-radius: 4px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  position: relative;
+}
+.pinned::after {
+  content: "";
+  position: absolute;
+  top: -4px; left: 50%; transform: translateX(-50%);
+  width: 8px; height: 8px;
+  background: var(--color-red);
+  border-radius: 50%;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+}
+
+/* ─── Bottom padding for toolbar ─── */
+main { padding-bottom: 80px; }
+
+/* ─── FigJam Cursor ─── */
+.figjam-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 300;
+  transform: translate(-4px, -2px);
+}
+
+.figjam-cursor-arrow {
+  filter: drop-shadow(0 1px 2px rgba(0,0,0,0.15));
+}
+
+.figjam-cursor-label {
+  position: absolute;
+  top: 18px;
+  left: 12px;
+  color: white;
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 6px;
+  border-radius: 3px;
+  white-space: nowrap;
+  letter-spacing: 0.02em;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+}
+
+/* Hide on touch devices */
+@media (hover: none) {
+  .figjam-cursor { display: none; }
+}
+
+/* ─── Name Prompt ─── */
+.name-prompt-card {
+  background: var(--color-canvas);
+  border-radius: 12px;
+  padding: 24px 28px;
+  max-width: 340px;
+  width: 90%;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.12), 0 0 0 1px rgba(0,0,0,0.05);
+  position: relative;
+}
+
+[data-theme="dark"] .name-prompt-card {
+  background: #3C3C3C;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.05);
+}
+
+.name-prompt-input {
+  width: 100%;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1.5px solid var(--color-section-border);
+  background: white;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  color: var(--color-charcoal);
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.name-prompt-input:focus {
+  border-color: var(--color-ink);
+}
+
+[data-theme="dark"] .name-prompt-input {
+  background: #2C2C2C;
+  border-color: #555;
+  color: #E8E8E0;
+}
+
+.name-prompt-btn {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  padding: 7px 16px;
+  border-radius: 8px;
+  border: 1.5px solid var(--color-section-border);
+  background: white;
+  color: var(--color-muted);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.name-prompt-btn:hover {
+  border-color: var(--color-muted);
+}
+
+.name-prompt-btn.primary {
+  background: var(--color-charcoal);
+  border-color: var(--color-charcoal);
+  color: white;
+}
+
+.name-prompt-btn.primary:hover {
+  opacity: 0.9;
+}
+
+[data-theme="dark"] .name-prompt-btn {
+  background: #555;
+  border-color: #555;
+  color: #ccc;
+}
+
+[data-theme="dark"] .name-prompt-btn.primary {
+  background: var(--color-ink);
+  border-color: var(--color-ink);
+  color: white;
+}
+
+/* ─── Splash Screen ─── */
+.splash-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 500;
+  background: var(--color-canvas);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.splash-dots {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, var(--color-dot) 1px, transparent 1px);
+  background-size: 20px 20px;
+  opacity: 0.6;
+}
+
+.splash-sticky {
+  position: absolute;
+  padding: 12px 16px;
+  border-radius: 3px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: rgba(0,0,0,0.45);
+  font-weight: 500;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+.splash-center {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.splash-logo {
+  font-family: var(--font-mono);
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--color-charcoal);
+}
+
+.splash-sub {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--color-muted);
+}
+
+/* ─── Stamp Reactions ─── */
+.stamp-container {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 8px;
+}
+
+.stamp-active {
+  display: flex;
+  gap: 3px;
+}
+
+.stamp-pill {
+  font-size: 13px;
+  background: rgba(0,0,0,0.04);
+  border: 1px solid rgba(0,0,0,0.06);
+  border-radius: 12px;
+  padding: 1px 6px;
+  cursor: pointer;
+  transition: all 0.15s;
+  line-height: 1.4;
+}
+
+.stamp-pill:hover {
+  background: rgba(0,0,0,0.08);
+  transform: scale(1.1);
+}
+
+.stamp-pill.active {
+  background: rgba(0,0,0,0.06);
+}
+
+.stamp-add {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 12px;
+  border: 1px dashed rgba(0,0,0,0.15);
+  background: transparent;
+  color: rgba(0,0,0,0.25);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.stamp-add:hover {
+  border-color: rgba(0,0,0,0.3);
+  color: rgba(0,0,0,0.4);
+  background: rgba(0,0,0,0.03);
+}
+
+.stamp-picker {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 6px;
+  background: white;
+  border-radius: 8px;
+  padding: 4px;
+  display: flex;
+  gap: 2px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.12), 0 0 0 1px rgba(0,0,0,0.04);
+  z-index: 60;
+}
+
+[data-theme="dark"] .stamp-picker {
+  background: #3C3C3C;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.06);
+}
+
+.stamp-option {
+  font-size: 16px;
+  padding: 4px 6px;
+  border: none;
+  background: transparent;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.1s;
+  line-height: 1;
+}
+
+.stamp-option:hover {
+  background: rgba(0,0,0,0.06);
+}
+
+/* ─── Draggable sticky ─── */
+.draggable-sticky {
+  cursor: grab;
+  touch-action: none;
+}
+
+.draggable-sticky:active {
+  cursor: grabbing;
+}
+
+/* ─── Dark Mode ─── */
+[data-theme="dark"] body {
+  background-color: #2C2C2C;
+  color: #C8C8C0;
+}
+
+[data-theme="dark"] body::before {
+  background-image: radial-gradient(circle, rgba(255,255,255,0.08) 1px, transparent 1px);
+}
+
+[data-theme="dark"] ::selection {
+  background: rgba(74, 74, 233, 0.25);
+}
+
+[data-theme="dark"] h1,
+[data-theme="dark"] h2,
+[data-theme="dark"] h3 {
+  color: #E8E8E0;
+}
+
+/* Dark sections */
+[data-theme="dark"] .fj-section {
+  border-color: #4A4A44;
+}
+
+[data-theme="dark"] .fj-section-label {
+  background: #2C2C2C;
+  color: #8C8C84;
+}
+
+/* Dark stickies — slightly muted */
+[data-theme="dark"] .fj-yellow { background: #BDA730; color: #1B1B18; }
+[data-theme="dark"] .fj-orange { background: #B8903A; color: #1B1B18; }
+[data-theme="dark"] .fj-pink { background: #B06878; color: #1B1B18; }
+[data-theme="dark"] .fj-violet { background: #7B68AE; color: #F0F0EA; }
+[data-theme="dark"] .fj-blue { background: #5A8AB8; color: #1B1B18; }
+[data-theme="dark"] .fj-green { background: #5A9E58; color: #1B1B18; }
+[data-theme="dark"] .fj-gray { background: #4A4A44; color: #C8C8C0; }
+
+[data-theme="dark"] .fj-sticky {
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+[data-theme="dark"] .fj-sticky:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+}
+
+/* Dark code block */
+[data-theme="dark"] .code-block {
+  background: #1A1A1A;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.25);
+}
+
+[data-theme="dark"] .code-titlebar {
+  background: #222;
+}
+
+/* Dark tags */
+[data-theme="dark"] .tag {
+  background: rgba(255,255,255,0.08);
+  color: #ADADA5;
+}
+
+/* Tags inside stickies need contrast override in dark mode */
+[data-theme="dark"] .fj-sticky .tag {
+  background: rgba(0,0,0,0.15);
+  color: rgba(0,0,0,0.55);
+}
+
+[data-theme="dark"] .fj-violet .tag,
+[data-theme="dark"] .fj-gray .tag {
+  color: rgba(255,255,255,0.5);
+  background: rgba(255,255,255,0.1);
+}
+
+/* Dark links */
+[data-theme="dark"] .link {
+  color: #7B7BFF;
+  border-bottom-color: rgba(123,123,255,0.25);
+}
+
+[data-theme="dark"] .link:hover {
+  border-bottom-color: #7B7BFF;
+}
+
+/* Dark connector */
+[data-theme="dark"] .connector-v {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    #4A4A44 0px,
+    #4A4A44 5px,
+    transparent 5px,
+    transparent 10px
+  );
+}
+
+/* Dark pinned images */
+[data-theme="dark"] .pinned {
+  background: #3C3C3C;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.15);
+}
+
+/* Dark toolbar */
+[data-theme="dark"] .toolbar {
+  background: #1A1A1A;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.03) inset;
+}
+
+/* Dark prose */
+[data-theme="dark"] .prose strong { color: #E8E8E0; }
+[data-theme="dark"] .prose a { color: #7B7BFF; }
+[data-theme="dark"] .prose blockquote {
+  background: #3A4A5A;
+  border-left-color: #7B7BFF;
+  color: #C8C8C0;
+}
+
+/* Dark splash */
+[data-theme="dark"] .splash-screen {
+  background: #2C2C2C;
+}
+
+[data-theme="dark"] .splash-logo {
+  color: #E8E8E0;
+}
+
+/* Dark mode toggle icon in toolbar */
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: none;
+  border: none;
+  color: #999;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  padding: 0;
+}
+
+.theme-toggle:hover {
+  color: #fff;
+  background: rgba(255,255,255,0.08);
+}
+
+/* Smooth dark mode transition */
+html[data-theme] body,
+html[data-theme] body::before {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+html[data-theme] .fj-section,
+html[data-theme] .fj-section-label,
+html[data-theme] .fj-sticky,
+html[data-theme] .tag,
+html[data-theme] .link,
+html[data-theme] .toolbar,
+html[data-theme] .pinned,
+html[data-theme] .connector-v {
+  transition: background 0.3s ease, color 0.3s ease,
+              border-color 0.3s ease, box-shadow 0.3s ease,
+              background-image 0.3s ease;
+}
+
+/* Dark sticky text overrides */
+[data-theme="dark"] .fj-sticky p,
+[data-theme="dark"] .fj-sticky span {
+  opacity: 0.95;
+}
+
+/* Stamp dark overrides */
+[data-theme="dark"] .stamp-pill {
+  background: rgba(255,255,255,0.06);
+  border-color: rgba(255,255,255,0.08);
+}
+
+[data-theme="dark"] .stamp-pill:hover {
+  background: rgba(255,255,255,0.12);
+}
+
+[data-theme="dark"] .stamp-add {
+  border-color: rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.3);
+}
+
+[data-theme="dark"] .stamp-add:hover {
+  border-color: rgba(255,255,255,0.3);
+  color: rgba(255,255,255,0.5);
+  background: rgba(255,255,255,0.05);
+}
+
+[data-theme="dark"] .stamp-option:hover {
+  background: rgba(255,255,255,0.1);
+}

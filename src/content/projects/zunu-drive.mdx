@@ -1,0 +1,36 @@
+---
+title: Zunu Drive
+---
+
+## Context
+
+Zunu Drive is a zero-knowledge encrypted cloud storage product — part of the broader Zunu privacy suite by Ziroh Labs. The challenge with privacy tools is that security and usability usually work against each other.
+
+My job was to make encryption invisible. Users shouldn't need to understand cryptography to feel safe.
+
+## The Design Problem
+
+Existing encrypted storage apps felt technical and intimidating. File operations that take one click in Google Drive required three steps and a password prompt in competing products.
+
+We needed to match the simplicity of mainstream cloud storage while maintaining genuine zero-knowledge architecture.
+
+## Process
+
+- Audited 8 competing products (Tresorit, SpiderOak, Sync.com, etc.) for UX friction points
+- Designed a file browser that mirrors native OS conventions — familiar patterns, no learning curve
+- Created a "security status" indicator that's ambient, not alarming
+- Designed the mobile experience to feel native to both iOS and Android
+
+## Key Insight
+
+Users don't want to *manage* their security. They want to *know* it's there. The design uses subtle, persistent indicators rather than modal confirmations. Your files are encrypted — the interface confirms this quietly, like a lock icon in a browser URL bar.
+
+The onboarding flow was designed to build trust through transparency: we explain what zero-knowledge means in plain language, show users their encryption key, and make it clear that even we can't access their files.
+
+## Result
+
+The app launched with strong early adoption among privacy-conscious users. The key metric: support tickets about "how do I encrypt my files" dropped to near zero — because every file is encrypted by default, and the interface never makes you think about it.
+
+![Zunu Drive file browser]
+
+![Mobile experience]

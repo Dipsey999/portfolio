@@ -1,0 +1,32 @@
+---
+title: HireSense
+---
+
+## The Problem
+
+Recruiters drown in data. HireSense had the AI to surface talent insights, but the interface presented everything at once — scores, skills, history, predictions — without hierarchy or narrative.
+
+The question wasn't "can we find good candidates?" but "can we help recruiters *trust* what they're seeing?"
+
+## Research
+
+I ran contextual interviews with 6 recruiters across different company sizes. The insight that shaped everything: **recruiters don't search linearly**. They bounce between candidate profiles, compare mentally, and rely heavily on gut instinct even when data is available.
+
+The design needed to support this non-linear, comparison-heavy workflow without forcing a rigid process.
+
+## Design Approach
+
+- Designed a candidate comparison view that shows the signal, not the noise
+- Created a progressive disclosure pattern — surface the headline, let users drill down
+- Built a "confidence indicator" that explains *why* the AI scored a candidate highly, not just the score itself
+- Simplified the pipeline view to show movement and bottlenecks at a glance
+
+## Key Decisions
+
+The hardest call was removing the detailed AI breakdown from the default view. The engineering team had built sophisticated models and wanted to showcase them. But users didn't need to see the math — they needed to see the answer.
+
+We moved the detailed breakdown to an expandable section. Usage data later confirmed this was right: 80% of users never expanded it, and the 20% who did were power users who appreciated having it available.
+
+> The best AI interface is one where you forget AI is involved.
+
+![HireSense candidate comparison view]
