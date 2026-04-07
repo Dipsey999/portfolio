@@ -7,12 +7,12 @@ import { HomeStickies } from "./home-stickies";
 
 const caseStudies = projects.filter((p) => p.category === "case-study");
 const stickyColors = ["fj-yellow", "fj-blue", "fj-green"];
-const rotations = [0, 0, 0]; // no rotation in light mode — clean cards
+const rotations = [-1.2, 0.7, -0.5];
 
 export default function Home() {
   return (
     <PageWrapper>
-      <div className="w-full max-w-[920px] mx-auto px-5 md:px-8 pt-12 md:pt-20">
+      <div className="w-full max-w-[920px] mx-auto px-5 md:px-8 pt-10 md:pt-16">
         {/* ─── Intro Section ─── */}
         <ScrollReveal>
           <div className="fj-section">
@@ -29,7 +29,7 @@ export default function Home() {
                   waiting for a handoff — real, working things. I care about
                   spacing, copy, flow — the details that make software feel right.
                 </p>
-                <div className="flex flex-wrap gap-2 mt-6">
+                <div className="flex flex-wrap gap-2 mt-5">
                   <span className="tag">Systems</span>
                   <span className="tag">Product</span>
                   <span className="tag">Brand</span>
@@ -67,9 +67,8 @@ export default function Home() {
           </div>
         </ScrollReveal>
 
-        {/* ─── Spacer ─── */}
-        <div className="designer-only section-gap" />
-        <div className="dev-only"><AnimatedConnector /></div>
+        {/* ─── Connector ─── */}
+        <AnimatedConnector />
 
         {/* ─── Selected Work Section ─── */}
         <ScrollReveal>
@@ -90,31 +89,30 @@ export default function Home() {
           </div>
         </ScrollReveal>
 
-        {/* ─── Spacer ─── */}
-        <div className="designer-only section-gap" />
-        <div className="dev-only"><AnimatedConnector /></div>
+        {/* ─── Connector ─── */}
+        <AnimatedConnector />
 
         {/* ─── Quick Nav Section ─── */}
         <ScrollReveal>
           <div className="fj-section">
             <span className="fj-section-label">Explore</span>
-            <div className="grid grid-cols-2 gap-4">
+            <div className="pt-2 grid grid-cols-2 gap-4">
               <Link href="/projects">
-                <div className="fj-sticky fj-violet clickable">
-                  <h3 className="font-semibold text-[15px]">
+                <div className="fj-sticky fj-violet clickable" style={{ rotate: "-0.5deg" }}>
+                  <h3 className="font-semibold text-[14px]">
                     All Work →
                   </h3>
-                  <p className="text-[12px] mt-1 opacity-50">
+                  <p className="text-[11px] mt-0.5 opacity-50">
                     case studies + websites + brand
                   </p>
                 </div>
               </Link>
               <Link href="/about">
-                <div className="fj-sticky fj-orange clickable">
-                  <h3 className="font-semibold text-[15px]">
+                <div className="fj-sticky fj-orange clickable" style={{ rotate: "0.5deg" }}>
+                  <h3 className="font-semibold text-[14px]">
                     About Me →
                   </h3>
-                  <p className="text-[12px] mt-1 opacity-50">
+                  <p className="text-[11px] mt-0.5 opacity-50">
                     background + skills + contact
                   </p>
                 </div>
