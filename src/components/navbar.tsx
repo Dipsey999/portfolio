@@ -41,22 +41,25 @@ export function Navbar() {
       <button
         onClick={toggle}
         className="theme-toggle"
-        aria-label="Toggle dark mode"
-        title={theme === "light" ? "Dark mode" : "Light mode"}
+        aria-label={theme === "light" ? "Switch to developer mode" : "Switch to designer mode"}
+        title={theme === "light" ? "Switch to developer mode" : "Switch to designer mode"}
       >
         {theme === "light" ? (
+          /* Terminal icon for "switch to dev mode" */
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
             <path
-              d="M8 1.5V2.5M8 13.5V14.5M14.5 8H13.5M2.5 8H1.5M12.6 3.4L11.9 4.1M4.1 11.9L3.4 12.6M12.6 12.6L11.9 11.9M4.1 4.1L3.4 3.4M11 8C11 9.657 9.657 11 8 11C6.343 11 5 9.657 5 8C5 6.343 6.343 5 8 5C9.657 5 11 6.343 11 8Z"
+              d="M2 4L6 8L2 12M8 12H14"
               stroke="currentColor"
-              strokeWidth="1.3"
+              strokeWidth="1.5"
               strokeLinecap="round"
+              strokeLinejoin="round"
             />
           </svg>
         ) : (
+          /* Pen/design icon for "switch to designer mode" */
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
             <path
-              d="M13.5 9.5C12.8 10.4 11.7 11 10.5 11C8.015 11 6 8.985 6 6.5C6 5.016 6.816 3.72 8.014 3.014C4.702 3.17 2 5.795 2 9C2 12.314 4.686 15 8 15C11.205 15 13.83 12.298 13.986 8.986C13.872 9.174 13.7 9.35 13.5 9.5Z"
+              d="M11.5 1.5L14.5 4.5L5 14H2V11L11.5 1.5Z"
               stroke="currentColor"
               strokeWidth="1.3"
               strokeLinecap="round"
@@ -65,6 +68,9 @@ export function Navbar() {
           </svg>
         )}
       </button>
+      <span className={`mode-label ${theme === "light" ? "design" : "code"}`}>
+        {theme === "light" ? "design" : "<dev/>"}
+      </span>
     </motion.div>
   );
 }

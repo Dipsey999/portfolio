@@ -39,6 +39,34 @@
   --font-sans: "Inter", system-ui, sans-serif;
 }
 
+/* ═══════════════════════════════════════════
+   MODE SWITCHING: .designer-only / .dev-only
+   Light = Designer   |   Dark = Developer
+   ═══════════════════════════════════════════ */
+.dev-only { display: none !important; }
+.designer-only { display: block !important; }
+
+[data-theme="dark"] .dev-only { display: block !important; }
+[data-theme="dark"] .designer-only { display: none !important; }
+
+/* Flex variants */
+.dev-only-flex { display: none !important; }
+.designer-only-flex { display: flex !important; }
+
+[data-theme="dark"] .dev-only-flex { display: flex !important; }
+[data-theme="dark"] .designer-only-flex { display: none !important; }
+
+/* Grid variants */
+.dev-only-grid { display: none !important; }
+[data-theme="dark"] .dev-only-grid { display: grid !important; }
+
+/* Inline variants */
+.dev-only-inline { display: none !important; }
+.designer-only-inline { display: inline !important; }
+
+[data-theme="dark"] .dev-only-inline { display: inline !important; }
+[data-theme="dark"] .designer-only-inline { display: none !important; }
+
 /* ─── Base ─── */
 html { scroll-behavior: smooth; }
 
@@ -52,7 +80,7 @@ body {
   overflow-x: hidden;
 }
 
-/* ─── FigJam dot grid ─── */
+/* ─── FigJam dot grid (light / designer) ─── */
 body::before {
   content: "";
   position: fixed;
@@ -71,7 +99,7 @@ h1, h2, h3 {
   letter-spacing: -0.01em;
 }
 
-/* ─── FigJam Section ─── */
+/* ─── FigJam Section (designer) ─── */
 .fj-section {
   border: 1.5px dashed var(--color-section-border);
   border-radius: 12px;
@@ -213,6 +241,39 @@ h1, h2, h3 {
   margin-left: 4px;
 }
 
+/* ─── Designer Hero (light mode intro) ─── */
+.designer-hero {
+  padding: 28px 0 12px;
+}
+
+.designer-hero h1 {
+  font-size: 2.4rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+
+.designer-hero .role {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--color-muted);
+  margin-top: 8px;
+}
+
+.designer-hero .tagline {
+  font-size: 13px;
+  color: var(--color-faint);
+  margin-top: 4px;
+}
+
+.designer-hero .bio {
+  font-size: 14px;
+  color: var(--color-body);
+  margin-top: 16px;
+  max-width: 460px;
+  line-height: 1.65;
+}
+
 /* ─── Tag ─── */
 .tag {
   font-family: var(--font-mono);
@@ -337,11 +398,6 @@ main { padding-bottom: 80px; }
   position: relative;
 }
 
-[data-theme="dark"] .name-prompt-card {
-  background: #3C3C3C;
-  box-shadow: 0 16px 40px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.05);
-}
-
 .name-prompt-input {
   width: 100%;
   padding: 8px 12px;
@@ -357,12 +413,6 @@ main { padding-bottom: 80px; }
 
 .name-prompt-input:focus {
   border-color: var(--color-ink);
-}
-
-[data-theme="dark"] .name-prompt-input {
-  background: #2C2C2C;
-  border-color: #555;
-  color: #E8E8E0;
 }
 
 .name-prompt-btn {
@@ -389,18 +439,6 @@ main { padding-bottom: 80px; }
 
 .name-prompt-btn.primary:hover {
   opacity: 0.9;
-}
-
-[data-theme="dark"] .name-prompt-btn {
-  background: #555;
-  border-color: #555;
-  color: #ccc;
-}
-
-[data-theme="dark"] .name-prompt-btn.primary {
-  background: var(--color-ink);
-  border-color: var(--color-ink);
-  color: white;
 }
 
 /* ─── Splash Screen ─── */
@@ -523,11 +561,6 @@ main { padding-bottom: 80px; }
   z-index: 60;
 }
 
-[data-theme="dark"] .stamp-picker {
-  background: #3C3C3C;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.06);
-}
-
 .stamp-option {
   font-size: 16px;
   padding: 4px 6px;
@@ -553,132 +586,6 @@ main { padding-bottom: 80px; }
   cursor: grabbing;
 }
 
-/* ─── Dark Mode ─── */
-[data-theme="dark"] body {
-  background-color: #2C2C2C;
-  color: #C8C8C0;
-}
-
-[data-theme="dark"] body::before {
-  background-image: radial-gradient(circle, rgba(255,255,255,0.08) 1px, transparent 1px);
-}
-
-[data-theme="dark"] ::selection {
-  background: rgba(74, 74, 233, 0.25);
-}
-
-[data-theme="dark"] h1,
-[data-theme="dark"] h2,
-[data-theme="dark"] h3 {
-  color: #E8E8E0;
-}
-
-/* Dark sections */
-[data-theme="dark"] .fj-section {
-  border-color: #4A4A44;
-}
-
-[data-theme="dark"] .fj-section-label {
-  background: #2C2C2C;
-  color: #8C8C84;
-}
-
-/* Dark stickies — slightly muted */
-[data-theme="dark"] .fj-yellow { background: #BDA730; color: #1B1B18; }
-[data-theme="dark"] .fj-orange { background: #B8903A; color: #1B1B18; }
-[data-theme="dark"] .fj-pink { background: #B06878; color: #1B1B18; }
-[data-theme="dark"] .fj-violet { background: #7B68AE; color: #F0F0EA; }
-[data-theme="dark"] .fj-blue { background: #5A8AB8; color: #1B1B18; }
-[data-theme="dark"] .fj-green { background: #5A9E58; color: #1B1B18; }
-[data-theme="dark"] .fj-gray { background: #4A4A44; color: #C8C8C0; }
-
-[data-theme="dark"] .fj-sticky {
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-}
-
-[data-theme="dark"] .fj-sticky:hover {
-  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
-}
-
-/* Dark code block */
-[data-theme="dark"] .code-block {
-  background: #1A1A1A;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.25);
-}
-
-[data-theme="dark"] .code-titlebar {
-  background: #222;
-}
-
-/* Dark tags */
-[data-theme="dark"] .tag {
-  background: rgba(255,255,255,0.08);
-  color: #ADADA5;
-}
-
-/* Tags inside stickies need contrast override in dark mode */
-[data-theme="dark"] .fj-sticky .tag {
-  background: rgba(0,0,0,0.15);
-  color: rgba(0,0,0,0.55);
-}
-
-[data-theme="dark"] .fj-violet .tag,
-[data-theme="dark"] .fj-gray .tag {
-  color: rgba(255,255,255,0.5);
-  background: rgba(255,255,255,0.1);
-}
-
-/* Dark links */
-[data-theme="dark"] .link {
-  color: #7B7BFF;
-  border-bottom-color: rgba(123,123,255,0.25);
-}
-
-[data-theme="dark"] .link:hover {
-  border-bottom-color: #7B7BFF;
-}
-
-/* Dark connector */
-[data-theme="dark"] .connector-v {
-  background-image: repeating-linear-gradient(
-    to bottom,
-    #4A4A44 0px,
-    #4A4A44 5px,
-    transparent 5px,
-    transparent 10px
-  );
-}
-
-/* Dark pinned images */
-[data-theme="dark"] .pinned {
-  background: #3C3C3C;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.15);
-}
-
-/* Dark toolbar */
-[data-theme="dark"] .toolbar {
-  background: #1A1A1A;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.03) inset;
-}
-
-/* Dark prose */
-[data-theme="dark"] .prose strong { color: #E8E8E0; }
-[data-theme="dark"] .prose a { color: #7B7BFF; }
-[data-theme="dark"] .prose blockquote {
-  background: #3A4A5A;
-  border-left-color: #7B7BFF;
-  color: #C8C8C0;
-}
-
-/* Dark splash */
-[data-theme="dark"] .splash-screen {
-  background: #2C2C2C;
-}
-
-[data-theme="dark"] .splash-logo {
-  color: #E8E8E0;
-}
-
 /* Dark mode toggle icon in toolbar */
 .theme-toggle {
   display: flex;
@@ -700,10 +607,35 @@ main { padding-bottom: 80px; }
   background: rgba(255,255,255,0.08);
 }
 
-/* Smooth dark mode transition */
+/* Mode label in toolbar */
+.mode-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  letter-spacing: 0.03em;
+  font-weight: 600;
+}
+
+.mode-label.design {
+  background: rgba(74,74,233,0.1);
+  color: var(--color-ink);
+}
+
+.mode-label.code {
+  background: rgba(40,200,64,0.15);
+  color: #28C840;
+}
+
+/* ═══════════════════════════════════════
+   DARK MODE = DEVELOPER / CODER MODE
+   VS Code + Terminal aesthetic
+   ═══════════════════════════════════════ */
+
+/* Smooth transitions */
 html[data-theme] body,
 html[data-theme] body::before {
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: background-color 0.4s ease, color 0.4s ease;
 }
 
 html[data-theme] .fj-section,
@@ -714,38 +646,289 @@ html[data-theme] .link,
 html[data-theme] .toolbar,
 html[data-theme] .pinned,
 html[data-theme] .connector-v {
-  transition: background 0.3s ease, color 0.3s ease,
-              border-color 0.3s ease, box-shadow 0.3s ease,
-              background-image 0.3s ease;
+  transition: all 0.4s ease;
 }
 
-/* Dark sticky text overrides */
-[data-theme="dark"] .fj-sticky p,
+/* ─── Dark base ─── */
+[data-theme="dark"] body {
+  background-color: #0D1117;
+  color: #C9D1D9;
+  font-family: var(--font-mono);
+}
+
+[data-theme="dark"] body::before {
+  background-image: none;
+  background-color: transparent;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(255,255,255,0.02) 0px,
+    rgba(255,255,255,0.02) 1px,
+    transparent 1px,
+    transparent 24px
+  ),
+  repeating-linear-gradient(
+    90deg,
+    rgba(255,255,255,0.02) 0px,
+    rgba(255,255,255,0.02) 1px,
+    transparent 1px,
+    transparent 24px
+  );
+}
+
+[data-theme="dark"] ::selection {
+  background: rgba(40,200,64,0.2);
+}
+
+[data-theme="dark"] h1,
+[data-theme="dark"] h2,
+[data-theme="dark"] h3 {
+  color: #E6EDF3;
+  font-family: var(--font-mono);
+}
+
+/* ─── Sections → terminal panels ─── */
+[data-theme="dark"] .fj-section {
+  border: 1px solid #21262D;
+  border-radius: 8px;
+  background: rgba(13,17,23,0.6);
+  backdrop-filter: blur(8px);
+}
+
+[data-theme="dark"] .fj-section-label {
+  background: #0D1117;
+  color: #6A9955;
+  font-family: var(--font-mono);
+  text-transform: none;
+  letter-spacing: 0;
+  font-weight: 500;
+}
+
+/* Prepend // to section labels in dark mode */
+[data-theme="dark"] .fj-section-label::before {
+  content: "// ";
+}
+
+/* ─── Stickies → code cards in dark mode ─── */
+[data-theme="dark"] .fj-sticky {
+  border-radius: 6px;
+  border: 1px solid #21262D;
+  box-shadow: none;
+}
+
+[data-theme="dark"] .fj-sticky:hover {
+  border-color: #30363D;
+  box-shadow: 0 0 0 1px rgba(40,200,64,0.1);
+}
+
+[data-theme="dark"] .fj-yellow,
+[data-theme="dark"] .fj-orange,
+[data-theme="dark"] .fj-pink,
+[data-theme="dark"] .fj-violet,
+[data-theme="dark"] .fj-blue,
+[data-theme="dark"] .fj-green,
+[data-theme="dark"] .fj-gray {
+  background: #161B22;
+  color: #C9D1D9;
+}
+
+/* Add subtle left accent border per color */
+[data-theme="dark"] .fj-yellow { border-left: 3px solid #E3B341; }
+[data-theme="dark"] .fj-blue { border-left: 3px solid #58A6FF; }
+[data-theme="dark"] .fj-green { border-left: 3px solid #3FB950; }
+[data-theme="dark"] .fj-pink { border-left: 3px solid #F778BA; }
+[data-theme="dark"] .fj-violet { border-left: 3px solid #BC8CFF; }
+[data-theme="dark"] .fj-orange { border-left: 3px solid #D29922; }
+[data-theme="dark"] .fj-gray { border-left: 3px solid #484F58; }
+
+[data-theme="dark"] .fj-sticky h3 {
+  color: #E6EDF3;
+}
+
+[data-theme="dark"] .fj-sticky p {
+  color: #8B949E;
+}
+
 [data-theme="dark"] .fj-sticky span {
-  opacity: 0.95;
+  color: #8B949E;
 }
 
-/* Stamp dark overrides */
+/* ─── Tags → code syntax in dark mode ─── */
+[data-theme="dark"] .tag {
+  background: rgba(56,139,253,0.1);
+  color: #58A6FF;
+  border-radius: 3px;
+  font-family: var(--font-mono);
+}
+
+[data-theme="dark"] .fj-sticky .tag {
+  background: rgba(56,139,253,0.1);
+  color: #58A6FF;
+}
+
+/* ─── Links → terminal cyan ─── */
+[data-theme="dark"] .link {
+  color: #58A6FF;
+  border-bottom-color: rgba(88,166,255,0.2);
+  font-family: var(--font-mono);
+}
+
+[data-theme="dark"] .link:hover {
+  border-bottom-color: #58A6FF;
+}
+
+/* ─── Connector → solid subtle line ─── */
+[data-theme="dark"] .connector-v {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    #21262D 0px,
+    #21262D 4px,
+    transparent 4px,
+    transparent 8px
+  );
+}
+
+/* ─── Toolbar → terminal bar ─── */
+[data-theme="dark"] .toolbar {
+  background: #161B22;
+  border: 1px solid #21262D;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.4);
+}
+
+[data-theme="dark"] .toolbar a,
+[data-theme="dark"] .toolbar button {
+  font-family: var(--font-mono);
+  font-size: 12px;
+}
+
+[data-theme="dark"] .toolbar a.active {
+  color: #3FB950;
+  background: rgba(63,185,80,0.1);
+}
+
+[data-theme="dark"] .toolbar a:hover,
+[data-theme="dark"] .toolbar button:hover {
+  color: #E6EDF3;
+  background: rgba(255,255,255,0.04);
+}
+
+[data-theme="dark"] .toolbar .divider {
+  background: #21262D;
+}
+
+/* ─── Code block tweaks for dark ─── */
+[data-theme="dark"] .code-block {
+  background: #0D1117;
+  border: 1px solid #21262D;
+  box-shadow: none;
+}
+
+[data-theme="dark"] .code-titlebar {
+  background: #161B22;
+  border-bottom: 1px solid #21262D;
+}
+
+/* ─── Pinned images ─── */
+[data-theme="dark"] .pinned {
+  background: #161B22;
+  border: 1px solid #21262D;
+  box-shadow: none;
+}
+
+[data-theme="dark"] .pinned::after {
+  background: #3FB950;
+}
+
+/* ─── Prose in dark ─── */
+[data-theme="dark"] .prose {
+  font-family: var(--font-mono);
+  font-size: 13px;
+}
+
+[data-theme="dark"] .prose strong { color: #E6EDF3; }
+[data-theme="dark"] .prose a { color: #58A6FF; }
+[data-theme="dark"] .prose blockquote {
+  background: rgba(56,139,253,0.05);
+  border-left-color: #58A6FF;
+  color: #8B949E;
+  font-family: var(--font-mono);
+}
+
+/* ─── Dark name prompt ─── */
+[data-theme="dark"] .name-prompt-card {
+  background: #161B22;
+  border: 1px solid #21262D;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.4);
+}
+
+[data-theme="dark"] .name-prompt-input {
+  background: #0D1117;
+  border-color: #21262D;
+  color: #C9D1D9;
+  font-family: var(--font-mono);
+}
+
+[data-theme="dark"] .name-prompt-input:focus {
+  border-color: #3FB950;
+}
+
+[data-theme="dark"] .name-prompt-btn {
+  background: #21262D;
+  border-color: #30363D;
+  color: #8B949E;
+  font-family: var(--font-mono);
+}
+
+[data-theme="dark"] .name-prompt-btn.primary {
+  background: #238636;
+  border-color: #238636;
+  color: white;
+}
+
+/* ─── Dark splash ─── */
+[data-theme="dark"] .splash-screen {
+  background: #0D1117;
+}
+
+[data-theme="dark"] .splash-logo {
+  color: #3FB950;
+}
+
+[data-theme="dark"] .splash-sub {
+  color: #484F58;
+}
+
+/* ─── Dark stamps ─── */
 [data-theme="dark"] .stamp-pill {
-  background: rgba(255,255,255,0.06);
-  border-color: rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.04);
+  border-color: #21262D;
 }
 
 [data-theme="dark"] .stamp-pill:hover {
-  background: rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.08);
 }
 
 [data-theme="dark"] .stamp-add {
-  border-color: rgba(255,255,255,0.15);
-  color: rgba(255,255,255,0.3);
+  border-color: #21262D;
+  color: #484F58;
 }
 
 [data-theme="dark"] .stamp-add:hover {
-  border-color: rgba(255,255,255,0.3);
-  color: rgba(255,255,255,0.5);
-  background: rgba(255,255,255,0.05);
+  border-color: #30363D;
+  color: #8B949E;
+  background: rgba(255,255,255,0.04);
+}
+
+[data-theme="dark"] .stamp-picker {
+  background: #161B22;
+  border: 1px solid #21262D;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.4);
 }
 
 [data-theme="dark"] .stamp-option:hover {
-  background: rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.06);
+}
+
+/* ─── Terminal prompt style for back links ─── */
+[data-theme="dark"] .back-link {
+  color: #3FB950;
 }

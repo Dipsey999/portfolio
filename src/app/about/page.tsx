@@ -31,14 +31,24 @@ export default function AboutPage() {
                 </div>
               </div>
               <div className="pt-1">
-                <h1 className="text-2xl md:text-3xl font-bold text-charcoal tracking-tight">
+                <h1 className="text-2xl md:text-3xl font-bold tracking-tight">
                   Jizan K
                 </h1>
-                <p className="font-mono text-[13px] text-muted mt-1">
+
+                {/* Designer mode subtitle */}
+                <p className="designer-only font-sans text-[14px] text-muted mt-1 font-medium">
                   Design Engineer
                 </p>
-                <p className="font-mono text-[12px] text-faint">
-                  craft({"{"} design, code {"}"})  ·  Bengaluru
+                <p className="designer-only text-[12px] text-faint">
+                  Bengaluru, India
+                </p>
+
+                {/* Developer mode subtitle */}
+                <p className="dev-only font-mono text-[13px] text-[#3FB950] mt-1">
+                  role: &quot;Design Engineer&quot;
+                </p>
+                <p className="dev-only font-mono text-[12px] text-[#484F58]">
+                  location: &quot;Bengaluru&quot;
                 </p>
               </div>
             </div>
@@ -47,32 +57,54 @@ export default function AboutPage() {
 
         <AnimatedConnector height="h-8" />
 
-        {/* ─── About Section ─── */}
+        {/* ─── Background Section ─── */}
         <ScrollReveal>
           <div className="fj-section">
             <span className="fj-section-label">Background</span>
-            <div className="pt-2 md:flex gap-5">
-              {/* Code bio */}
-              <div className="flex-1 min-w-0">
-                <div className="code-titlebar">
-                  <div className="code-dots">
-                    <span className="r" /><span className="y" /><span className="g" />
-                  </div>
-                  <span className="filename">about.ts</span>
-                </div>
-                <div className="code-block rounded-t-none text-[12.5px]">
-                  <pre className="m-0"><code><span className="cm">{"// the short version"}</span>{"\n"}<span className="kw">const</span> <span className="val">career</span> <span className="punc">=</span> {"{"}{"\n"}{"  "}<span className="prop">now</span><span className="punc">:</span> <span className="str">&quot;Recotap — design system + product + brand&quot;</span><span className="punc">,</span>{"\n"}{"  "}<span className="prop">prev</span><span className="punc">:</span> <span className="punc">[</span><span className="str">&quot;Ziroh Labs&quot;</span><span className="punc">,</span> <span className="str">&quot;UnQ Technologies&quot;</span><span className="punc">]</span><span className="punc">,</span>{"\n"}{"  "}<span className="prop">method</span><span className="punc">:</span> <span className="str">&quot;think → design → build → ship&quot;</span>{"\n"}{"}"}</code></pre>
+            <div className="pt-2">
+
+              {/* ══ DESIGNER MODE ══ */}
+              <div className="designer-only">
+                <div className="max-w-[560px]">
+                  <p className="text-[14px] text-body leading-[1.7]">
+                    I work at the intersection of design and engineering. Currently
+                    leading design at <strong>Recotap</strong> — building design systems,
+                    shaping product, and defining brand.
+                  </p>
+                  <p className="text-[14px] text-body leading-[1.7] mt-3">
+                    Previously at <strong>Ziroh Labs</strong> and <strong>UnQ Technologies</strong>.
+                    My method is simple: think, design, build, ship.
+                  </p>
+                  <p className="text-[14px] text-body leading-[1.7] mt-3">
+                    I care about spacing, copy, flow — the details that make
+                    software feel right. Good design is quiet.
+                  </p>
                 </div>
               </div>
 
-              {/* Sticky bio */}
-              <div className="mt-4 md:mt-0 md:w-[240px] shrink-0">
-                <div className="fj-sticky fj-yellow" style={{ rotate: "0.8deg" }}>
-                  <p className="text-[12px] text-charcoal/70 leading-relaxed">
-                    I work at the intersection of design and engineering. I care
-                    about spacing, copy, flow — the details that make software
-                    feel right. Good design is quiet.
-                  </p>
+              {/* ══ DEVELOPER MODE ══ */}
+              <div className="dev-only">
+                <div className="md:flex gap-5">
+                  <div className="flex-1 min-w-0">
+                    <div className="code-titlebar">
+                      <div className="code-dots">
+                        <span className="r" /><span className="y" /><span className="g" />
+                      </div>
+                      <span className="filename">about.ts</span>
+                    </div>
+                    <div className="code-block rounded-t-none text-[12.5px]">
+                      <pre className="m-0"><code><span className="cm">{"// the short version"}</span>{"\n"}<span className="kw">const</span> <span className="val">career</span> <span className="punc">=</span> {"{"}{"\n"}{"  "}<span className="prop">now</span><span className="punc">:</span> <span className="str">&quot;Recotap — design system + product + brand&quot;</span><span className="punc">,</span>{"\n"}{"  "}<span className="prop">prev</span><span className="punc">:</span> <span className="punc">[</span><span className="str">&quot;Ziroh Labs&quot;</span><span className="punc">,</span> <span className="str">&quot;UnQ Technologies&quot;</span><span className="punc">]</span><span className="punc">,</span>{"\n"}{"  "}<span className="prop">method</span><span className="punc">:</span> <span className="str">&quot;think → design → build → ship&quot;</span>{"\n"}{"}"}</code></pre>
+                    </div>
+                  </div>
+                  <div className="mt-4 md:mt-0 md:w-[240px] shrink-0">
+                    <div className="fj-sticky fj-yellow">
+                      <p className="text-[12px] leading-relaxed">
+                        I work at the intersection of design and engineering. I care
+                        about spacing, copy, flow — the details that make software
+                        feel right. Good design is quiet.
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -142,7 +174,7 @@ export default function AboutPage() {
                   className={`fj-sticky ${item.c} text-center !py-4`}
                   style={{ rotate: `${item.r}deg` }}
                 >
-                  <span className="text-[12px] text-charcoal/60">{item.l}</span>
+                  <span className="text-[12px]">{item.l}</span>
                 </div>
               ))}
             </div>
