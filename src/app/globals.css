@@ -289,37 +289,41 @@ h1, h2, h3 {
 main { padding-bottom: 80px; }
 
 /* ─── FigJam Cursor ─── */
+
+/* Hide the system cursor when custom cursor is active */
+.fj-cursor-active,
+.fj-cursor-active * {
+  cursor: none !important;
+}
+
 .figjam-cursor {
   position: fixed;
   top: 0;
   left: 0;
   pointer-events: none;
-  z-index: 300;
-  transform: translate(-4px, -2px);
+  z-index: 9999;
+  will-change: transform;
 }
 
 .figjam-cursor-arrow {
-  filter: drop-shadow(0 1px 2px rgba(0,0,0,0.15));
+  display: block;
+  filter: drop-shadow(0 1px 3px rgba(0,0,0,0.2));
 }
 
 .figjam-cursor-label {
   position: absolute;
-  top: 18px;
-  left: 12px;
+  top: 20px;
+  left: 14px;
   color: white;
   font-family: var(--font-sans);
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 600;
-  padding: 2px 6px;
-  border-radius: 3px;
+  padding: 2px 8px;
+  border-radius: 4px;
   white-space: nowrap;
   letter-spacing: 0.02em;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.15);
-}
-
-/* Hide on touch devices */
-@media (hover: none) {
-  .figjam-cursor { display: none; }
+  box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+  line-height: 1.5;
 }
 
 /* ─── Name Prompt ─── */

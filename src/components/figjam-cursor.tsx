@@ -1,7 +1,6 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
-import { motion, useMotionValue, useSpring } from "framer-motion";
+import { useEffect, useState, useCallback } from "react";
 
 const CURSOR_COLORS = [
   "#4A90D9", // blue
@@ -22,78 +21,89 @@ function pickColor(name: string): string {
 
 export function FigJamCursor() {
   const [name, setName] = useState<string | null>(null);
-  const [visible, setVisible] = useState(false);
-  const color = name ? pickColor(name) : CURSOR_COLORS[0];
-  const cursorX = useMotionValue(-100);
-  const cursorY = useMotionValue(-100);
-  const springX = useSpring(cursorX, { damping: 25, stiffness: 250 });
-  const springY = useSpring(cursorY, { damping: 25, stiffness: 250 });
-  const lastMoveRef = useRef(0);
+  const [active, setActive] = useState(false);
 
   useEffect(() => {
     // Check localStorage on mount
     const saved = localStorage.getItem("fj-visitor-name");
     if (saved) {
       setName(saved);
-      setVisible(true);
+      setActive(true);
     }
 
     // Listen for name set event
     const handler = (e: Event) => {
       const detail = (e as CustomEvent).detail;
       setName(detail);
-      setVisible(true);
+      setActive(true);
     };
     window.addEventListener("fj-name-set", handler);
     return () => window.removeEventListener("fj-name-set", handler);
   }, []);
 
+  // Check for touch device
+  const [isTouch, setIsTouch] = useState(false);
   useEffect(() => {
-    if (!visible) return;
+    setIsTouch(window.matchMedia("(hover: none)").matches);
+  }, []);
 
-    const onMove = (e: MouseEvent) => {
-      cursorX.set(e.clientX);
-      cursorY.set(e.clientY);
-      lastMoveRef.current = Date.now();
-    };
+  const cursorRef = useCallback(
+    (el: HTMLDivElement | null) => {
+      if (!el || !active || isTouch) return;
 
-    const onLeave = () => {
-      cursorX.set(-100);
-      cursorY.set(-100);
-    };
+      // Hide the system cursor globally
+      document.documentElement.classList.add("fj-cursor-active");
 
-    window.addEventListener("mousemove", onMove);
-    document.addEventListener("mouseleave", onLeave);
-    return () => {
-      window.removeEventListener("mousemove", onMove);
-      document.removeEventListener("mouseleave", onLeave);
-    };
-  }, [visible, cursorX, cursorY]);
+      const onMove = (e: MouseEvent) => {
+        el.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+      };
 
-  // Don't render on touch devices or if no name set
-  if (!visible || !name) return null;
+      const onLeave = () => {
+        el.style.opacity = "0";
+      };
+
+      const onEnter = () => {
+        el.style.opacity = "1";
+      };
+
+      window.addEventListener("mousemove", onMove, { passive: true });
+      document.addEventListener("mouseleave", onLeave);
+      document.addEventListener("mouseenter", onEnter);
+
+      return () => {
+        window.removeEventListener("mousemove", onMove);
+        document.removeEventListener("mouseleave", onLeave);
+        document.removeEventListener("mouseenter", onEnter);
+        document.documentElement.classList.remove("fj-cursor-active");
+      };
+    },
+    [active, isTouch]
+  );
+
+  if (!active || !name || isTouch) return null;
+
+  const color = pickColor(name);
 
   return (
-    <motion.div
+    <div
+      ref={cursorRef}
       className="figjam-cursor"
-      style={{ x: springX, y: springY }}
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.3 }}
+      style={{ opacity: 0 }}
     >
-      {/* Cursor arrow */}
+      {/* Cursor arrow — matches FigJam's pointer shape */}
       <svg
-        width="16"
-        height="20"
-        viewBox="0 0 16 20"
+        width="20"
+        height="24"
+        viewBox="0 0 20 24"
         fill="none"
         className="figjam-cursor-arrow"
       >
         <path
-          d="M0.5 0.5L15 11.5L8.5 12L5 19.5L0.5 0.5Z"
+          d="M1 1L18 12.5L10 13.5L6.5 22L1 1Z"
           fill={color}
           stroke="white"
-          strokeWidth="1"
+          strokeWidth="1.5"
+          strokeLinejoin="round"
         />
       </svg>
       {/* Name label */}
@@ -103,6 +113,6 @@ export function FigJamCursor() {
       >
         {name}
       </div>
-    </motion.div>
+    </div>
   );
 }
