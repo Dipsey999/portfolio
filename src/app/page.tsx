@@ -1,215 +1,300 @@
-import type { Metadata } from 'next';
+'use client';
 
-export const metadata: Metadata = {
-  title: "Jizan's Portfolio",
-  description: "Mohammed Jizan K — Product Designer based in Bengaluru, India.",
+import Link from 'next/link';
+import dynamic from 'next/dynamic';
+import { useRef, type ReactNode, type CSSProperties, type MouseEvent } from 'react';
+import s from './_home/home.module.css';
+
+const HeroScene = dynamic(
+  () => import('./_home/hero-scene').then((m) => m.HeroScene),
+  { ssr: false },
+);
+
+type Project = {
+  href: string;
+  external?: boolean;
+  company: string;
+  title: string;
+  meta: string;
+  art: string;
+  artBg: string;
+  accent: string;
 };
 
-const html = `<div id="Nab-Bar" class="header-container">
-    <div class="header">
-      <a href="/" aria-current="page" class="link-box w-inline-block w--current">
-        <div class="label-small selected">Home</div>
-      </a>
-      <a href="/all-projects/" class="link-block w-inline-block">
-        <div class="label-small disabled">Projects</div>
-      </a>
-      <a href="/about-me/" class="link-block-7 w-inline-block">
-        <div class="label-small disabled">About Me</div>
-      </a>
-    </div>
-  </div>
-  <div class="session-1">
-    <div id="w-node-_37e03c52-7dce-69e0-fc95-9a80e7e3a58c-a0dbd6a2" class="session-1-right-wrapper">
-      <div class="display-large mobile">Mohammed</div>
-      <div class="display-large mobile">Jizan K</div>
-    </div>
-    <div id="w-node-_37e03c52-7dce-69e0-fc95-9a80e7e3a591-a0dbd6a2" class="session-1-left-wrapper">
-      <div class="greetings-wrapper">
-        <div class="paragraph-large disabled mobile">Greetings</div>
-        <div class="paragraph-large-5 mobile">👋🏽</div>
-      </div>
-      <div class="paragraph-large colored mobile">I&#x27;m a Product Designer based in Bengaluru, India.</div>
-      <div class="paragraph-large colored mobile">Currently at 
-        <span style="
-        font-weight: 600;
-        font-size: inherit;
-        line-height: inherit;
-        background: linear-gradient(90deg, #f6a340, #ea4aaa);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        display: inline-block;
-      ">
-        Recotap
-      </span>, Leading the design system and entire design process across products, marketing, and brand.</div>
-      <div class="paragraph-large colored mobile">I&#x27;ve previously worked at <span style="color: #FFC182;">Ziroh Labs</span> and <span style="color: #FFC182;">UnQ Technologies</span>.</div>
-    </div>
-    </div>
-  </div>
-  <div class="seperator-container">
-    <div class="saperator-2"></div>
-  </div>
-  <div class="session-2">
-    <div class="text-wrapper">
-      <div class="heading-small mobile">Unveiling My</div>
-      <div class="heading-large mobile">Pinnacle Projects</div>
-    </div>
-    <div id="w-node-_367dd22d-88f2-5368-fc7b-9ba00b0d995f-a0dbd6a2" class="projects-container">
-      <a href="/ziroh/" class="project-card---ziroh w-inline-block">
-        <div class="content">
-          <div class="wrapper-8">
-            <div id="ZirohLabsLogo" class="ziroh-labs-logo"><img src="/images/logo-1-2.png" loading="lazy" width="26.227693557739258" height="24" alt="" class="logo-1-2"><img src="/images/Vectors-Wrapper.svg" loading="lazy" width="55.675537109375" height="14.092926025390625" alt="" class="vectors-wrapper"><img src="/images/Vectors-Wrapper_1.svg" loading="lazy" width="28.961009979248047" height="13.760003089904785" alt="" class="vectors-wrapper-2"></div>
-            <div class="label-medium">Crafting the Next-Gen Privacy-Preserving System with Exclusive Encrypted Software Suite.</div>
-          </div>
-          <div class="wrapper-5">
-            <div class="view-project-wrapper">
-              <div class="w-layout-vflex view-project-container">
-                <div class="label-small-15">View Projects</div>
-                <div class="chevron-right zunu"><img src="/images/Vectors-Wrapper_8.svg" loading="lazy" width="19.999168395996094" height="16" alt="" id="Icon-chevron" class="chevron-icon zunu"></div>
-              </div>
-              <div class="indicator-3">
-                <div style="width:1%" class="loader ziroh"></div>
-              </div>
-            </div>
-            <div class="paragraph-medium-4">During my tenure as a Product Designer at Ziroh Labs, I took the lead in shaping the branding, visual identity, and user experience across a range of encryption-centric products. </div>
-          </div>
-        </div>
-        <div class="image---ziroh">
-          <div class="spline-privacy" data-animation-type="spline" data-spline-url="https://prod.spline.design/2hXINmi96iPso0GA/scene.splinecode"><canvas></canvas></div>
-        </div>
-      </a>
-      <a href="/recotap/" class="project-card---unq w-inline-block">
-        <div class="content">
-          <div class="wrapper-8">
-            <div class="recotap-logo">
-              <img src="/images/recotap-logo.svg" alt="Recotap Logo" width="100">
-            </div>
-            <div class="label-medium">Powering Modern B2B Marketing with Smarter Account-Based Solutions.</div>
-          </div>
-          <div class="wrapper-5">
-            <div class="view-project-wrapper">
-              <div class="w-layout-vflex view-project-container">
-                <div class="label-small-15 unq">View Projects</div>
-                <div class="chevron-right unq"><img loading="lazy" width="19.999168395996094" height="16" alt="" id="Icon-chevron" src="/images/Shape.svg" class="chevron-icon unq"></div>
-              </div>
-              <div class="indicator-3">
-                <div style="width:1%" class="loader unq"></div>
-              </div>
-            </div>
-            <div class="paragraph-medium-4">Built a unified design system and streamlined the UX for Recotap’s ABM platform,enhancing consistency, simplifying workflows, and aligning product with marketing.</div>
-          </div>
-        </div>
-        <div class="image---unq">
-          <img src="/images/recotap-img.png" loading="lazy" alt="Recotap 3D Illustration" class="hover-animate" style="max-height: 100%; width: auto;">
-        </div>
-      </a>
-      <a href="https://medium.com/@jizansanu/heartfullgivers-crafting-an-innovative-charitable-exchange-platform-ui-ux-case-study-be43be0ef800" target="_blank" class="project-card---hfg w-inline-block">
-        <div class="content">
-          <div class="wrapper-8">
-            <div class="hearfull-givers"><img src="/images/Vectors-Wrapper_6.svg" loading="lazy" width="42.54074478149414" height="29.17041778564453" alt="" class="vectors-wrapper-12">
-              <div class="content-4">
-                <div class="text">Heartful</div>
-                <div class="givers">
-                  <div class="text-2">Givers</div><img src="/images/Vectors-Wrapper_7.svg" loading="lazy" width="3.2319047451019287" height="3.1595449447631836" alt="" class="vectors-wrapper-13">
-                </div>
-              </div>
-            </div>
-            <div class="label-medium">Crafting an Innovative Charitable Exchange Platform</div>
-          </div>
-          <div class="wrapper-5">
-            <div class="view-project-wrapper">
-              <div class="w-layout-vflex view-project-container">
-                <div class="label-small-15 hfg">View Projects</div>
-                <div class="chevron-right hfg"><img loading="lazy" width="19.999168395996094" height="16" alt="" id="Icon-chevron" src="/images/Shape-1.svg" class="chevron-icon hfg"></div>
-              </div>
-              <div class="indicator-3">
-                <div style="width:1%" class="loader hfg"></div>
-              </div>
-            </div>
-            <div class="paragraph-medium-4">A platform strategically crafted to showcase how a culture of generosity can be strengthened through charitable giving solutions that prfioritize accessibility, inclusivity, and effectiveness.</div>
-          </div>
-        </div>
-        <div class="image---hfg"><img src="/images/heartfull-img.png" alt="Recotap Illustration" class="hover-animate"></div>
-      </a>
-    </div>
-  </div>
-  <div class="seperator-container">
-    <div class="saperator-2"></div>
-  </div>
-  <div class="session-3">
-    <div class="text-wrapper">
-      <div class="heading-small mobile">A Generalist Focused in</div>
-      <div class="heading-large mobile">Product Design</div>
-    </div>
-    <div class="wrapper-6">
-      <div class="skill-1 generalist">
-        <div class="heading-medium fancy-text-1 generalist">UX Research</div>
-        <div class="paragraph-large generalist mobile">I uncover insights that shape better products.</div>
-      </div>
-      <div class="skill-1">
-        <div class="heading-medium fancy-text-1 generalist">Design Systems</div>
-        <div class="paragraph-large generalist mobile">I build scalable systems that bring clarity to complex products.</div>
-      </div>
-      <div class="skill-3">
-        <div class="heading-medium fancy-text-1 generalist">Visual Design</div>
-        <div class="text-wrapper">
-          <div class="paragraph-large generalist mobile">Yeah, I&#x27;ve got the flair to make visuals dazzle and delight!.</div>
-        </div>
-      </div>
-      <div class="skill-1">
-        <div class="heading-medium fancy-text-1 generalist">Motion Design</div>
-        <div class="text-wrapper">
-          <div class="paragraph-large generalist mobile">Motion design aficionado at work.</div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="seperator-container">
-    <div class="saperator-2"></div>
-  </div>
-  <div class="session-4">
-    <div class="text-wrapper-2">
-      <div class="heading-medium-2">What’s next?</div>
-      <div class="wrapper-7">
-        <div class="heading-small-2">Intrigued by what you&#x27;ve seen?</div>
-        <div class="heading-small-2">Let&#x27;s take a Peek to</div>
-      </div>
-    </div>
-    <a href="/all-projects/" class="let-s-chat-wrapper-link w-inline-block">
-      <div class="w-layout-vflex button-wrapper let-s-chat">
-        <div class="button---about-me contact-me home">
-          <div class="icon-4 mail home"><img src="/images/Vectors-Wrapper_12.svg" loading="lazy" width="20" height="17" alt="" class="vectors-wrapper-27"></div>
-          <div class="text-14 home">Projects</div>
-        </div>
-      </div>
-    </a>
-  </div>
-  <div class="seperator-container">
-    <div class="saperator-2"></div>
-  </div>
+const PROJECTS: Project[] = [
+  {
+    href: '/ziroh/',
+    company: 'Ziroh Labs',
+    title: 'Crafting the next-gen privacy-preserving system with an exclusive encrypted software suite.',
+    meta: '2022 — 2024 · Product Designer',
+    art: '/images/Zunu.png',
+    artBg: 'linear-gradient(140deg, #14233a 0%, #0c1422 60%, #0c1422 100%)',
+    accent: '#5C8DFF',
+  },
+  {
+    href: '/recotap/',
+    company: 'Recotap',
+    title: 'Powering modern B2B marketing with smarter account-based solutions.',
+    meta: '2024 — Now · Lead Product Designer',
+    art: '/images/recotap-img.png',
+    artBg: 'linear-gradient(140deg, #1a3324 0%, #0d1c14 60%, #0d1c14 100%)',
+    accent: '#5CF0A4',
+  },
+  {
+    href: 'https://medium.com/@jizansanu/heartfullgivers-crafting-an-innovative-charitable-exchange-platform-ui-ux-case-study-be43be0ef800',
+    external: true,
+    company: 'Heartful Givers',
+    title: 'Crafting an innovative charitable exchange platform.',
+    meta: '2022 · Independent',
+    art: '/images/heartfull-img.png',
+    artBg: 'linear-gradient(140deg, #3a2a14 0%, #221708 60%, #221708 100%)',
+    accent: '#FFB058',
+  },
+];
 
-  <!-- Animation Section-->
+const SKILLS: { n: string; title: string; body: string }[] = [
+  { n: '01', title: 'UX Research', body: 'I uncover the insights that shape better products.' },
+  { n: '02', title: 'Design Systems', body: 'I build scalable systems that bring clarity to complex products.' },
+  { n: '03', title: 'Visual Design', body: "Yeah, I've got the flair to make visuals dazzle and delight." },
+  { n: '04', title: 'Motion Design', body: 'Motion-design aficionado. Every interaction has weight.' },
+];
 
-  
-
-  <!-- Section Over-->
-   
-
-  <div id="Nab-Bar" class="header-container home-bottom">
-    <div class="header">
-      <a href="/" aria-current="page" class="link-box w-inline-block w--current">
-        <div class="label-small selected">Home</div>
-      </a>
-      <a href="/all-projects/" class="link-block w-inline-block">
-        <div class="label-small disabled">Projects</div>
-      </a>
-      <a href="/about-me/" class="link-block-7 w-inline-block">
-        <div class="label-small disabled">About Me</div>
-      </a>
-    </div>
-  </div>`;
-
-export default function Page() {
+function Reveal({
+  children,
+  delay = 0,
+  className,
+}: {
+  children: ReactNode;
+  delay?: number;
+  className?: string;
+}) {
+  const style = {
+    ['--reveal-delay' as string]: `${delay}s`,
+  } as CSSProperties;
   return (
-    <div className="body" dangerouslySetInnerHTML={{ __html: html }} />
+    <div className={`${s.reveal} ${className ?? ''}`} style={style}>
+      {children}
+    </div>
+  );
+}
+
+function ProjectCard({ project, index }: { project: Project; index: number }) {
+  const ref = useRef<HTMLAnchorElement>(null);
+  const onMove = (e: MouseEvent<HTMLAnchorElement>) => {
+    const el = ref.current;
+    if (!el) return;
+    const r = el.getBoundingClientRect();
+    el.style.setProperty('--mx', `${e.clientX - r.left}px`);
+    el.style.setProperty('--my', `${e.clientY - r.top}px`);
+  };
+
+  const inner = (
+    <>
+      <div className={s.cardGlow} aria-hidden />
+      <div className={s.cardHeader}>
+        <span className={s.cardCompany}>{project.company}</span>
+        <h3 className={s.cardTitle}>{project.title}</h3>
+      </div>
+      <div className={s.cardArt} style={{ background: project.artBg }}>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src={project.art} alt="" loading="lazy" decoding="async" />
+      </div>
+      <div className={s.cardFooter}>
+        <span className="meta">{project.meta}</span>
+        <span className="open">{project.external ? 'Read ↗' : 'Open →'}</span>
+      </div>
+    </>
+  );
+
+  const style: CSSProperties = {
+    ['--card-accent' as string]: project.accent,
+    ['--reveal-delay' as string]: `${0.3 + index * 0.08}s`,
+  };
+
+  return project.external ? (
+    <a
+      ref={ref}
+      href={project.href}
+      target="_blank"
+      rel="noopener noreferrer"
+      onMouseMove={onMove}
+      className={`${s.card} ${s.reveal}`}
+      style={style}
+    >
+      {inner}
+    </a>
+  ) : (
+    <Link
+      ref={ref as never}
+      href={project.href}
+      onMouseMove={onMove}
+      className={`${s.card} ${s.reveal}`}
+      style={style}
+    >
+      {inner}
+    </Link>
+  );
+}
+
+export default function HomePage() {
+  return (
+    <div className={`${s.root} ${s.grain}`}>
+      <div className={s.canvasShell} aria-hidden>
+        <HeroScene />
+      </div>
+
+      {/* Top nav */}
+      <header className={s.nav}>
+        <nav className={s.navInner} aria-label="Primary">
+          <span className={s.navDot} aria-hidden />
+          <Link href="/" className={`${s.navLink} ${s.active}`} aria-current="page">
+            Index
+          </Link>
+          <Link href="/all-projects/" className={s.navLink}>
+            Projects
+          </Link>
+          <Link href="/about-me/" className={s.navLink}>
+            About
+          </Link>
+        </nav>
+      </header>
+
+      {/* Hero */}
+      <section className={s.hero}>
+        <div className={s.container}>
+          <div className={s.heroGrid}>
+            <div>
+              <Reveal delay={0}>
+                <p className={s.eyebrow}>
+                  <span className={s.live} aria-hidden /> Bengaluru, IN — Open for 2026
+                </p>
+              </Reveal>
+              <Reveal delay={0.08}>
+                <h1 className={s.title}>
+                  Product designer designing for the <em>feel.</em>
+                </h1>
+              </Reveal>
+              <Reveal delay={0.18}>
+                <p className={s.lede}>
+                  I&apos;m <strong>Mohammed Jizan</strong> — currently leading design at{' '}
+                  <span className={s.gradientText}>Recotap</span> across product, marketing
+                  and brand. Previously <strong>Ziroh Labs</strong> and{' '}
+                  <strong>UnQ Technologies</strong>. Looking for a Lead role at an AI or
+                  gaming studio for the 2026 cycle.
+                </p>
+              </Reveal>
+              <Reveal delay={0.26}>
+                <div className={s.ctaRow}>
+                  <Link href="/all-projects/" className={s.ctaPrimary}>
+                    See selected work <span className={s.arrow}>→</span>
+                  </Link>
+                  <a href="mailto:jizan.ux@gmail.com" className={s.ctaGhost}>
+                    Get in touch
+                  </a>
+                </div>
+              </Reveal>
+            </div>
+
+            <Reveal delay={0.22}>
+              <div className={s.statGrid}>
+                <Stat label="Years designing" value="5+" hint="2021 → now" />
+                <Stat label="Products shipped" value="10+" hint="0→1 and scaled" />
+                <Stat label="Design systems" value="3" hint="Recotap · HireSense · Zunu" />
+                <Stat label="Currently" value="Recotap" hint="Lead Product Designer" />
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      {/* Selected work */}
+      <section className={s.section}>
+        <div className={s.container}>
+          <Reveal>
+            <header className={s.sectionHead}>
+              <div>
+                <p className={s.sectionLabel}>§ 02 — Pinnacle Projects</p>
+                <h2 className={s.sectionTitle}>Selected work, picked carefully.</h2>
+              </div>
+              <p className={s.sectionLede}>
+                Three projects that show how I think, ship, and scale. The full archive
+                lives on the{' '}
+                <Link
+                  href="/all-projects/"
+                  style={{ textDecoration: 'underline', textUnderlineOffset: 4 }}
+                >
+                  projects page
+                </Link>
+                .
+              </p>
+            </header>
+          </Reveal>
+          <div className={s.projectGrid}>
+            {PROJECTS.map((p, i) => (
+              <ProjectCard project={p} index={i} key={p.href} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Skills */}
+      <section className={s.section}>
+        <div className={s.container}>
+          <Reveal>
+            <header className={s.sectionHead}>
+              <div>
+                <p className={s.sectionLabel}>§ 03 — A Generalist focused in</p>
+                <h2 className={s.sectionTitle}>Product Design.</h2>
+              </div>
+              <p className={s.sectionLede}>
+                I tend to lead visual and UX direction while collaborating tightly with
+                engineering, brand, and marketing.
+              </p>
+            </header>
+          </Reveal>
+          <div className={s.skillGrid}>
+            {SKILLS.map((sk, i) => (
+              <Reveal delay={0.1 + i * 0.07} className={s.skillCell} key={sk.title}>
+                <span className={s.skillNum}>— {sk.n}</span>
+                <h3 className={s.skillTitle}>{sk.title}</h3>
+                <p className={s.skillBody}>{sk.body}</p>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className={s.cta}>
+        <div className={s.container}>
+          <Reveal>
+            <p className={s.sectionLabel}>§ 04 — What&apos;s next</p>
+            <h2 className={s.ctaTitle}>
+              Intrigued by what you&apos;ve seen? <em>Let&apos;s take a peek.</em>
+            </h2>
+            <Link href="/all-projects/" className={s.ctaButton}>
+              View all projects <span className={s.arrow}>→</span>
+            </Link>
+          </Reveal>
+        </div>
+      </section>
+
+      <div className={s.container}>
+        <div className={s.outro}>
+          <span>© {new Date().getFullYear()} Mohammed Jizan K · Bengaluru, IN</span>
+          <span>Built from scratch · Next.js · Three.js</span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function Stat({ label, value, hint }: { label: string; value: string; hint: string }) {
+  return (
+    <div className={s.statCell}>
+      <p className={s.statLabel}>{label}</p>
+      <p className={s.statValue}>{value}</p>
+      <p className={s.statHint}>{hint}</p>
+    </div>
   );
 }
