@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0C0C0E"/>
+      <stop offset="100%" stop-color="#1A1410"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="78%" cy="22%" r="40%">
+      <stop offset="0%" stop-color="#FF5A1F" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#FF5A1F" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#g)"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+  <g fill="#F5F4F0" font-family="Georgia, 'Times New Roman', serif">
+    <text x="80" y="120" font-family="ui-monospace, Menlo, monospace" font-size="18" letter-spacing="3" fill="#A8A59E">— PRODUCT DESIGNER</text>
+    <text x="80" y="380" font-size="96" font-weight="500" letter-spacing="-3">Mohammed</text>
+    <text x="80" y="490" font-size="96" font-weight="500" letter-spacing="-3">Jizan K</text>
+  </g>
+  <g fill="#A8A59E" font-family="ui-monospace, Menlo, monospace" font-size="18" letter-spacing="3">
+    <text x="80" y="570">BENGALURU · IN</text>
+    <text x="1120" y="570" text-anchor="end">JIZAN.IN</text>
+  </g>
+  <circle cx="950" cy="200" r="110" fill="none" stroke="#FF5A1F" stroke-width="1.5" opacity="0.6"/>
+  <circle cx="950" cy="200" r="60" fill="#FF5A1F" opacity="0.85"/>
+</svg>
