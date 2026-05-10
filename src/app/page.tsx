@@ -23,15 +23,6 @@ type Project = {
 
 const PROJECTS: Project[] = [
   {
-    href: '/ziroh/',
-    company: 'Ziroh Labs',
-    title: 'Crafting the next-gen privacy-preserving system with an exclusive encrypted software suite.',
-    meta: '2022 — 2024 · Product Designer',
-    art: '/images/Zunu.png',
-    artBg: 'linear-gradient(140deg, #14233a 0%, #0c1422 60%, #0c1422 100%)',
-    accent: '#5C8DFF',
-  },
-  {
     href: '/recotap/',
     company: 'Recotap',
     title: 'Powering modern B2B marketing with smarter account-based solutions.',
@@ -41,14 +32,23 @@ const PROJECTS: Project[] = [
     accent: '#5CF0A4',
   },
   {
-    href: 'https://medium.com/@jizansanu/heartfullgivers-crafting-an-innovative-charitable-exchange-platform-ui-ux-case-study-be43be0ef800',
+    href: 'https://www.hiresense.ai/',
     external: true,
-    company: 'Heartful Givers',
-    title: 'Crafting an innovative charitable exchange platform.',
-    meta: '2022 · Independent',
-    art: '/images/heartfull-img.png',
-    artBg: 'linear-gradient(140deg, #3a2a14 0%, #221708 60%, #221708 100%)',
-    accent: '#FFB058',
+    company: 'HireSense AI',
+    title: 'Crafting talent intelligence for visionaries.',
+    meta: '2024 · Lead Product Designer',
+    art: '/images/hiresense-img.png',
+    artBg: 'linear-gradient(140deg, #2a1f4a 0%, #16112a 60%, #16112a 100%)',
+    accent: '#A78BFF',
+  },
+  {
+    href: '/ziroh/',
+    company: 'Ziroh Labs',
+    title: 'Crafting the next-gen privacy-preserving system with an exclusive encrypted software suite.',
+    meta: '2022 — 2024 · Product Designer',
+    art: '/images/Zunu.png',
+    artBg: 'linear-gradient(140deg, #14233a 0%, #0c1422 60%, #0c1422 100%)',
+    accent: '#5C8DFF',
   },
 ];
 
