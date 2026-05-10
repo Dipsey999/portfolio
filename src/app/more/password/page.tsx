@@ -14,7 +14,7 @@ const html = `<div class="w-embed">
  </style>
   </div>
   <div class="utility-page-wrap">
-    <div data-w-id="e9dec1b7-0aed-ca5c-dda7-d996bae2f1e8" class="w-layout-grid password-interaction">
+    <div class="w-layout-grid password-interaction">
       <div class="password-cell">
         <div class="password-cell-color"></div>
         <div class="password-cell-color orange"></div>

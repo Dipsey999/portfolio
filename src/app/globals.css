@@ -1,3 +1,12 @@
-/* Intentionally minimal — all styling comes from the Webflow CSS files
-   linked from layout.tsx. This file exists so Next.js has a CSS entry to
-   process. */
+/* The Webflow CSS files (linked from layout.tsx) handle all visual styling.
+   This stylesheet only sets a dark document-level background so the gaps
+   between/around the per-page content wrapper (which has its own
+   per-page bg color via .body / .body-projects / .body-ziroh-labs /
+   .case-study) don't expose the browser's default white. */
+
+html,
+body {
+  background-color: #000;
+  margin: 0;
+  padding: 0;
+}

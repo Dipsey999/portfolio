@@ -29,7 +29,7 @@ const html = `<div id="Nab-Bar" class="header-container">
         </div>
       </div>
       <div class="w-layout-vflex flex-block-2">
-        <div class="spline-watch" data-w-id="e1a2c2c8-34f9-2eab-94af-8bacf7555c8b" data-animation-type="spline" data-spline-url="https://prod.spline.design/MJINkUWt1SjkaMut/scene.splinecode"><canvas></canvas></div>
+        <div class="spline-watch" data-animation-type="spline" data-spline-url="https://prod.spline.design/MJINkUWt1SjkaMut/scene.splinecode"><canvas></canvas></div>
       </div>
     </div>
     <div class="w-layout-vflex flex-block">
@@ -202,7 +202,7 @@ const html = `<div id="Nab-Bar" class="header-container">
       <div class="projects-landing-h1 case-study-h1 case-study">3D Odyssey</div>
       <div class="project-landing-paragraph-style">Bringing objects to life with depth and detail. Explore creations that leap off the screen and captivate the senses.</div>
     </div>
-    <div class="spline-hand" data-w-id="15308c6d-503f-e494-aa3c-d3b113faaffa" data-animation-type="spline" data-spline-url="https://prod.spline.design/Er5iFtlph2UQ5MG4/scene.splinecode"><canvas></canvas></div>
+    <div class="spline-hand" data-animation-type="spline" data-spline-url="https://prod.spline.design/Er5iFtlph2UQ5MG4/scene.splinecode"><canvas></canvas></div>
   </div>
   <div class="w-layout-vflex sessions-container vision-pro-designer">
     <div class="project-casestudy-heading-container _3d-odessey">
@@ -211,7 +211,7 @@ const html = `<div id="Nab-Bar" class="header-container">
         <div class="project-landing-paragraph-style">Learn More ↗</div>
       </a>
     </div>
-    <div class="spline-hand" data-w-id="7e0b84ea-970e-cbd4-46d7-faa6b45ec5b5" data-animation-type="spline" data-spline-url="https://prod.spline.design/6MuxRlrkADDgdBOp/scene.splinecode"><canvas></canvas></div>
+    <div class="spline-hand" data-animation-type="spline" data-spline-url="https://prod.spline.design/6MuxRlrkADDgdBOp/scene.splinecode"><canvas></canvas></div>
   </div>
   <div id="Nab-Bar" class="header-container last">
     <div class="header">

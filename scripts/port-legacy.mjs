@@ -131,13 +131,30 @@ function extractBody(html) {
   if (close === -1) throw new Error('No </body> tag found');
   const inner = html.slice(open.index + open[0].length, close);
 
-  const scrubbed = inner
+  let scrubbed = inner
     .replace(/<script\b[^>]*jquery[^>]*><\/script>/gi, '')
     .replace(/<script\b[^>]*\/(webflow|js\/webflow)\.js[^>]*><\/script>/gi, '')
-    .replace(/<script[^>]*src=["'][^"']*webflow\.js[^"']*["'][^>]*><\/script>/gi, '')
-    .trim();
+    .replace(/<script[^>]*src=["'][^"']*webflow\.js[^"']*["'][^>]*><\/script>/gi, '');
 
-  return { bodyClass, inner: scrubbed };
+  // Webflow's IX2 runtime (inside webflow.js) scans every element with a
+  // `data-w-id` attribute, applies its *initial* animation state (which is
+  // typically `opacity:0` + a translate3d/rotate transform), and is
+  // supposed to animate it to the final state. The IX2 animation data is
+  // bundled inside Webflow's own page hosting; outside that environment
+  // the trigger never fires and the element stays invisible. The fix is
+  // to delete `data-w-id` so IX2 ignores the element entirely. The
+  // element then renders at its natural CSS state. Spline 3D scenes use a
+  // separate `data-animation-type="spline"` attribute (read by webflow.js
+  // independently of IX2), so we keep that and they still load.
+  scrubbed = scrubbed
+    .replace(/\s+data-w-id=("[^"]*"|'[^']*')/g, '')
+    // Also drop any inline styles that were tied to the IX2 initial
+    // state. Heuristic: the IX2 inline styles are very long and contain
+    // `translate3d` plus webkit/moz/ms transform variants. Anything more
+    // typical (like `style="color: #FFC182;"` on a span) is left alone.
+    .replace(/\s+style=(?:"[^"]*translate3d[^"]*"|'[^']*translate3d[^']*')/g, '');
+
+  return { bodyClass, inner: scrubbed.trim() };
 }
 
 function pageTemplate({ bodyClass, inner, title, description }) {

@@ -7,7 +7,7 @@ export const metadata: Metadata = {
 
 const html = `<div class="section-header">
     <div class="container-regular">
-      <div data-w-id="548f0931-7627-8173-b23f-f6ed4bd645f4" style="-webkit-transform:translate3d(0, 44px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 44px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 44px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 44px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:0" class="w-layout-grid header-title-grid">
+      <div class="w-layout-grid header-title-grid">
         <div id="w-node-_01eb8987-0a4a-750f-5091-1a98973b4cbc-afa14742" class="header-content">
           <div class="header-badge">
             <div class="header-badge-light">
@@ -22,7 +22,7 @@ const html = `<div class="section-header">
           <p class="paragraph content">As the sole designer behind Zunu, I led the creation of its entire ecosystem, shaping everything from brand identity and user research to visual designs, all with a core emphasis on privacy and intuitive usability.</p>
         </div>
       </div>
-      <div data-w-id="d98c1b15-3f93-2167-55a8-779f782898cb" style="-webkit-transform:translate3d(0, 44px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 44px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 44px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 44px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:0" class="header-bottom-wrap">
+      <div class="header-bottom-wrap">
         <div class="header-image-wrap"><img src="/zunu-images/Wall.png" loading="lazy" sizes="(max-width: 1919px) 90vw, 1140px" srcset="/zunu-images/Wall-p-500.png 500w, images/Wall-p-800.png 800w, images/Wall-p-1080.png 1080w, images/Wall.png 1565w" alt="" class="image-cover"></div>
         <div class="partnership-wrap">
           <div class="partnership-text-wrap">
@@ -35,7 +35,7 @@ const html = `<div class="section-header">
   <div class="section-regular">
     <div class="container-regular">
       <div class="feature-grid">
-        <div id="w-node-d4aae21e-d75d-574d-b0cd-82d52b4f8618-afa14742" data-w-id="d4aae21e-d75d-574d-b0cd-82d52b4f8618" style="-webkit-transform:translate3d(0, 44px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 44px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 44px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 44px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:0">
+        <div id="w-node-d4aae21e-d75d-574d-b0cd-82d52b4f8618-afa14742">
           <div id="w-node-d4aae21e-d75d-574d-b0cd-82d52b4f8619-afa14742" class="feature-image-wrap"><img src="/zunu-images/zunu-branding.png" loading="lazy" sizes="(max-width: 479px) 100vw, (max-width: 991px) 90vw, (max-width: 1919px) 40vw, 518px" srcset="/zunu-images/zunu-branding-p-500.png 500w, images/zunu-branding-p-800.png 800w, images/zunu-branding-p-1080.png 1080w, images/zunu-branding-p-1600.png 1600w, images/zunu-branding-p-2000.png 2000w, images/zunu-branding.png 2400w" alt="" class="image-cover"></div>
           <div class="partnership-wrap">
             <div class="partnership-text-wrap">
@@ -43,7 +43,7 @@ const html = `<div class="section-header">
             </div>
           </div>
         </div>
-        <div data-w-id="d4aae21e-d75d-574d-b0cd-82d52b4f8624" style="-webkit-transform:translate3d(0, 44px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 44px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 44px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 44px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:0">
+        <div>
           <div class="margin-bottom-12">
             <div class="detail text-color-primary">ZUnu Branding</div>
           </div>
@@ -155,7 +155,7 @@ const html = `<div class="section-header">
                 </div>
               </div>
               <div class="uui-heroheader20_lightbox-wrapper">
-                <a href="#" data-w-id="3fa829f9-59fa-321c-914a-a99c52a6b089" class="uui-heroheader20_lightbox shadow-xxlarge w-inline-block w-lightbox"><img src="/zunu-images/Laptop.png" loading="lazy" sizes="(max-width: 479px) 93vw, (max-width: 767px) 96vw, (max-width: 991px) 94vw, 916px" srcset="/zunu-images/Laptop.png 500w, images/Laptop.png 800w, images/Laptop.png 1080w, images/Laptop.png 1488w" alt="" class="uui-heroheader20_lightbox-image">
+                <a href="#" class="uui-heroheader20_lightbox shadow-xxlarge w-inline-block w-lightbox"><img src="/zunu-images/Laptop.png" loading="lazy" sizes="(max-width: 479px) 93vw, (max-width: 767px) 96vw, (max-width: 991px) 94vw, 916px" srcset="/zunu-images/Laptop.png 500w, images/Laptop.png 800w, images/Laptop.png 1080w, images/Laptop.png 1488w" alt="" class="uui-heroheader20_lightbox-image">
                   <script type="application/json" class="w-json">{
   "items": [
     {

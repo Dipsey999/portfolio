@@ -41,7 +41,7 @@ const html = `<div id="Nab-Bar" class="header-container">
       </div>
     </div>
     <div class="w-layout-vflex spline-about-me-3d">
-      <div class="spline-about-me-landing" data-w-id="35e7a4c4-e536-2fdc-672c-98fbfc9d9f14" data-animation-type="spline" data-spline-url="https://prod.spline.design/iwynRE78Sm171ksx/scene.splinecode"><canvas></canvas></div>
+      <div class="spline-about-me-landing" data-animation-type="spline" data-spline-url="https://prod.spline.design/iwynRE78Sm171ksx/scene.splinecode"><canvas></canvas></div>
     </div>
   </div>
   <div class="socials-container">
