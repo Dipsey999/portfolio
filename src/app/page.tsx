@@ -1,33 +1,14 @@
 'use client';
 
 import Link from 'next/link';
-import dynamic from 'next/dynamic';
-import { useRef, type ReactNode, type CSSProperties, type MouseEvent } from 'react';
+import type { CSSProperties } from 'react';
 import s from './_home/home.module.css';
-import { Cursor } from './_home/cursor';
-import { CommandPalette } from './_home/command-palette';
-import { SmoothScroll } from './_home/smooth-scroll';
-import { useMagnetic } from './_home/use-magnetic';
-import { Boot } from './_home/boot';
-import { ThemeToggleButton, useHomeTheme } from './_home/theme-toggle';
+import { PageShell } from './_home/page-shell';
+import { Reveal } from './_home/reveal';
+import { MagneticCta } from './_home/magnetic-cta';
+import { ProjectCard, type ProjectCardItem } from './_home/project-card';
 
-const HeroScene = dynamic(
-  () => import('./_home/hero-scene').then((m) => m.HeroScene),
-  { ssr: false },
-);
-
-type Project = {
-  href: string;
-  external?: boolean;
-  company: string;
-  title: string;
-  meta: string;
-  art: string;
-  artBg: string;
-  accent: string;
-};
-
-const PROJECTS: Project[] = [
+const PROJECTS: ProjectCardItem[] = [
   {
     href: '/recotap/improving-the-platform/',
     company: 'Recotap',
@@ -36,16 +17,19 @@ const PROJECTS: Project[] = [
     art: '/images/recotap-img.png',
     artBg: 'linear-gradient(140deg, #1a3324 0%, #0d1c14 60%, #0d1c14 100%)',
     accent: '#5CF0A4',
+    cursor: 'open',
+    action: 'Open →',
   },
   {
-    href: 'https://www.hiresense.ai/',
-    external: true,
+    href: '/hiresense/',
     company: 'HireSense AI',
     title: 'Crafting talent intelligence for visionaries.',
     meta: '2024 · AI Product Designer',
     art: '/images/hiresense-img.png',
     artBg: 'linear-gradient(140deg, #2a1f4a 0%, #16112a 60%, #16112a 100%)',
     accent: '#A78BFF',
+    cursor: 'open',
+    action: 'Open →',
   },
   {
     href: '/ziroh/',
@@ -55,6 +39,8 @@ const PROJECTS: Project[] = [
     art: '/images/Zunu.png',
     artBg: 'linear-gradient(140deg, #14233a 0%, #0c1422 60%, #0c1422 100%)',
     accent: '#5C8DFF',
+    cursor: 'open',
+    action: 'Open →',
   },
 ];
 
@@ -83,25 +69,6 @@ const SKILLS: { n: string; title: string; body: string }[] = [
 
 const TOOLBELT = ['Figma', 'Cursor', 'Claude', 'Next.js', 'React', 'Tailwind', 'Three.js', 'Framer'];
 
-function Reveal({
-  children,
-  delay = 0,
-  className,
-}: {
-  children: ReactNode;
-  delay?: number;
-  className?: string;
-}) {
-  const style = {
-    ['--reveal-delay' as string]: `${delay}s`,
-  } as CSSProperties;
-  return (
-    <div className={`${s.reveal} ${className ?? ''}`} style={style}>
-      {children}
-    </div>
-  );
-}
-
 /** Per-letter staggered fall-in. Spaces are kept as no-op spans so widths match. */
 function SplitName({ line, startIndex }: { line: string; startIndex: number }) {
   return (
@@ -110,160 +77,18 @@ function SplitName({ line, startIndex }: { line: string; startIndex: number }) {
         <span
           key={`${line}-${i}`}
           className={s.nameLetter}
-          style={{
-            ['--letter-i' as string]: String(startIndex + i),
-          } as CSSProperties}
+          style={{ ['--letter-i' as string]: String(startIndex + i) } as CSSProperties}
         >
-          {char === ' ' ? ' ' : char}
+          {char === ' ' ? ' ' : char}
         </span>
       ))}
     </span>
   );
 }
 
-function ProjectCard({ project, index }: { project: Project; index: number }) {
-  const ref = useRef<HTMLAnchorElement>(null);
-  const onMove = (e: MouseEvent<HTMLAnchorElement>) => {
-    const el = ref.current;
-    if (!el) return;
-    const r = el.getBoundingClientRect();
-    el.style.setProperty('--mx', `${e.clientX - r.left}px`);
-    el.style.setProperty('--my', `${e.clientY - r.top}px`);
-  };
-  const cursorMode = project.external ? 'read' : 'open';
-
-  const inner = (
-    <>
-      <div className={s.cardArt} style={{ background: project.artBg }} aria-hidden>
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={project.art} alt="" loading="lazy" decoding="async" />
-      </div>
-      <div className={s.cardGlow} aria-hidden />
-      <div className={s.cardHeader}>
-        <span className={s.cardCompany}>{project.company}</span>
-        <h3 className={s.cardTitle}>{project.title}</h3>
-      </div>
-      <div className={s.cardSpacer} />
-      <div className={s.cardFooter}>
-        <span className="meta">{project.meta}</span>
-        <span className="open">{project.external ? 'Read ↗' : 'Open →'}</span>
-      </div>
-    </>
-  );
-
-  const style: CSSProperties = {
-    ['--card-accent' as string]: project.accent,
-    ['--reveal-delay' as string]: `${0.3 + index * 0.08}s`,
-  };
-
-  return project.external ? (
-    <a
-      ref={ref}
-      href={project.href}
-      target="_blank"
-      rel="noopener noreferrer"
-      onMouseMove={onMove}
-      data-cursor={cursorMode}
-      className={`${s.card} ${s.reveal}`}
-      style={style}
-    >
-      {inner}
-    </a>
-  ) : (
-    <Link
-      ref={ref as never}
-      href={project.href}
-      onMouseMove={onMove}
-      data-cursor={cursorMode}
-      className={`${s.card} ${s.reveal}`}
-      style={style}
-    >
-      {inner}
-    </Link>
-  );
-}
-
-/** Magnetic CTA wrapper. Wraps a Link/anchor with the magnetic hook so the
- *  button gently pulls toward the cursor inside its hover radius. */
-function MagneticCta({
-  href,
-  external,
-  className,
-  cursor,
-  children,
-}: {
-  href: string;
-  external?: boolean;
-  className: string;
-  cursor?: string;
-  children: ReactNode;
-}) {
-  const ref = useMagnetic<HTMLAnchorElement>(0.32, 100);
-  if (external) {
-    return (
-      <a
-        ref={ref}
-        href={href}
-        className={className}
-        data-cursor={cursor ?? 'hover'}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        {children}
-      </a>
-    );
-  }
-  return (
-    <Link ref={ref as never} href={href} className={className} data-cursor={cursor ?? 'hover'}>
-      {children}
-    </Link>
-  );
-}
-
 export default function HomePage() {
-  const [theme, toggleTheme] = useHomeTheme();
   return (
-    <div className={`${s.root} ${s.grain} ${theme === 'blueprint' ? 'blueprint' : ''}`}>
-      <Boot />
-      <SmoothScroll />
-      <Cursor />
-      <CommandPalette />
-      <div className={s.canvasShell} aria-hidden>
-        <HeroScene />
-      </div>
-
-      {/* Top nav */}
-      <header className={s.nav}>
-        <nav className={s.navInner} aria-label="Primary" data-cursor="hover">
-          <span className={s.navDot} aria-hidden />
-          <Link
-            href="/"
-            data-cursor="hover"
-            className={`${s.navLink} ${s.active}`}
-            aria-current="page"
-          >
-            Index
-          </Link>
-          <Link href="/all-projects/" data-cursor="hover" className={s.navLink}>
-            Projects
-          </Link>
-          <Link href="/about-me/" data-cursor="hover" className={s.navLink}>
-            About
-          </Link>
-          <button
-            type="button"
-            onClick={() => window.dispatchEvent(new CustomEvent('palette:open'))}
-            data-cursor="cmd"
-            className={s.navCmd}
-            aria-label="Open command palette"
-            title="Search · ⌘K"
-          >
-            ⌘K
-          </button>
-          <ThemeToggleButton theme={theme} onToggle={toggleTheme} />
-        </nav>
-      </header>
-
+    <PageShell>
       {/* Hero — name first, meaningful bio on the right, then a clear ask. */}
       <section className={s.hero}>
         <div className={s.container}>
@@ -351,7 +176,7 @@ export default function HomePage() {
                 <h2 className={s.sectionTitle}>Selected work, picked carefully.</h2>
               </div>
               <p className={s.sectionLede}>
-                Three projects that show how I think, ship, and scale. The full archive
+                Three chapters that show how I think, ship, and scale. The full archive
                 lives on the{' '}
                 <Link
                   href="/all-projects/"
@@ -365,7 +190,7 @@ export default function HomePage() {
           </Reveal>
           <div className={s.projectGrid}>
             {PROJECTS.map((p, i) => (
-              <ProjectCard project={p} index={i} key={p.href} />
+              <ProjectCard project={p} index={i} baseDelay={0.3} key={p.href} />
             ))}
           </div>
         </div>
@@ -428,7 +253,6 @@ export default function HomePage() {
           <span>Built from scratch · Next.js · Three.js</span>
         </div>
       </div>
-    </div>
+    </PageShell>
   );
 }
-

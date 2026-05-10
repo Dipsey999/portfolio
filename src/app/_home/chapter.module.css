@@ -1,6 +1,7 @@
-/* Page-specific bits for /recotap/. Most of the chrome (root, nav,
-   container, hero base, project card, cta button, footer) is shared
-   with the home stylesheet via composition / direct className use. */
+/* Shared "chapter" page styles for /recotap/, /hiresense/, /ziroh/.
+   Each chapter page imports BOTH home.module.css (for root/nav/container/
+   hero/card/cta chrome) AND this file (for chapter-specific bits like the
+   breadcrumb, brand pill, lede, context tiles, 2-up grid, back link). */
 
 .breadcrumb {
   display: inline-flex;
@@ -52,7 +53,7 @@
   color: rgba(245, 241, 232, 0.75);
 }
 .brandText em {
-  color: #5cf0a4;
+  color: var(--chapter-accent, #5cf0a4);
   font-style: normal;
 }
 
@@ -140,10 +141,13 @@
 }
 .back:hover { color: #f5f1e8; }
 
-.recotapAccent { color: #5cf0a4; }
+/* Per-chapter accent color, set inline via --chapter-accent on the page root. */
+.chapterAccent {
+  color: var(--chapter-accent, #5cf0a4);
+}
 
-/* Blueprint mode override on this page. */
-.root:global(.blueprint) .recotapAccent,
+/* Blueprint mode override — chapter accent flips to cyan. */
+.root:global(.blueprint) .chapterAccent,
 .root:global(.blueprint) .brandText em {
   color: #62d6ff;
 }

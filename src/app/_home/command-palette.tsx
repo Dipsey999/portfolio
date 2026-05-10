@@ -39,9 +39,12 @@ export function CommandPalette() {
       { id: 'nav-home', label: 'Index', hint: '/', group: 'Navigate', perform: () => router.push('/') },
       { id: 'nav-projects', label: 'Projects', hint: '/all-projects', group: 'Navigate', perform: () => router.push('/all-projects/') },
       { id: 'nav-about', label: 'About', hint: '/about-me', group: 'Navigate', perform: () => router.push('/about-me/') },
-      { id: 'nav-recotap', label: 'Recotap case studies', hint: '/recotap', group: 'Navigate', perform: () => router.push('/recotap/'), keywords: ['recotap', 'abm'] },
-      { id: 'nav-ziroh', label: 'Ziroh Labs case studies', hint: '/ziroh', group: 'Navigate', perform: () => router.push('/ziroh/'), keywords: ['ziroh', 'zunu', 'privacy'] },
-      { id: 'nav-hiresense', label: 'HireSense AI', hint: 'hiresense.ai ↗', group: 'Navigate', perform: () => window.open('https://www.hiresense.ai/', '_blank'), keywords: ['hiresense', 'ai', 'hiring'] },
+      { id: 'nav-recotap', label: 'Recotap chapter', hint: '/recotap', group: 'Navigate', perform: () => router.push('/recotap/'), keywords: ['recotap', 'adradar', 'adninja', 'abm'] },
+      { id: 'nav-hiresense', label: 'HireSense AI chapter', hint: '/hiresense', group: 'Navigate', perform: () => router.push('/hiresense/'), keywords: ['hiresense', 'hiretap', 'compsense', 'ai', 'hiring'] },
+      { id: 'nav-ziroh', label: 'Ziroh Labs chapter', hint: '/ziroh', group: 'Navigate', perform: () => router.push('/ziroh/'), keywords: ['ziroh', 'zunu', 'drive', 'mail', 'privacy'] },
+      { id: 'ext-hiresense', label: 'HireSense — visit live site', hint: 'hiresense.ai ↗', group: 'Action', perform: () => window.open('https://www.hiresense.ai/', '_blank'), keywords: ['hiresense'] },
+      { id: 'ext-recotap', label: 'Recotap — visit live site', hint: 'recotap.com ↗', group: 'Action', perform: () => window.open('https://www.recotap.com/', '_blank'), keywords: ['recotap'] },
+      { id: 'ext-adradar', label: 'AdRadar — visit live site', hint: 'adradar.app ↗', group: 'Action', perform: () => window.open('https://www.adradar.app/', '_blank'), keywords: ['adradar', 'ad', 'ads'] },
 
       // Action
       { id: 'act-mail', label: 'Email Jizan', hint: 'jizan.ux@gmail.com', group: 'Action', perform: () => (window.location.href = 'mailto:jizan.ux@gmail.com'), keywords: ['contact', 'hire'] },

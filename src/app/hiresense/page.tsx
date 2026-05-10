@@ -9,54 +9,44 @@ import { Reveal } from '../_home/reveal';
 import { MagneticCta } from '../_home/magnetic-cta';
 import { ProjectCard, type ProjectCardItem } from '../_home/project-card';
 
-const ACCENT = '#5CF0A4';
+const ACCENT = '#A78BFF';
 
 const PROJECTS: ProjectCardItem[] = [
   {
-    href: 'https://www.recotap.com/',
+    href: 'https://www.hiresense.ai/',
     external: true,
-    company: 'The Platform',
-    title: 'Recotap — the flagship ABM platform.',
-    meta: 'B2B SaaS · Live · Lead Designer',
-    art: '/images/recotap-img.png',
-    artBg: 'linear-gradient(140deg, #1a3324 0%, #0d1c14 60%, #0d1c14 100%)',
-    accent: '#5CF0A4',
+    company: 'HireSense',
+    title: 'Talent intelligence for visionaries.',
+    meta: 'AI Hiring · Live · Lead Designer',
+    art: '/images/hiresense-img.png',
+    artBg: 'linear-gradient(140deg, #2a1f4a 0%, #16112a 60%, #16112a 100%)',
+    accent: '#A78BFF',
   },
   {
-    href: 'https://www.adradar.app/',
+    href: 'mailto:jizan.ux@gmail.com?subject=Tell%20me%20about%20HireTap',
     external: true,
-    company: 'AdRadar',
-    title: 'Real-time competitive ad intelligence.',
-    meta: 'Standalone product · Live · Lead Designer',
-    art: '/images/recotap-cs-1.png',
-    artBg: 'linear-gradient(140deg, #14233a 0%, #0c1422 60%, #0c1422 100%)',
+    company: 'HireTap',
+    title: 'A smarter way to hire the right talent.',
+    meta: 'Recruiter cockpit · 2025 · Lead Designer',
+    art: '/images/orchastration-img.png',
+    artBg: 'linear-gradient(140deg, #1a2540 0%, #0e1428 60%, #0e1428 100%)',
     accent: '#5C8DFF',
-  },
-  {
-    href: 'mailto:jizan.ux@gmail.com?subject=Tell%20me%20about%20AdNinja',
-    external: true,
-    company: 'AdNinja',
-    title: 'Simplifying ad creation in the ABM workflow.',
-    meta: 'Internal product · 2025 · Lead Designer',
-    art: '/images/adninja-img.png',
-    artBg: 'linear-gradient(140deg, #3a2e10 0%, #1f1808 60%, #1f1808 100%)',
-    accent: '#F3D768',
     action: 'Request ↗',
   },
   {
-    href: 'mailto:jizan.ux@gmail.com?subject=Full-Stack%20ABM%20Services',
+    href: 'mailto:jizan.ux@gmail.com?subject=Tell%20me%20about%20CompSense',
     external: true,
-    company: 'Full-Stack ABM Services',
-    title: 'Strategy, creative, and execution for B2B teams.',
-    meta: 'Service offering · The operating layer over Recotap',
-    art: '/images/orchastration-img.png',
-    artBg: 'linear-gradient(140deg, #2a1f4a 0%, #16112a 60%, #16112a 100%)',
-    accent: '#A78BFF',
+    company: 'CompSense',
+    title: 'Compensation intelligence — calibrated, defensible, fast.',
+    meta: 'Comp benchmarking · 2025 · Lead Designer',
+    art: '/images/hiresenseds-img.png',
+    artBg: 'linear-gradient(140deg, #2a3a14 0%, #142008 60%, #142008 100%)',
+    accent: '#7CFFCB',
     action: 'Request ↗',
   },
 ];
 
-export default function RecotapPage() {
+export default function HireSensePage() {
   return (
     <PageShell>
       <div style={{ ['--chapter-accent' as string]: ACCENT } as CSSProperties}>
@@ -67,18 +57,29 @@ export default function RecotapPage() {
               <p className={r.breadcrumb}>
                 <Link href="/" data-cursor="view">Home</Link>
                 <span className={r.sep}>/</span>
-                <span className={r.now}>Recotap</span>
+                <span className={r.now}>HireSense AI</span>
               </p>
             </Reveal>
 
             <Reveal delay={0.06}>
-              <h1 className={s.name} aria-label="Recotap">
+              <h1 className={s.name} aria-label="HireSense AI">
                 <span className={s.nameLine}>
-                  {Array.from('Recotap').map((c, i) => (
+                  {Array.from('HireSense').map((c, i) => (
                     <span
                       key={i}
                       className={s.nameLetter}
                       style={{ ['--letter-i' as string]: String(i) } as CSSProperties}
+                    >
+                      {c}
+                    </span>
+                  ))}
+                </span>
+                <span className={s.nameLine}>
+                  {Array.from('AI.').map((c, i) => (
+                    <span
+                      key={i}
+                      className={s.nameLetter}
+                      style={{ ['--letter-i' as string]: String(9 + i) } as CSSProperties}
                     >
                       {c}
                     </span>
@@ -89,22 +90,21 @@ export default function RecotapPage() {
 
             <Reveal delay={0.18}>
               <p className={r.brand}>
-                <span className={r.brandLogo}>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src="/images/recotap-logo.svg" alt="" />
+                <span className={r.brandLogo} style={{ background: ACCENT }}>
+                  <span style={{ color: '#0a0908', fontWeight: 700, fontSize: 14 }}>HS</span>
                 </span>
                 <span className={r.brandText}>
-                  <em>Live</em> · Lead Product Designer · 2024 — Now
+                  <em>AI-native</em> · Lead Product Designer · 2024 — Now
                 </span>
               </p>
             </Reveal>
 
             <Reveal delay={0.26}>
               <p className={r.lede}>
-                <strong>The full Recotap chapter.</strong> The platform, the satellite
-                products, and the service layer underneath — all designed and shipped
-                under one roof. I lead design across product, marketing, and brand,
-                and I write the front-end that ships them.
+                <strong>The HireSense chapter.</strong> Three AI-native products
+                that help founders evaluate talent, run a recruiter cockpit, and
+                calibrate compensation — built so the model&apos;s reasoning stays
+                legible at every step.
               </p>
             </Reveal>
 
@@ -112,11 +112,11 @@ export default function RecotapPage() {
               <div className={r.contextRow}>
                 <div className={r.contextCell}>
                   <p className={r.contextLabel}>Span</p>
-                  <p className={r.contextValue}>4 surfaces</p>
+                  <p className={r.contextValue}>3 products</p>
                 </div>
                 <div className={r.contextCell}>
-                  <p className={r.contextLabel}>Tenure</p>
-                  <p className={r.contextValue}>2 years +</p>
+                  <p className={r.contextLabel}>Stage</p>
+                  <p className={r.contextValue}>0 → 1, 0 → 1, 0 → 1</p>
                 </div>
                 <div className={r.contextCell}>
                   <p className={r.contextLabel}>Role</p>
@@ -127,8 +127,12 @@ export default function RecotapPage() {
 
             <Reveal delay={0.42}>
               <div className={s.ctaRow}>
-                <MagneticCta href="https://www.recotap.com/" external className={s.ctaPrimary}>
-                  Visit recotap.com <span className={s.arrow}>↗</span>
+                <MagneticCta
+                  href="https://www.hiresense.ai/"
+                  external
+                  className={s.ctaPrimary}
+                >
+                  Visit hiresense.ai <span className={s.arrow}>↗</span>
                 </MagneticCta>
                 <MagneticCta href="mailto:jizan.ux@gmail.com" external className={s.ctaGhost}>
                   Get in touch
@@ -144,15 +148,14 @@ export default function RecotapPage() {
             <Reveal>
               <header className={s.sectionHead}>
                 <div>
-                  <p className={s.sectionLabel}>§ 02 — The Recotap surface area</p>
+                  <p className={s.sectionLabel}>§ 02 — The HireSense surface area</p>
                   <h2 className={s.sectionTitle}>
-                    One platform. Three companions.{' '}
-                    <em className={r.chapterAccent}>One designer.</em>
+                    Three products. <em className={r.chapterAccent}>One thesis.</em>
                   </h2>
                 </div>
                 <p className={s.sectionLede}>
-                  Each card below is a real production surface I lead design on. Two are
-                  public products you can poke at right now; two are internal / on-request.
+                  AI evaluates. Humans decide. Every signal is cited so the call is
+                  always defensible. One product is public; two are on-request.
                 </p>
               </header>
             </Reveal>
