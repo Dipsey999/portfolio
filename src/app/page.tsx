@@ -159,31 +159,24 @@ export default function HomePage() {
         </nav>
       </header>
 
-      {/* Hero */}
+      {/* Hero — name first, meaningful bio on the right, then a clear ask. */}
       <section className={s.hero}>
         <div className={s.container}>
           <div className={s.heroGrid}>
             <div>
               <Reveal delay={0}>
-                <p className={s.eyebrow}>
-                  <span className={s.live} aria-hidden /> Bengaluru, IN — Open for 2026
-                </p>
-              </Reveal>
-              <Reveal delay={0.08}>
-                <h1 className={s.title}>
-                  Product designer designing for the <em>feel.</em>
+                <h1 className={s.name} aria-label="Mohammed Jizan K">
+                  <span className={s.nameLine}>Mohammed</span>
+                  <span className={s.nameLine}>Jizan K.</span>
                 </h1>
               </Reveal>
               <Reveal delay={0.18}>
-                <p className={s.lede}>
-                  I&apos;m <strong>Mohammed Jizan</strong> — currently leading design at{' '}
-                  <span className={s.gradientText}>Recotap</span> across product, marketing
-                  and brand. Previously <strong>Ziroh Labs</strong> and{' '}
-                  <strong>UnQ Technologies</strong>. Looking for a Lead role at an AI or
-                  gaming studio for the 2026 cycle.
+                <p className={s.roleLine}>
+                  <span className={s.live} aria-hidden />
+                  Lead Product Designer · Bengaluru
                 </p>
               </Reveal>
-              <Reveal delay={0.26}>
+              <Reveal delay={0.32}>
                 <div className={s.ctaRow}>
                   <Link href="/all-projects/" className={s.ctaPrimary}>
                     See selected work <span className={s.arrow}>→</span>
@@ -195,14 +188,43 @@ export default function HomePage() {
               </Reveal>
             </div>
 
-            <Reveal delay={0.22}>
-              <div className={s.statGrid}>
-                <Stat label="Years designing" value="5+" hint="2021 → now" />
-                <Stat label="Products shipped" value="10+" hint="0→1 and scaled" />
-                <Stat label="Design systems" value="3" hint="Recotap · HireSense · Zunu" />
-                <Stat label="Currently" value="Recotap" hint="Lead Product Designer" />
-              </div>
-            </Reveal>
+            <div className={s.bioStack}>
+              <Reveal delay={0.1}>
+                <p className={s.bioGreeting}>
+                  Greetings <span role="img" aria-label="waving hand">👋🏽</span>
+                </p>
+              </Reveal>
+              <Reveal delay={0.18}>
+                <p className={s.bioLine}>
+                  I&apos;m a Product Designer based in{' '}
+                  <span className={s.bioMuted}>Bengaluru, India.</span>
+                </p>
+              </Reveal>
+              <Reveal delay={0.26}>
+                <p className={s.bioLine}>
+                  Currently at <span className={s.recotapInk}>Recotap</span>
+                  <span className={s.bioMuted}>
+                    , leading the design system and the entire design process across
+                    product, marketing and brand.
+                  </span>
+                </p>
+              </Reveal>
+              <Reveal delay={0.34}>
+                <p className={s.bioLine}>
+                  <span className={s.bioMuted}>I&apos;ve previously worked at </span>
+                  <span className={s.warmInk}>Ziroh Labs</span>
+                  <span className={s.bioMuted}> and </span>
+                  <span className={s.warmInk}>UnQ Technologies</span>
+                  <span className={s.bioMuted}>.</span>
+                </p>
+              </Reveal>
+              <Reveal delay={0.44}>
+                <p className={s.askLine}>
+                  Looking for a <strong>Lead role</strong> at an{' '}
+                  <strong>AI or Gaming studio</strong> for the 2026 cycle.
+                </p>
+              </Reveal>
+            </div>
           </div>
         </div>
       </section>
@@ -289,12 +311,3 @@ export default function HomePage() {
   );
 }
 
-function Stat({ label, value, hint }: { label: string; value: string; hint: string }) {
-  return (
-    <div className={s.statCell}>
-      <p className={s.statLabel}>{label}</p>
-      <p className={s.statValue}>{value}</p>
-      <p className={s.statHint}>{hint}</p>
-    </div>
-  );
-}

@@ -20,7 +20,9 @@
   box-sizing: border-box;
 }
 
-.root a {
+/* `:where()` neutralises specificity so per-component link colors
+   (.ctaPrimary, .ctaGhost, etc.) actually take effect. */
+:where(.root) a {
   color: inherit;
   text-decoration: none;
 }
@@ -150,40 +152,105 @@
   50%      { opacity: 0.5; transform: scale(0.8); }
 }
 
-.title {
+/* The name is the hero. Two-line, oversized, with a slow silver shimmer
+   that travels through the letters — the only "moment" on the name itself.
+   Everything else stays still so the name can carry the page. */
+.name {
   font-family: var(--font-geist), Inter, sans-serif;
-  font-weight: 600;
-  letter-spacing: -0.04em;
-  line-height: 0.96;
-  margin: 28px 0 0;
-  font-size: clamp(2.75rem, 7vw, 6.75rem);
-  text-wrap: balance;
-}
-.title em {
-  font-style: italic;
-  font-weight: 500;
-  background: linear-gradient(90deg, #f6a340 10%, #ea4aaa 90%);
+  font-weight: 700;
+  letter-spacing: -0.045em;
+  line-height: 0.92;
+  margin: 0;
+  font-size: clamp(3rem, 9vw, 9.5rem);
+  background: linear-gradient(
+    100deg,
+    #f5f1e8 0%,
+    #f5f1e8 30%,
+    #ffffff 50%,
+    #c9c5bc 70%,
+    #f5f1e8 100%
+  );
+  background-size: 220% 100%;
+  background-position: 0% 50%;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+  animation: nameShimmer 11s ease-in-out infinite;
+  text-wrap: balance;
+}
+.nameLine {
+  display: block;
+}
+@keyframes nameShimmer {
+  0%, 100% { background-position: 0% 50%; }
+  50%      { background-position: 100% 50%; }
 }
 
-.lede {
-  margin-top: 28px;
-  max-width: 56ch;
-  font-size: clamp(1rem, 1.4vw, 1.2rem);
+/* The decisive role line sits under the name — meaningful, not vague. */
+.roleLine {
+  margin-top: 26px;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 14px 8px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(245, 241, 232, 0.12);
+  background: rgba(245, 241, 232, 0.04);
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(245, 241, 232, 0.85);
+}
+.roleLine .live {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: #5cf07a;
+  box-shadow: 0 0 10px rgba(92, 240, 122, 0.6);
+  animation: pulse 1.6s ease-in-out infinite;
+}
+
+/* Right column: the meaningful bio block — calm, large enough to read,
+   typographically considered. */
+.bioStack {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 30ch;
+}
+.bioGreeting {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: clamp(1.1rem, 1.4vw, 1.4rem);
+  color: rgba(245, 241, 232, 0.55);
+  margin: 0;
+}
+.bioGreeting span[role="img"] { font-size: 1.3em; }
+.bioLine {
+  font-size: clamp(1.05rem, 1.35vw, 1.25rem);
   line-height: 1.55;
-  color: rgba(245, 241, 232, 0.72);
+  color: #f5f1e8;
+  margin: 0;
   text-wrap: pretty;
 }
-.lede strong { color: #f5f1e8; font-weight: 500; }
-.gradientText {
+.bioMuted { color: rgba(245, 241, 232, 0.7); }
+.recotapInk {
   background: linear-gradient(90deg, #f6a340, #ea4aaa);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
   font-weight: 600;
 }
+.warmInk { color: #ffc182; }
+.askLine {
+  margin-top: 8px;
+  font-size: clamp(0.95rem, 1.1vw, 1.05rem);
+  line-height: 1.5;
+  color: rgba(245, 241, 232, 0.55);
+}
+.askLine strong { color: #f5f1e8; font-weight: 500; }
 
 .ctaRow {
   margin-top: 36px;
