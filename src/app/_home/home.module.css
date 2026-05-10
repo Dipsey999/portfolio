@@ -510,6 +510,40 @@
   line-height: 1.55;
 }
 
+/* Toolbelt strip — concrete proof of the "I can ship" claim */
+.toolbeltRow {
+  margin-top: 36px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px 20px;
+}
+.toolbeltLabel {
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(245, 241, 232, 0.4);
+}
+.toolbeltList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.toolbeltChip {
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(245, 241, 232, 0.1);
+  color: rgba(245, 241, 232, 0.75);
+  background: rgba(245, 241, 232, 0.025);
+}
+
 /* CTA */
 .cta {
   position: relative;

@@ -26,7 +26,7 @@ const PROJECTS: Project[] = [
     href: '/recotap/',
     company: 'Recotap',
     title: 'Powering modern B2B marketing with smarter account-based solutions.',
-    meta: '2024 — Now · Lead Product Designer',
+    meta: '2024 — Now · AI Product Designer',
     art: '/images/recotap-img.png',
     artBg: 'linear-gradient(140deg, #1a3324 0%, #0d1c14 60%, #0d1c14 100%)',
     accent: '#5CF0A4',
@@ -36,7 +36,7 @@ const PROJECTS: Project[] = [
     external: true,
     company: 'HireSense AI',
     title: 'Crafting talent intelligence for visionaries.',
-    meta: '2024 · Lead Product Designer',
+    meta: '2024 · AI Product Designer',
     art: '/images/hiresense-img.png',
     artBg: 'linear-gradient(140deg, #2a1f4a 0%, #16112a 60%, #16112a 100%)',
     accent: '#A78BFF',
@@ -53,11 +53,29 @@ const PROJECTS: Project[] = [
 ];
 
 const SKILLS: { n: string; title: string; body: string }[] = [
-  { n: '01', title: 'UX Research', body: 'I uncover the insights that shape better products.' },
-  { n: '02', title: 'Design Systems', body: 'I build scalable systems that bring clarity to complex products.' },
-  { n: '03', title: 'Visual Design', body: "Yeah, I've got the flair to make visuals dazzle and delight." },
-  { n: '04', title: 'Motion Design', body: 'Motion-design aficionado. Every interaction has weight.' },
+  {
+    n: '01',
+    title: 'AI Product Design',
+    body: "I design with AI in the loop — prompt UX, model behaviour, copilots, and live prototypes. Ship the AI-native interface, don't bolt one on.",
+  },
+  {
+    n: '02',
+    title: 'Design Systems',
+    body: 'Tokens, primitives, and patterns that scale across product, marketing, and brand. The thing that makes 10× faster shipping possible.',
+  },
+  {
+    n: '03',
+    title: 'Front-end Engineering',
+    body: 'I ship the work I design. HTML, CSS, React, Next.js, Three.js. From mockup to production — solo when needed, with the team when it scales.',
+  },
+  {
+    n: '04',
+    title: 'Visual & Motion',
+    body: 'Type, colour, easing, weight. Every interaction has intent. The polish that turns a product into a product.',
+  },
 ];
+
+const TOOLBELT = ['Figma', 'Cursor', 'Claude', 'Next.js', 'React', 'Tailwind', 'Three.js', 'Framer'];
 
 function Reveal({
   children,
@@ -173,7 +191,7 @@ export default function HomePage() {
               <Reveal delay={0.18}>
                 <p className={s.roleLine}>
                   <span className={s.live} aria-hidden />
-                  Lead Product Designer · Bengaluru
+                  AI Product Designer · Bengaluru
                 </p>
               </Reveal>
               <Reveal delay={0.32}>
@@ -196,7 +214,7 @@ export default function HomePage() {
               </Reveal>
               <Reveal delay={0.18}>
                 <p className={s.bioLine}>
-                  I&apos;m a Product Designer based in{' '}
+                  I&apos;m an <strong>AI Product Designer</strong> based in{' '}
                   <span className={s.bioMuted}>Bengaluru, India.</span>
                 </p>
               </Reveal>
@@ -204,21 +222,30 @@ export default function HomePage() {
                 <p className={s.bioLine}>
                   Currently at <span className={s.recotapInk}>Recotap</span>
                   <span className={s.bioMuted}>
-                    , leading the design system and the entire design process across
-                    product, marketing and brand.
+                    , designing the system and the entire process across product,
+                    marketing and brand.
                   </span>
                 </p>
               </Reveal>
               <Reveal delay={0.34}>
                 <p className={s.bioLine}>
-                  <span className={s.bioMuted}>I&apos;ve previously worked at </span>
+                  <span className={s.bioMuted}>Previously at </span>
                   <span className={s.warmInk}>Ziroh Labs</span>
                   <span className={s.bioMuted}> and </span>
                   <span className={s.warmInk}>UnQ Technologies</span>
                   <span className={s.bioMuted}>.</span>
                 </p>
               </Reveal>
-              <Reveal delay={0.44}>
+              <Reveal delay={0.42}>
+                <p className={s.bioLine}>
+                  <span className={s.bioMuted}>
+                    I ship products end-to-end — research, design, and live front-end
+                    code. AI is in every part of how I work; one person can be a
+                    whole product team now.
+                  </span>
+                </p>
+              </Reveal>
+              <Reveal delay={0.5}>
                 <p className={s.askLine}>
                   Looking for a <strong>Lead role</strong> at an{' '}
                   <strong>AI or Gaming studio</strong> for the 2026 cycle.
@@ -259,18 +286,18 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Skills */}
+      {/* Range — what I bring */}
       <section className={s.section}>
         <div className={s.container}>
           <Reveal>
             <header className={s.sectionHead}>
               <div>
-                <p className={s.sectionLabel}>§ 03 — A Generalist focused in</p>
-                <h2 className={s.sectionTitle}>Product Design.</h2>
+                <p className={s.sectionLabel}>§ 03 — Range</p>
+                <h2 className={s.sectionTitle}>I design and ship — end-to-end.</h2>
               </div>
               <p className={s.sectionLede}>
-                I tend to lead visual and UX direction while collaborating tightly with
-                engineering, brand, and marketing.
+                AI-fluent. Comfortable owning a product solo: research, design, code,
+                motion. Solo when needed, with the team when it scales.
               </p>
             </header>
           </Reveal>
@@ -283,6 +310,15 @@ export default function HomePage() {
               </Reveal>
             ))}
           </div>
+
+          <Reveal delay={0.45} className={s.toolbeltRow}>
+            <span className={s.toolbeltLabel}>Daily toolbelt</span>
+            <ul className={s.toolbeltList}>
+              {TOOLBELT.map((t) => (
+                <li key={t} className={s.toolbeltChip}>{t}</li>
+              ))}
+            </ul>
+          </Reveal>
         </div>
       </section>
 
