@@ -4,6 +4,12 @@ import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import { useRef, type ReactNode, type CSSProperties, type MouseEvent } from 'react';
 import s from './_home/home.module.css';
+import { Cursor } from './_home/cursor';
+import { CommandPalette } from './_home/command-palette';
+import { SmoothScroll } from './_home/smooth-scroll';
+import { useMagnetic } from './_home/use-magnetic';
+import { Boot } from './_home/boot';
+import { ThemeToggleButton, useHomeTheme } from './_home/theme-toggle';
 
 const HeroScene = dynamic(
   () => import('./_home/hero-scene').then((m) => m.HeroScene),
@@ -96,6 +102,25 @@ function Reveal({
   );
 }
 
+/** Per-letter staggered fall-in. Spaces are kept as no-op spans so widths match. */
+function SplitName({ line, startIndex }: { line: string; startIndex: number }) {
+  return (
+    <span className={s.nameLine} aria-hidden>
+      {Array.from(line).map((char, i) => (
+        <span
+          key={`${line}-${i}`}
+          className={s.nameLetter}
+          style={{
+            ['--letter-i' as string]: String(startIndex + i),
+          } as CSSProperties}
+        >
+          {char === ' ' ? ' ' : char}
+        </span>
+      ))}
+    </span>
+  );
+}
+
 function ProjectCard({ project, index }: { project: Project; index: number }) {
   const ref = useRef<HTMLAnchorElement>(null);
   const onMove = (e: MouseEvent<HTMLAnchorElement>) => {
@@ -105,18 +130,20 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
     el.style.setProperty('--mx', `${e.clientX - r.left}px`);
     el.style.setProperty('--my', `${e.clientY - r.top}px`);
   };
+  const cursorMode = project.external ? 'read' : 'open';
 
   const inner = (
     <>
+      <div className={s.cardArt} style={{ background: project.artBg }} aria-hidden>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src={project.art} alt="" loading="lazy" decoding="async" />
+      </div>
       <div className={s.cardGlow} aria-hidden />
       <div className={s.cardHeader}>
         <span className={s.cardCompany}>{project.company}</span>
         <h3 className={s.cardTitle}>{project.title}</h3>
       </div>
-      <div className={s.cardArt} style={{ background: project.artBg }}>
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={project.art} alt="" loading="lazy" decoding="async" />
-      </div>
+      <div className={s.cardSpacer} />
       <div className={s.cardFooter}>
         <span className="meta">{project.meta}</span>
         <span className="open">{project.external ? 'Read ↗' : 'Open →'}</span>
@@ -136,6 +163,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
       target="_blank"
       rel="noopener noreferrer"
       onMouseMove={onMove}
+      data-cursor={cursorMode}
       className={`${s.card} ${s.reveal}`}
       style={style}
     >
@@ -146,6 +174,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
       ref={ref as never}
       href={project.href}
       onMouseMove={onMove}
+      data-cursor={cursorMode}
       className={`${s.card} ${s.reveal}`}
       style={style}
     >
@@ -154,26 +183,84 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
   );
 }
 
-export default function HomePage() {
+/** Magnetic CTA wrapper. Wraps a Link/anchor with the magnetic hook so the
+ *  button gently pulls toward the cursor inside its hover radius. */
+function MagneticCta({
+  href,
+  external,
+  className,
+  cursor,
+  children,
+}: {
+  href: string;
+  external?: boolean;
+  className: string;
+  cursor?: string;
+  children: ReactNode;
+}) {
+  const ref = useMagnetic<HTMLAnchorElement>(0.32, 100);
+  if (external) {
+    return (
+      <a
+        ref={ref}
+        href={href}
+        className={className}
+        data-cursor={cursor ?? 'hover'}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {children}
+      </a>
+    );
+  }
   return (
-    <div className={`${s.root} ${s.grain}`}>
+    <Link ref={ref as never} href={href} className={className} data-cursor={cursor ?? 'hover'}>
+      {children}
+    </Link>
+  );
+}
+
+export default function HomePage() {
+  const [theme, toggleTheme] = useHomeTheme();
+  return (
+    <div className={`${s.root} ${s.grain} ${theme === 'blueprint' ? 'blueprint' : ''}`}>
+      <Boot />
+      <SmoothScroll />
+      <Cursor />
+      <CommandPalette />
       <div className={s.canvasShell} aria-hidden>
         <HeroScene />
       </div>
 
       {/* Top nav */}
       <header className={s.nav}>
-        <nav className={s.navInner} aria-label="Primary">
+        <nav className={s.navInner} aria-label="Primary" data-cursor="hover">
           <span className={s.navDot} aria-hidden />
-          <Link href="/" className={`${s.navLink} ${s.active}`} aria-current="page">
+          <Link
+            href="/"
+            data-cursor="hover"
+            className={`${s.navLink} ${s.active}`}
+            aria-current="page"
+          >
             Index
           </Link>
-          <Link href="/all-projects/" className={s.navLink}>
+          <Link href="/all-projects/" data-cursor="hover" className={s.navLink}>
             Projects
           </Link>
-          <Link href="/about-me/" className={s.navLink}>
+          <Link href="/about-me/" data-cursor="hover" className={s.navLink}>
             About
           </Link>
+          <button
+            type="button"
+            onClick={() => window.dispatchEvent(new CustomEvent('palette:open'))}
+            data-cursor="cmd"
+            className={s.navCmd}
+            aria-label="Open command palette"
+            title="Search · ⌘K"
+          >
+            ⌘K
+          </button>
+          <ThemeToggleButton theme={theme} onToggle={toggleTheme} />
         </nav>
       </header>
 
@@ -182,12 +269,10 @@ export default function HomePage() {
         <div className={s.container}>
           <div className={s.heroGrid}>
             <div>
-              <Reveal delay={0}>
-                <h1 className={s.name} aria-label="Mohammed Jizan K">
-                  <span className={s.nameLine}>Mohammed</span>
-                  <span className={s.nameLine}>Jizan K.</span>
-                </h1>
-              </Reveal>
+              <h1 className={s.name} aria-label="Mohammed Jizan K">
+                <SplitName line="Mohammed" startIndex={0} />
+                <SplitName line="Jizan K." startIndex={8} />
+              </h1>
               <Reveal delay={0.18}>
                 <p className={s.roleLine}>
                   <span className={s.live} aria-hidden />
@@ -196,12 +281,12 @@ export default function HomePage() {
               </Reveal>
               <Reveal delay={0.32}>
                 <div className={s.ctaRow}>
-                  <Link href="/all-projects/" className={s.ctaPrimary}>
+                  <MagneticCta href="/all-projects/" className={s.ctaPrimary}>
                     See selected work <span className={s.arrow}>→</span>
-                  </Link>
-                  <a href="mailto:jizan.ux@gmail.com" className={s.ctaGhost}>
+                  </MagneticCta>
+                  <MagneticCta href="mailto:jizan.ux@gmail.com" external className={s.ctaGhost}>
                     Get in touch
-                  </a>
+                  </MagneticCta>
                 </div>
               </Reveal>
             </div>
@@ -330,9 +415,9 @@ export default function HomePage() {
             <h2 className={s.ctaTitle}>
               Intrigued by what you&apos;ve seen? <em>Let&apos;s take a peek.</em>
             </h2>
-            <Link href="/all-projects/" className={s.ctaButton}>
+            <MagneticCta href="/all-projects/" className={s.ctaButton}>
               View all projects <span className={s.arrow}>→</span>
-            </Link>
+            </MagneticCta>
           </Reveal>
         </div>
       </section>

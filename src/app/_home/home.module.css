@@ -80,6 +80,26 @@
 .navLink:hover { color: #f5f1e8; }
 .navLink.active { color: #f5f1e8; }
 
+.navCmd {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(245, 241, 232, 0.12);
+  background: rgba(245, 241, 232, 0.04);
+  color: rgba(245, 241, 232, 0.7);
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  cursor: pointer;
+  transition: border-color 280ms cubic-bezier(0.16, 1, 0.3, 1),
+              color 280ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.navCmd:hover {
+  border-color: rgba(245, 241, 232, 0.3);
+  color: #f5f1e8;
+}
+
 .navDot {
   width: 6px;
   height: 6px;
@@ -152,16 +172,31 @@
   50%      { opacity: 0.5; transform: scale(0.8); }
 }
 
-/* The name is the hero. Two-line, oversized, with a slow silver shimmer
-   that travels through the letters — the only "moment" on the name itself.
-   Everything else stays still so the name can carry the page. */
+/* The name is the hero. Two-line, oversized. Each letter falls in with
+   stagger, then carries its own slow silver shimmer in sync with siblings.
+   (background-clip:text doesn't clip child glyphs of a parent, so the
+   shimmer + clip live on each .nameLetter rather than on .name.) */
 .name {
   font-family: var(--font-geist), Inter, sans-serif;
   font-weight: 700;
   letter-spacing: -0.045em;
   line-height: 0.92;
   margin: 0;
-  font-size: clamp(3rem, 9vw, 9.5rem);
+  /* Slightly smaller cap so each line can hold without breaking even at
+     mid widths — letters are inline-block so they'd otherwise wrap
+     individually at the first overflow point. */
+  font-size: clamp(2.5rem, 7.5vw, 8rem);
+}
+.nameLine {
+  display: block;
+  white-space: nowrap;
+}
+
+.nameLetter {
+  display: inline-block;
+  white-space: pre;
+  opacity: 0;
+  transform: translateY(0.5em) rotate(2deg);
   background: linear-gradient(
     100deg,
     #f5f1e8 0%,
@@ -175,11 +210,15 @@
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  animation: nameShimmer 11s ease-in-out infinite;
-  text-wrap: balance;
+  animation:
+    letterIn 0.95s cubic-bezier(0.16, 1, 0.3, 1) both,
+    nameShimmer 11s ease-in-out infinite;
+  animation-delay:
+    calc(0.18s + var(--letter-i, 0) * 0.045s),
+    calc(0.18s + var(--letter-i, 0) * 0.045s);
 }
-.nameLine {
-  display: block;
+@keyframes letterIn {
+  to { opacity: 1; transform: translateY(0) rotate(0); }
 }
 @keyframes nameShimmer {
   0%, 100% { background-position: 0% 50%; }
@@ -375,8 +414,8 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  min-height: 460px;
-  padding: 28px;
+  min-height: 520px;
+  padding: 0;
   border-radius: 24px;
   border: 1px solid rgba(255, 255, 255, 0.08);
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.01));
@@ -412,10 +451,54 @@
   pointer-events: none;
 }
 .card:hover .cardGlow { opacity: 0.18; }
+/* New full-bleed card layout: art fills the bottom 65%, the title/meta
+   sit on top. Hover lifts the card and zooms the art slightly. */
+.cardArt {
+  position: absolute;
+  inset: 0;
+  background: var(--card-art-bg, #1a1714);
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+}
+.cardArt::after {
+  /* gradient overlay so the title stays legible against the art */
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg,
+    rgba(10, 9, 8, 0.85) 0%,
+    rgba(10, 9, 8, 0.55) 22%,
+    rgba(10, 9, 8, 0.18) 42%,
+    rgba(10, 9, 8, 0.6)  92%,
+    rgba(10, 9, 8, 0.95) 100%);
+  pointer-events: none;
+}
+.cardArt img {
+  position: absolute;
+  bottom: 12%;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 70%;
+  max-height: 56%;
+  width: auto;
+  height: auto;
+  filter: drop-shadow(0 24px 40px rgba(0, 0, 0, 0.55));
+  transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.card:hover .cardArt img {
+  transform: translateX(-50%) scale(1.08) rotate(-1.5deg);
+  filter: drop-shadow(0 30px 50px rgba(0, 0, 0, 0.7));
+}
+
 .cardHeader {
+  position: relative;
+  z-index: 2;
+  padding: 28px 28px 0;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 14px;
 }
 .cardCompany {
   font-family: var(--font-geist-mono), ui-monospace, monospace;
@@ -430,27 +513,15 @@
   letter-spacing: -0.01em;
   line-height: 1.25;
   text-wrap: balance;
+  margin: 0;
 }
-.cardArt {
-  margin-top: auto;
-  position: relative;
-  aspect-ratio: 1.4 / 1;
-  border-radius: 18px;
-  background: var(--card-art-bg, #1a1714);
-  overflow: hidden;
-  display: grid;
-  place-items: center;
+.cardSpacer {
+  flex: 1;
 }
-.cardArt img {
-  max-width: 76%;
-  max-height: 76%;
-  width: auto;
-  height: auto;
-  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.card:hover .cardArt img { transform: scale(1.06) rotate(-1.5deg); }
 .cardFooter {
-  margin-top: 22px;
+  position: relative;
+  z-index: 2;
+  padding: 0 28px 24px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -459,12 +530,12 @@
   letter-spacing: 0.2em;
   text-transform: uppercase;
 }
-.cardFooter .meta { color: rgba(245, 241, 232, 0.45); }
+.cardFooter .meta { color: rgba(245, 241, 232, 0.55); }
 .cardFooter .open {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  color: rgba(245, 241, 232, 0.85);
+  color: #f5f1e8;
 }
 
 /* Skills strip */
@@ -599,6 +670,84 @@
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: rgba(245, 241, 232, 0.4);
+}
+
+/* —— Blueprint theme override —————————————————————————————————
+   When .blueprint is added to .root the entire page swaps to a
+   technical schematic palette: cyan accent, deep navy bg, faint
+   grid lines, and a more monospace typographic voice for headlines. */
+.root:global(.blueprint) {
+  background: #06121a;
+}
+.root:global(.blueprint)::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background:
+    linear-gradient(rgba(98, 214, 255, 0.05) 1px, transparent 1px) 0 0 / 56px 56px,
+    linear-gradient(90deg, rgba(98, 214, 255, 0.05) 1px, transparent 1px) 0 0 / 56px 56px;
+  mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+}
+
+.root:global(.blueprint) .name {
+  background: linear-gradient(100deg, #d8f5ff, #62d6ff 50%, #d8f5ff 100%);
+  background-size: 220% 100%;
+  background-position: 0% 50%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.root:global(.blueprint) .recotapInk {
+  background: linear-gradient(90deg, #62d6ff, #6ce0d6);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.root:global(.blueprint) .warmInk {
+  color: #62d6ff;
+}
+.root:global(.blueprint) .skillTitle,
+.root:global(.blueprint) .ctaTitle em,
+.root:global(.blueprint) .title em {
+  background: linear-gradient(135deg, #62d6ff, #6ce0d6);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-style: normal;
+  letter-spacing: 0;
+}
+.root:global(.blueprint) .ctaPrimary {
+  background: #62d6ff;
+  color: #06121a;
+}
+.root:global(.blueprint) .ctaButton {
+  background: linear-gradient(90deg, #62d6ff, #6ce0d6);
+  color: #06121a;
+  box-shadow: 0 10px 40px -10px rgba(98, 214, 255, 0.5);
+}
+.root:global(.blueprint) .ctaButton:hover {
+  box-shadow: 0 22px 60px -10px rgba(98, 214, 255, 0.7);
+}
+.root:global(.blueprint) .roleLine .live {
+  background: #62d6ff;
+  box-shadow: 0 0 10px rgba(98, 214, 255, 0.6);
+}
+.root:global(.blueprint) .navInner,
+.root:global(.blueprint) .toolbeltChip,
+.root:global(.blueprint) .roleLine,
+.root:global(.blueprint) .skillCell,
+.root:global(.blueprint) .card {
+  border-color: rgba(98, 214, 255, 0.18);
+}
+.root:global(.blueprint) .navDot {
+  background: linear-gradient(90deg, #62d6ff, #6ce0d6);
+}
+.root:global(.blueprint) .skillCell {
+  background: rgba(98, 214, 255, 0.04);
 }
 
 /* Simple fade-in-up that doesn't depend on JS / IntersectionObserver. */

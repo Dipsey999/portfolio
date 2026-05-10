@@ -1,12 +1,43 @@
-/* The Webflow CSS files (linked from layout.tsx) handle all visual styling.
-   This stylesheet only sets a dark document-level background so the gaps
-   between/around the per-page content wrapper (which has its own
-   per-page bg color via .body / .body-projects / .body-ziroh-labs /
-   .case-study) don't expose the browser's default white. */
+/* Global baseline. Per-page styles live in CSS modules. */
 
 html,
 body {
   background-color: #000;
   margin: 0;
   padding: 0;
+}
+
+/* —— View Transitions API ——————————————————————————————————————
+   Whenever Next.js routes change, the browser cross-fades the old DOM
+   into the new one over 600ms. Easier on the eye than the default
+   pop. Falls back to nothing on browsers without View Transitions. */
+@view-transition {
+  navigation: auto;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 600ms;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+::view-transition-old(root) {
+  animation-name: fade-out-slight;
+}
+::view-transition-new(root) {
+  animation-name: fade-in-slight;
+}
+@keyframes fade-out-slight {
+  from { opacity: 1; transform: translateY(0); }
+  to   { opacity: 0; transform: translateY(-6px); }
+}
+@keyframes fade-in-slight {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none;
+  }
 }

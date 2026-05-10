@@ -1,0 +1,83 @@
+.dot,
+.ring {
+  position: fixed;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+  z-index: 90;
+  will-change: transform;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  margin-left: -3px;
+  margin-top: -3px;
+  background: linear-gradient(135deg, #f6a340, #ea4aaa);
+  border-radius: 999px;
+  transition: opacity 200ms cubic-bezier(0.16, 1, 0.3, 1),
+              width 200ms cubic-bezier(0.16, 1, 0.3, 1),
+              height 200ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.dotHidden {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.ring {
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  transition: width 320ms cubic-bezier(0.16, 1, 0.3, 1),
+              height 320ms cubic-bezier(0.16, 1, 0.3, 1),
+              background 280ms cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 280ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ringDefault {
+  width: 28px;
+  height: 28px;
+  margin-left: -14px;
+  margin-top: -14px;
+  border: 1px solid rgba(245, 241, 232, 0.22);
+  background: transparent;
+}
+
+.ringHover {
+  width: 44px;
+  height: 44px;
+  margin-left: -22px;
+  margin-top: -22px;
+  border: 1px solid rgba(246, 163, 64, 0.85);
+  background: rgba(246, 163, 64, 0.06);
+}
+
+.ringLabeled {
+  width: 64px;
+  height: 64px;
+  margin-left: -32px;
+  margin-top: -32px;
+  border: 1px solid transparent;
+  background: linear-gradient(135deg, #f6a340, #ea4aaa);
+  color: #0a0908;
+}
+
+.ringLabel {
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.ring.pressed {
+  filter: brightness(0.85);
+  /* keep the position transform from the JS while shrinking via CSS variable */
+}
+
+@media (hover: none), (pointer: coarse) {
+  .dot,
+  .ring {
+    display: none;
+  }
+}
