@@ -6,12 +6,12 @@ import { siteConfig } from '@/config/site';
 export const metadata: Metadata = {
   title: 'About',
   description:
-    'Mohammed Jizan — Product Designer based in Bengaluru, India. Currently leading design at Recotap. Previously Ziroh Labs and UnQ Technologies.',
+    'Mohammed Jizan — Lead Product Designer based in Bengaluru, India. Designing for Recotap and HireSense AI.',
 };
 
 const timeline = [
   {
-    year: '2024 — Now',
+    year: '2024 — NOW',
     role: 'Lead Product Designer',
     org: 'Recotap',
     url: 'https://www.recotap.com/',
@@ -67,84 +67,79 @@ const academic = [
   },
 ];
 
+const offstage = [
+  ['🎤', 'Music producer / vocalist on the side. Try /sing in ⌘K.'],
+  ['🍳', 'Would-be chef at home. Try /recipe.'],
+  ['🏋🏽', 'Disciplined gym life. Try /gym.'],
+] as const;
+
 export default function AboutPage() {
   return (
     <>
-      {/* Intro */}
-      <section className="container-page pt-40 pb-24 md:pt-48 md:pb-32">
+      <section className="container-page pt-40 pb-20 md:pt-48 md:pb-28">
         <Reveal>
-          <p className="micro-label flex items-center gap-3">
-            <span className="inline-block h-px w-8 bg-ink-muted" />
-            About
-          </p>
+          <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-ink-muted">— THE DIRECTOR —</p>
         </Reveal>
         <Reveal delay={0.05}>
-          <h1 className="mt-8 font-display text-display-2xl text-balance">
-            I design products that feel{' '}
-            <em className="not-italic text-accent">inevitable</em> — and ship the
-            systems that make them last.
+          <h1 className="ink-italic mt-8 font-display text-display-3xl text-balance">
+            I design products that feel <em>inevitable</em> — and ship the systems that make them last.
           </h1>
         </Reveal>
 
         <div className="mt-16 grid grid-cols-12 gap-6 md:mt-24">
           <Reveal as="div" className="col-span-12 md:col-span-7" delay={0.1}>
-            <div className="space-y-6 text-lg text-ink-muted text-pretty">
+            <div className="space-y-6 text-pretty text-ink-muted md:text-lg">
               <p>
-                I’m a self-taught product designer based in{' '}
-                <span className="text-ink">Bengaluru, India</span>. My journey
-                began in college, where curiosity about interfaces turned into a
-                practice — and stuck.
+                I&apos;m a self-taught product designer based in <span className="text-ink">Bengaluru, India</span>.
+                My journey began in college, when curiosity about interfaces turned into a practice — and stuck.
               </p>
               <p>
-                Over the past five years I’ve worked across startups —{' '}
-                <span className="text-ink">Recotap</span>,{' '}
-                <span className="text-ink">Ziroh Labs</span>, Diamondpick, and UnQ
-                Technologies — on everything from design systems and full
-                product revamps to ground-up 0→1 experiences. I tend to lead
-                visual and UX direction while collaborating tightly with
-                engineering, brand, and marketing.
+                Over the past five years I&apos;ve worked across startups —{' '}
+                <span className="text-ink">Recotap</span>, <span className="text-ink">Ziroh Labs</span>,
+                Diamondpick, and UnQ Technologies — on everything from design systems and full product
+                revamps to ground-up 0→1 experiences. I tend to lead visual and UX direction while
+                collaborating tightly with engineering, brand, and marketing.
               </p>
               <p>
-                I thrive in fast-paced teams where ideas come quickly, iteration
-                is faster, and learning never stops. Whether I’m simplifying a
-                workflow, shaping a feel, or crafting a brand — I’m chasing
-                clarity.
+                I thrive in fast-paced teams where ideas come quickly, iteration is faster, and learning
+                never stops. Whether I&apos;m simplifying a workflow, shaping a feel, or crafting a brand —
+                I&apos;m chasing clarity.
               </p>
               <p>
-                Outside of design: music production and singing, an
-                experimenting would-be chef, and a disciplined fitness life. If
-                I hadn’t become a designer, I’d probably be a music artist, a
-                chef, or coaching at a gym.
+                Now I&apos;m looking for a Lead role at an AI or gaming studio for the 2026 cycle. Bring me
+                a hard problem and a small team that ships.
               </p>
             </div>
           </Reveal>
+
           <Reveal as="aside" className="col-span-12 md:col-span-4 md:col-start-9" delay={0.15}>
-            <div className="rounded-2xl border border-line bg-surface-raised p-6">
-              <p className="micro-label">Now</p>
-              <p className="mt-3 font-display text-2xl">{siteConfig.currentRole.title}</p>
+            <div className="frame p-6">
+              <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-ink-muted">Now</p>
+              <p className="ink-italic mt-3 font-display text-2xl">{siteConfig.currentRole.title}</p>
               <a
                 href={siteConfig.currentRole.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-1 inline-block link-underline"
+                data-cursor="open"
+                className="underline-grow mt-1 inline-block text-ink"
               >
                 {siteConfig.currentRole.company} ↗
               </a>
-              <p className="mt-4 text-sm text-ink-muted text-pretty">
-                {siteConfig.currentRole.description}
-              </p>
+              <p className="mt-4 text-sm text-ink-muted">{siteConfig.currentRole.description}</p>
               <div className="mt-6 flex flex-wrap gap-2">
                 <a
                   href={`mailto:${siteConfig.email}`}
-                  className="inline-flex items-center gap-2 rounded-full bg-ink px-4 py-2 text-xs text-surface"
+                  data-cursor="hover"
+                  className="inline-flex items-center gap-2 rounded-full bg-accent px-4 py-2 text-bg"
                 >
-                  <span className="font-mono uppercase tracking-micro-loose">Let&apos;s chat</span>
+                  <span className="font-mono text-[10px] uppercase tracking-[0.22em]">Let&apos;s chat</span>
                 </a>
                 <a
                   href="/resume.pdf"
-                  className="inline-flex items-center gap-2 rounded-full border border-line px-4 py-2 text-xs"
+                  data-cursor="open"
+                  className="inline-flex items-center gap-2 rounded-full border border-line px-4 py-2"
                 >
-                  <span className="font-mono uppercase tracking-micro-loose">Resume ↗</span>
+                  <span className="font-mono text-[10px] uppercase tracking-[0.22em]">Résumé ↗</span>
                 </a>
               </div>
             </div>
@@ -156,27 +151,30 @@ export default function AboutPage() {
       <section className="border-t border-line">
         <div className="container-page py-24 md:py-32">
           <Reveal>
-            <p className="micro-label">§ Trajectory</p>
-            <h2 className="mt-4 font-display text-display-xl text-balance">
-              Where I&apos;ve worked.
+            <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-ink-muted">§ Trajectory</p>
+            <h2 className="ink-italic mt-4 font-display text-display-2xl text-balance">
+              Where I&apos;ve <em>worked.</em>
             </h2>
           </Reveal>
-          <ol className="mt-16 space-y-10">
+          <ol className="mt-14 space-y-10">
             {timeline.map((t, i) => (
               <Reveal key={i} as="div" delay={i * 0.05}>
                 <li className="grid grid-cols-12 gap-6 border-t border-line pt-8">
                   <div className="col-span-12 md:col-span-3">
-                    <span className="micro-label">{t.year}</span>
+                    <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-ink-muted">
+                      {t.year}
+                    </span>
                   </div>
                   <div className="col-span-12 md:col-span-9">
-                    <p className="font-display text-2xl">
-                      {t.role} ·{' '}
+                    <p className="ink-italic font-display text-2xl">
+                      {t.role} <span className="text-ink-subtle">·</span>{' '}
                       {t.url ? (
                         <a
                           href={t.url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="link-underline"
+                          data-cursor="open"
+                          className="underline-grow"
                         >
                           {t.org}
                         </a>
@@ -184,7 +182,7 @@ export default function AboutPage() {
                         <span>{t.org}</span>
                       )}
                     </p>
-                    <p className="mt-3 max-w-prose text-pretty text-ink-muted">{t.notes}</p>
+                    <p className="mt-3 max-w-[60ch] text-pretty text-ink-muted">{t.notes}</p>
                   </div>
                 </li>
               </Reveal>
@@ -194,26 +192,23 @@ export default function AboutPage() {
       </section>
 
       {/* Skills + Products */}
-      <section className="border-t border-line bg-surface-sunken/40">
+      <section className="border-t border-line bg-bg-sunken/40">
         <div className="container-page py-24 md:py-32">
           <div className="grid grid-cols-12 gap-12">
             <Reveal as="div" className="col-span-12 md:col-span-7">
-              <p className="micro-label">§ Toolkit</p>
-              <h2 className="mt-4 font-display text-display-xl text-balance">
-                Skills &amp; tools.
+              <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-ink-muted">§ Toolkit</p>
+              <h2 className="ink-italic mt-4 font-display text-display-2xl text-balance">
+                Skills &amp; <em>tools.</em>
               </h2>
               <div className="mt-12 space-y-10">
                 {Object.entries(skills).map(([group, items]) => (
                   <div key={group} className="grid grid-cols-12 gap-6 border-t border-line pt-6">
-                    <p className="micro-label col-span-12 md:col-span-3">{group}</p>
+                    <p className="col-span-12 font-mono text-[10px] uppercase tracking-[0.22em] text-ink-muted md:col-span-3">
+                      {group}
+                    </p>
                     <ul className="col-span-12 flex flex-wrap gap-2 md:col-span-9">
                       {items.map((s) => (
-                        <li
-                          key={s}
-                          className="rounded-full border border-line bg-surface px-3 py-1.5 text-sm"
-                        >
-                          {s}
-                        </li>
+                        <li key={s} className="chip">{s}</li>
                       ))}
                     </ul>
                   </div>
@@ -221,7 +216,7 @@ export default function AboutPage() {
               </div>
             </Reveal>
             <Reveal as="div" className="col-span-12 md:col-span-5" delay={0.1}>
-              <p className="micro-label">§ Products I&apos;ve designed</p>
+              <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-ink-muted">§ Products I&apos;ve designed</p>
               <ul className="mt-4 space-y-3">
                 {products.map((p) => (
                   <li key={p.name}>
@@ -229,10 +224,11 @@ export default function AboutPage() {
                       href={p.url}
                       target="_blank"
                       rel="noopener noreferrer"
+                      data-cursor="open"
                       className="group flex items-baseline justify-between border-b border-line py-3"
                     >
-                      <span className="font-display text-2xl">{p.name}</span>
-                      <span className="font-mono text-[11px] uppercase tracking-micro-loose text-ink-muted transition-colors group-hover:text-ink">
+                      <span className="ink-italic font-display text-2xl">{p.name}</span>
+                      <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-ink-muted transition-colors group-hover:text-ink">
                         Visit ↗
                       </span>
                     </a>
@@ -244,13 +240,35 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* Off stage */}
+      <section className="border-t border-line">
+        <div className="container-page py-24 md:py-32">
+          <Reveal>
+            <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-ink-muted">§ Off camera</p>
+            <h2 className="ink-italic mt-4 font-display text-display-2xl text-balance">
+              When I&apos;m not <em>designing.</em>
+            </h2>
+          </Reveal>
+          <ul className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-3">
+            {offstage.map(([icon, text], i) => (
+              <Reveal key={i} as="div" delay={i * 0.05}>
+                <li className="frame p-6">
+                  <p aria-hidden className="text-2xl">{icon}</p>
+                  <p className="mt-4 text-ink-muted">{text}</p>
+                </li>
+              </Reveal>
+            ))}
+          </ul>
+        </div>
+      </section>
+
       {/* Academic */}
       <section className="border-t border-line">
         <div className="container-page py-24 md:py-32">
           <Reveal>
-            <p className="micro-label">§ Academic</p>
-            <h2 className="mt-4 font-display text-display-xl text-balance">
-              Earlier work.
+            <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-ink-muted">§ Academic</p>
+            <h2 className="ink-italic mt-4 font-display text-display-2xl text-balance">
+              Earlier <em>work.</em>
             </h2>
           </Reveal>
           <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2">
@@ -260,15 +278,14 @@ export default function AboutPage() {
                   href={a.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group block rounded-2xl border border-line bg-surface-raised p-8 transition-colors hover:border-ink-muted"
+                  data-cursor="open"
+                  className="group block rounded-2xl border border-line bg-bg-raised p-8 transition-colors hover:border-ink-muted"
                 >
-                  <span className="micro-label">{a.label}</span>
-                  <h3 className="mt-3 font-display text-xl text-balance">{a.title}</h3>
-                  <p className="mt-6 inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-micro-loose">
+                  <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-ink-muted">{a.label}</span>
+                  <h3 className="ink-italic mt-3 font-display text-xl text-balance">{a.title}</h3>
+                  <p className="mt-6 inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.22em]">
                     Read on Medium
-                    <span className="transition-transform duration-500 ease-out-expo group-hover:translate-x-1">
-                      ↗
-                    </span>
+                    <span className="transition-transform duration-500 ease-out-expo group-hover:translate-x-1">↗</span>
                   </p>
                 </a>
               </Reveal>
@@ -278,26 +295,27 @@ export default function AboutPage() {
       </section>
 
       {/* Socials */}
-      <section className="border-t border-line">
+      <section className="border-t border-line bg-bg-sunken/40">
         <div className="container-page py-24 md:py-32">
           <Reveal>
-            <p className="micro-label">§ Elsewhere</p>
-            <h2 className="mt-4 font-display text-display-xl text-balance">
-              Find me online.
+            <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-ink-muted">§ Elsewhere</p>
+            <h2 className="ink-italic mt-4 font-display text-display-2xl text-balance">
+              Find me <em>online.</em>
             </h2>
           </Reveal>
           <ul className="mt-12 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-line bg-line md:grid-cols-5">
             {siteConfig.socials.map((s, i) => (
               <Reveal key={s.name} as="div" delay={i * 0.04}>
-                <li className="bg-surface">
+                <li className="bg-bg">
                   <a
                     href={s.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group flex h-full flex-col justify-between gap-6 p-6 transition-colors hover:bg-surface-raised"
+                    data-cursor="open"
+                    className="group flex h-full flex-col justify-between gap-6 p-6 transition-colors hover:bg-bg-raised"
                   >
-                    <p className="font-display text-xl">{s.name}</p>
-                    <p className="font-mono text-[11px] uppercase tracking-micro-loose text-ink-muted">
+                    <p className="ink-italic font-display text-xl">{s.name}</p>
+                    <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-ink-muted">
                       {s.handle} ↗
                     </p>
                   </a>
@@ -306,7 +324,7 @@ export default function AboutPage() {
             ))}
           </ul>
           <div className="mt-16 flex justify-center">
-            <Link href="/work" className="link-underline">
+            <Link href="/work" data-cursor="view" className="underline-grow">
               See my work →
             </Link>
           </div>

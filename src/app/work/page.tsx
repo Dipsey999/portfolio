@@ -1,12 +1,12 @@
 import type { Metadata } from 'next';
-import { ProjectCard } from '@/components/project-card';
+import { ReelCard } from '@/components/reel-card';
 import { Reveal } from '@/components/reveal';
 import { branding, projects, websites } from '@/config/projects';
 
 export const metadata: Metadata = {
   title: 'Work',
   description:
-    'Selected case studies and projects by Mohammed Jizan — product design, design systems, websites, and brand work.',
+    'Selected projects by Mohammed Jizan — product design, design systems, websites, and brand work.',
 };
 
 export default function WorkPage() {
@@ -16,84 +16,80 @@ export default function WorkPage() {
 
   return (
     <>
-      {/* Header */}
-      <section className="container-page pt-40 pb-20 md:pt-48 md:pb-24">
+      <section className="container-page pt-40 pb-16 md:pt-48 md:pb-24">
         <Reveal>
-          <p className="micro-label flex items-center gap-3">
-            <span className="inline-block h-px w-8 bg-ink-muted" />
-            Work — 2021 to now
+          <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-ink-muted">
+            — REEL · 2021 to NOW —
           </p>
         </Reveal>
         <Reveal delay={0.05}>
-          <h1 className="mt-8 font-display text-display-2xl text-balance">
-            Designs I brought to life.
+          <h1 className="ink-italic mt-8 font-display text-display-3xl text-balance">
+            Designs I <em>brought</em> to life.
           </h1>
         </Reveal>
         <Reveal delay={0.1}>
-          <p className="mt-8 max-w-prose text-pretty text-lg text-ink-muted md:text-xl">
-            Products, design systems, websites, and brand work — a focused
-            archive crafted with clarity, purpose, and a user-first bias.
+          <p className="mt-8 max-w-[56ch] text-pretty text-ink-muted md:text-lg">
+            Products, design systems, websites, brand work. Eight features, four shorts, five
+            cameos — a focused archive crafted with clarity, purpose, and a user-first bias.
           </p>
         </Reveal>
         <Reveal delay={0.15}>
           <div className="mt-10 grid grid-cols-3 gap-px overflow-hidden rounded-2xl border border-line bg-line md:max-w-md">
-            <Stat n={caseStudies.length} label="Case studies" />
-            <Stat n={designSystems.length} label="Design systems" />
-            <Stat n={overviews.length} label="Overviews" />
+            <Stat n={caseStudies.length} label="Features" />
+            <Stat n={designSystems.length} label="Systems" />
+            <Stat n={overviews.length} label="Shorts" />
           </div>
         </Reveal>
       </section>
 
-      {/* Case studies */}
-      <section className="container-page pb-24 md:pb-32">
+      <section className="container-page pb-20 md:pb-28">
         <Reveal>
-          <p className="micro-label">§ 01 — Case studies</p>
+          <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-ink-muted">
+            § 01 — Features (case studies)
+          </p>
         </Reveal>
-        <div className="mt-12 space-y-12">
+        <ol className="mt-10">
           {caseStudies.map((p, i) => (
-            <ProjectCard key={p.slug} project={p} index={i} />
+            <ReelCard key={p.slug} project={p} index={i} />
           ))}
-          <div className="hairline" />
-        </div>
+        </ol>
       </section>
 
-      {/* Design systems */}
-      <section className="container-page pb-24 md:pb-32">
+      <section className="container-page pb-20 md:pb-28">
         <Reveal>
-          <p className="micro-label">§ 02 — Design systems</p>
+          <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-ink-muted">
+            § 02 — Systems
+          </p>
         </Reveal>
-        <div className="mt-12 space-y-12">
+        <ol className="mt-10">
           {designSystems.map((p, i) => (
-            <ProjectCard key={p.slug} project={p} index={i + caseStudies.length} />
+            <ReelCard key={p.slug} project={p} index={i + caseStudies.length} />
           ))}
-          <div className="hairline" />
-        </div>
+        </ol>
       </section>
 
-      {/* Overviews */}
-      <section className="container-page pb-24 md:pb-32">
+      <section className="container-page pb-20 md:pb-28">
         <Reveal>
-          <p className="micro-label">§ 03 — Overviews</p>
+          <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-ink-muted">
+            § 03 — Shorts &amp; cameos
+          </p>
         </Reveal>
-        <div className="mt-12 space-y-12">
+        <ol className="mt-10">
           {overviews.map((p, i) => (
-            <ProjectCard
-              key={p.slug}
-              project={p}
-              index={i + caseStudies.length + designSystems.length}
-            />
+            <ReelCard key={p.slug} project={p} index={i + caseStudies.length + designSystems.length} />
           ))}
-          <div className="hairline" />
-        </div>
+        </ol>
       </section>
 
       {/* Websites */}
-      <section className="border-t border-line bg-surface-sunken/40">
+      <section className="border-t border-line">
         <div className="container-page py-24 md:py-32">
           <Reveal>
-            <p className="micro-label">§ 04 — Websites</p>
-            <h2 className="mt-4 font-display text-display-xl text-balance">
-              Marketing sites &amp; product pages.
+            <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-ink-muted">
+              § 04 — Marketing &amp; Product Sites
+            </p>
+            <h2 className="ink-italic mt-4 font-display text-display-2xl text-balance">
+              Sites that <em>sold</em> the products.
             </h2>
           </Reveal>
           <ul className="mt-16 grid grid-cols-1 gap-6 md:grid-cols-2">
@@ -104,25 +100,24 @@ export default function WorkPage() {
                     href={w.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group block overflow-hidden rounded-2xl border border-line bg-surface-raised"
+                    data-cursor="open"
+                    className="group block overflow-hidden rounded-2xl border border-line bg-bg-raised"
                   >
-                    <div className="relative aspect-[16/10] overflow-hidden bg-surface-sunken">
+                    <div className="relative aspect-[16/10] overflow-hidden bg-bg-sunken">
                       <img
                         src={w.image}
                         alt={`${w.name} website preview`}
                         loading="lazy"
                         decoding="async"
-                        className="h-full w-full object-cover object-top transition-transform duration-700 ease-out-expo group-hover:scale-[1.03]"
+                        className="h-full w-full object-cover object-top opacity-90 transition duration-700 ease-out group-hover:scale-[1.03] group-hover:opacity-100"
                       />
                     </div>
                     <div className="flex items-end justify-between gap-6 p-6">
                       <div>
-                        <p className="font-display text-2xl">{w.name}</p>
-                        <p className="mt-2 max-w-prose text-sm text-ink-muted">
-                          {w.description}
-                        </p>
+                        <p className="ink-italic font-display text-2xl">{w.name}</p>
+                        <p className="mt-2 max-w-prose text-sm text-ink-muted">{w.description}</p>
                       </div>
-                      <span className="font-mono text-[11px] uppercase tracking-micro-loose text-ink-muted transition-colors group-hover:text-ink">
+                      <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-ink-muted transition-colors group-hover:text-ink">
                         Visit ↗
                       </span>
                     </div>
@@ -135,34 +130,30 @@ export default function WorkPage() {
       </section>
 
       {/* Branding */}
-      <section className="border-t border-line">
+      <section className="border-t border-line bg-bg-sunken/40">
         <div className="container-page py-24 md:py-32">
           <Reveal>
-            <p className="micro-label">§ 05 — Branding</p>
-            <h2 className="mt-4 font-display text-display-xl text-balance">
-              Identities &amp; brand systems.
-            </h2>
-            <p className="mt-6 max-w-prose text-pretty text-ink-muted">
-              Crafting distinct identities that resonate. Logos and guidelines
-              that turn ideas into lasting impressions.
+            <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-ink-muted">
+              § 05 — Identity
             </p>
+            <h2 className="ink-italic mt-4 font-display text-display-2xl text-balance">
+              Brands &amp; <em>marks.</em>
+            </h2>
           </Reveal>
-          <ul className="mt-16 grid grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-5">
+          <ul className="mt-16 grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-5">
             {branding.map((b, i) => (
               <Reveal key={b.name} as="div" delay={i * 0.05}>
-                <li className="group overflow-hidden rounded-xl border border-line bg-surface-raised">
-                  <div className="relative aspect-square overflow-hidden bg-surface-sunken">
+                <li className="group overflow-hidden rounded-xl border border-line bg-bg-raised">
+                  <div className="relative aspect-square overflow-hidden bg-bg-sunken">
                     <img
                       src={b.image}
                       alt={`${b.name} branding`}
                       loading="lazy"
                       decoding="async"
-                      className="h-full w-full object-cover transition-transform duration-700 ease-out-expo group-hover:scale-[1.04]"
+                      className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
                     />
                   </div>
-                  <p className="px-4 py-3 font-mono text-[11px] uppercase tracking-micro-loose">
-                    {b.name}
-                  </p>
+                  <p className="px-4 py-3 font-mono text-[10px] uppercase tracking-[0.22em]">{b.name}</p>
                 </li>
               </Reveal>
             ))}
@@ -175,11 +166,9 @@ export default function WorkPage() {
 
 function Stat({ n, label }: { n: number; label: string }) {
   return (
-    <div className="bg-surface p-5">
-      <p className="font-display text-3xl">{String(n).padStart(2, '0')}</p>
-      <p className="mt-1 font-mono text-[10px] uppercase tracking-micro-loose text-ink-muted">
-        {label}
-      </p>
+    <div className="bg-bg p-5">
+      <p className="ink-italic font-display text-3xl">{String(n).padStart(2, '0')}</p>
+      <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.22em] text-ink-muted">{label}</p>
     </div>
   );
 }

@@ -1,25 +1,39 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
   <defs>
-    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#0C0C0E"/>
-      <stop offset="100%" stop-color="#1A1410"/>
-    </linearGradient>
-    <radialGradient id="glow" cx="78%" cy="22%" r="40%">
-      <stop offset="0%" stop-color="#FF5A1F" stop-opacity="0.55"/>
-      <stop offset="100%" stop-color="#FF5A1F" stop-opacity="0"/>
+    <radialGradient id="glow" cx="80%" cy="20%" r="55%">
+      <stop offset="0%" stop-color="#CCFF00" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#CCFF00" stop-opacity="0"/>
     </radialGradient>
   </defs>
-  <rect width="1200" height="630" fill="url(#g)"/>
+  <rect width="1200" height="630" fill="#0A0908"/>
   <rect width="1200" height="630" fill="url(#glow)"/>
-  <g fill="#F5F4F0" font-family="Georgia, 'Times New Roman', serif">
-    <text x="80" y="120" font-family="ui-monospace, Menlo, monospace" font-size="18" letter-spacing="3" fill="#A8A59E">— PRODUCT DESIGNER</text>
-    <text x="80" y="380" font-size="96" font-weight="500" letter-spacing="-3">Mohammed</text>
-    <text x="80" y="490" font-size="96" font-weight="500" letter-spacing="-3">Jizan K</text>
+
+  <!-- corner brackets -->
+  <g stroke="#5C5852" stroke-width="1.2" fill="none">
+    <path d="M60 60 L60 100 M60 60 L100 60"/>
+    <path d="M1140 60 L1140 100 M1140 60 L1100 60"/>
+    <path d="M60 570 L60 530 M60 570 L100 570"/>
+    <path d="M1140 570 L1140 530 M1140 570 L1100 570"/>
   </g>
-  <g fill="#A8A59E" font-family="ui-monospace, Menlo, monospace" font-size="18" letter-spacing="3">
-    <text x="80" y="570">BENGALURU · IN</text>
-    <text x="1120" y="570" text-anchor="end">JIZAN.IN</text>
+
+  <!-- top strip -->
+  <g fill="#928E84" font-family="ui-monospace, Menlo, monospace" font-size="14" letter-spacing="3">
+    <text x="100" y="118">REC ● BLR · 12.97°N 77.59°E</text>
+    <text x="1100" y="118" text-anchor="end">REEL 02 / TAKE 06 — 2026</text>
   </g>
-  <circle cx="950" cy="200" r="110" fill="none" stroke="#FF5A1F" stroke-width="1.5" opacity="0.6"/>
-  <circle cx="950" cy="200" r="60" fill="#FF5A1F" opacity="0.85"/>
+
+  <!-- micro label -->
+  <text x="100" y="190" fill="#928E84" font-family="ui-monospace, Menlo, monospace" font-size="13" letter-spacing="3.4">— A FILM BY MOHAMMED JIZAN —</text>
+
+  <!-- title -->
+  <g fill="#F5F1E8" font-family="Georgia, 'Times New Roman', serif">
+    <text x="100" y="330" font-size="116" letter-spacing="-4">I design</text>
+    <text x="100" y="448" font-size="116" letter-spacing="-4">for the <tspan font-style="italic" fill="#CCFF00">feel.</tspan></text>
+  </g>
+
+  <!-- bottom strip -->
+  <g fill="#928E84" font-family="ui-monospace, Menlo, monospace" font-size="13" letter-spacing="3">
+    <text x="100" y="550">DESIGN LEAD · AI / GAMING / B2B</text>
+    <text x="1100" y="550" text-anchor="end">JIZAN.IN — 2026</text>
+  </g>
 </svg>

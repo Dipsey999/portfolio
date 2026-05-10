@@ -1,27 +1,30 @@
 import type { Metadata, Viewport } from 'next';
-import { Fraunces, Inter, JetBrains_Mono } from 'next/font/google';
+import { Instrument_Serif, Geist, Geist_Mono } from 'next/font/google';
 import Script from 'next/script';
 import './globals.css';
 import { SmoothScroll } from '@/components/smooth-scroll';
 import { Nav } from '@/components/nav';
 import { Footer } from '@/components/footer';
+import { Cursor } from '@/components/cursor';
+import { CommandPalette } from '@/components/command-palette';
 import { ThemeScript } from '@/components/theme-script';
 import { siteConfig } from '@/config/site';
 
-const fraunces = Fraunces({
+const instrumentSerif = Instrument_Serif({
+  weight: '400',
+  style: ['normal', 'italic'],
   subsets: ['latin'],
   variable: '--font-display',
   display: 'swap',
-  axes: ['opsz', 'SOFT'],
 });
 
-const inter = Inter({
+const geist = Geist({
   subsets: ['latin'],
   variable: '--font-sans',
   display: 'swap',
 });
 
-const jetbrainsMono = JetBrains_Mono({
+const geistMono = Geist_Mono({
   subsets: ['latin'],
   variable: '--font-mono',
   display: 'swap',
@@ -31,18 +34,17 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
     default: siteConfig.title,
-    template: `%s — ${siteConfig.name}`,
+    template: `%s · ${siteConfig.shortName}`,
   },
   description: siteConfig.description,
   keywords: [
     'product designer',
-    'UX designer',
+    'design lead',
+    'AI product design',
+    'gaming product design',
     'design systems',
     'Bengaluru',
-    'India',
     'Mohammed Jizan',
-    'Recotap',
-    'Ziroh Labs',
   ],
   authors: [{ name: siteConfig.name, url: siteConfig.url }],
   creator: siteConfig.name,
@@ -53,14 +55,7 @@ export const metadata: Metadata = {
     title: siteConfig.title,
     description: siteConfig.description,
     siteName: siteConfig.name,
-    images: [
-      {
-        url: '/og.png',
-        width: 1200,
-        height: 630,
-        alt: siteConfig.title,
-      },
-    ],
+    images: [{ url: '/og.png', width: 1200, height: 630, alt: siteConfig.title }],
   },
   twitter: {
     card: 'summary_large_image',
@@ -69,30 +64,13 @@ export const metadata: Metadata = {
     creator: '@jizansanu',
     images: ['/og.png'],
   },
-  alternates: {
-    canonical: siteConfig.url,
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
-    },
-  },
-  icons: {
-    icon: '/favicon.ico',
-    apple: '/webclip.png',
-  },
+  alternates: { canonical: siteConfig.url },
+  robots: { index: true, follow: true },
+  icons: { icon: '/favicon.ico', apple: '/webclip.png' },
 };
 
 export const viewport: Viewport = {
-  themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#FAF9F6' },
-    { media: '(prefers-color-scheme: dark)', color: '#0C0C0E' },
-  ],
+  themeColor: '#0A0908',
   width: 'device-width',
   initialScale: 1,
 };
@@ -101,7 +79,7 @@ const personSchema = {
   '@context': 'https://schema.org',
   '@type': 'Person',
   name: 'Mohammed Jizan K',
-  jobTitle: 'Product Designer',
+  jobTitle: 'Product Design Lead',
   url: siteConfig.url,
   image: `${siteConfig.url}/og.png`,
   sameAs: [
@@ -121,20 +99,13 @@ const personSchema = {
     addressLocality: 'Bengaluru',
     addressCountry: 'IN',
   },
-  knowsAbout: [
-    'Product Design',
-    'UX Research',
-    'Design Systems',
-    'Visual Design',
-    'Motion Design',
-  ],
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html
       lang="en"
-      className={`${fraunces.variable} ${inter.variable} ${jetbrainsMono.variable}`}
+      className={`${instrumentSerif.variable} ${geist.variable} ${geistMono.variable}`}
       suppressHydrationWarning
     >
       <head>
@@ -146,13 +117,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
         />
       </head>
-      <body className="grain">
+      <body className="grain vignette">
         <a
           href="#main"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:rounded-md focus:bg-ink focus:px-4 focus:py-2 focus:text-surface"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:rounded-md focus:bg-ink focus:px-4 focus:py-2 focus:text-bg"
         >
           Skip to content
         </a>
+        <Cursor />
+        <CommandPalette />
         <SmoothScroll>
           <Nav />
           <main id="main">{children}</main>
