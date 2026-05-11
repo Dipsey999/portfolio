@@ -139,13 +139,108 @@ export default function RecotapPage() {
           </div>
         </section>
 
+        {/* Recognition — Startup Singam Season 2 */}
+        <section className={s.section}>
+          <div className={s.container}>
+            <Reveal>
+              <header className={s.sectionHead}>
+                <div>
+                  <p className={s.sectionLabel}>§ 02 — Recognition</p>
+                  <span className={r.pressPill}>Sun TV · Startup Singam · Season 2</span>
+                  <h2 className={s.sectionTitle}>
+                    ₹5 crore won.{' '}
+                    <em className={r.chapterAccent}>
+                      First AI startup to win the season.
+                    </em>
+                  </h2>
+                </div>
+                <p className={s.sectionLede}>
+                  <strong>AdRadar</strong> — the real-time competitive
+                  ad-intelligence product I lead design on — was selected from
+                  a national field at Sun TV&apos;s Startup Singam Season 2
+                  and walked away with the season&apos;s ₹5 crore (₹50M) grand
+                  prize. The first AI-native startup to win the show. The
+                  full episode is embedded below.
+                </p>
+              </header>
+            </Reveal>
+
+            <Reveal delay={0.1}>
+              <div className={r.videoWrap}>
+                <iframe
+                  className={r.videoFrame}
+                  src="https://www.youtube.com/embed/iRXmm0nvsYE"
+                  title="Recotap on Startup Singam Season 2 — full episode"
+                  loading="lazy"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  allowFullScreen
+                />
+              </div>
+              <p className={r.videoCaption}>
+                Full episode · Recotap on Startup Singam Season 2 · Sun TV
+              </p>
+            </Reveal>
+          </div>
+        </section>
+
+        {/* Impact — by the numbers */}
+        <section className={s.section}>
+          <div className={s.container}>
+            <Reveal>
+              <header className={s.sectionHead}>
+                <div>
+                  <p className={s.sectionLabel}>§ 03 — Impact</p>
+                  <h2 className={s.sectionTitle}>
+                    Design that{' '}
+                    <em className={r.chapterAccent}>compounded into customers.</em>
+                  </h2>
+                </div>
+                <p className={s.sectionLede}>
+                  The design pass that started with the platform redesign
+                  carried through onboarding, the customer journey, and the
+                  Full-Stack ABM service offering I designed end-to-end —
+                  and the customer count followed.
+                </p>
+              </header>
+            </Reveal>
+
+            <Reveal delay={0.1}>
+              <div className={r.statRow}>
+                <div className={r.statCell}>
+                  <p className={r.statValue}>60+</p>
+                  <p className={r.statLabel}>
+                    customers live on the Recotap platform — across B2B SaaS,
+                    services, and enterprise.
+                  </p>
+                </div>
+                <div className={r.statCell}>
+                  <p className={r.statValue}>45+</p>
+                  <p className={r.statLabel}>
+                    more in the pipeline for the Full-Stack ABM service — the
+                    end-to-end customer journey I designed for our outbound
+                    motion.
+                  </p>
+                </div>
+                <div className={r.statCell}>
+                  <p className={r.statValue}>1</p>
+                  <p className={r.statLabel}>
+                    designer leading product, marketing, and brand
+                    end-to-end — with engineering as the multiplier.
+                  </p>
+                </div>
+              </div>
+            </Reveal>
+          </div>
+        </section>
+
         {/* Surface area cards */}
         <section className={s.section}>
           <div className={s.container}>
             <Reveal>
               <header className={s.sectionHead}>
                 <div>
-                  <p className={s.sectionLabel}>§ 02 — The Recotap surface area</p>
+                  <p className={s.sectionLabel}>§ 04 — The Recotap surface area</p>
                   <h2 className={s.sectionTitle}>
                     One platform. Three companions.{' '}
                     <em className={r.chapterAccent}>One designer.</em>
@@ -169,7 +264,7 @@ export default function RecotapPage() {
         <section className={s.cta}>
           <div className={s.container}>
             <Reveal>
-              <p className={s.sectionLabel}>§ 03 — Want the case studies?</p>
+              <p className={s.sectionLabel}>§ 05 — Want the case studies?</p>
               <h2 className={s.ctaTitle}>
                 I&apos;ll walk you through it. <em>Live.</em>
               </h2>
