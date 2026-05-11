@@ -10,7 +10,7 @@ import { ProjectCard, type ProjectCardItem } from './_home/project-card';
 
 const PROJECTS: ProjectCardItem[] = [
   {
-    href: '/recotap/improving-the-platform/',
+    href: '/recotap/',
     company: 'Recotap',
     title: 'Powering modern B2B marketing with smarter account-based solutions.',
     meta: '2024 — Now · AI Product Designer',

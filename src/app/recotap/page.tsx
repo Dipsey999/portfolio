@@ -13,14 +13,15 @@ const ACCENT = '#5CF0A4';
 
 const PROJECTS: ProjectCardItem[] = [
   {
-    href: 'https://www.recotap.com/',
-    external: true,
+    href: '/recotap/improving-the-platform/',
     company: 'The Platform',
     title: 'Recotap — the flagship ABM platform.',
-    meta: 'B2B SaaS · Live · Lead Designer',
+    meta: 'B2B SaaS · Live · Lead Designer · Case Study',
     art: '/images/recotap-img.png',
     artBg: 'linear-gradient(140deg, #1a3324 0%, #0d1c14 60%, #0d1c14 100%)',
     accent: '#5CF0A4',
+    cursor: 'open',
+    action: 'Open →',
   },
   {
     href: 'https://www.adradar.app/',
