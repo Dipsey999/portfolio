@@ -23,7 +23,7 @@ type Project = {
 
 const PROJECTS: Project[] = [
   {
-    href: '/recotap/',
+    href: '/recotap/improving-the-platform/',
     company: 'Recotap',
     title: 'Powering modern B2B marketing with smarter account-based solutions.',
     meta: '2024 — Now · AI Product Designer',
