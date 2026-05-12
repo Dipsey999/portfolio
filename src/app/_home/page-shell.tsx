@@ -17,6 +17,7 @@ const HeroScene = dynamic(
 );
 
 const PROJECT_PATHS = ['/all-projects', '/recotap', '/hiresense', '/ziroh', '/case-study'];
+const JOURNAL_PATHS = ['/journal', '/ai-craft', '/adradar', '/adninja', '/full-stack-abm', '/zunu'];
 
 function pathStartsWithAny(p: string | null, paths: string[]) {
   if (!p) return false;
@@ -26,7 +27,7 @@ function pathStartsWithAny(p: string | null, paths: string[]) {
 /** PageShell wraps every dark page in the same chrome:
  *  - Boot (first-load only), Cursor, CommandPalette, SmoothScroll
  *  - Three.js shader scene as fixed background
- *  - Top nav (Index / Projects / About + ⌘K + theme toggle)
+ *  - Top nav (Index / Projects / Journal / About + ⌘K + theme toggle)
  *  Active nav state is derived from the current pathname. */
 export function PageShell({ children }: { children: ReactNode }) {
   const [theme, toggleTheme] = useHomeTheme();
@@ -34,6 +35,7 @@ export function PageShell({ children }: { children: ReactNode }) {
 
   const isHome = pathname === '/';
   const isProjects = pathStartsWithAny(pathname, PROJECT_PATHS);
+  const isJournal = pathStartsWithAny(pathname, JOURNAL_PATHS);
   const isAbout = pathStartsWithAny(pathname, ['/about-me']);
 
   return (
@@ -64,6 +66,14 @@ export function PageShell({ children }: { children: ReactNode }) {
             aria-current={isProjects ? 'page' : undefined}
           >
             Projects
+          </Link>
+          <Link
+            href="/journal/"
+            data-cursor="hover"
+            className={`${s.navLink} ${isJournal ? s.active : ''}`}
+            aria-current={isJournal ? 'page' : undefined}
+          >
+            Journal
           </Link>
           <Link
             href="/about-me/"

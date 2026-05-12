@@ -38,6 +38,8 @@ export function CommandPalette() {
       // Navigate
       { id: 'nav-home', label: 'Index', hint: '/', group: 'Navigate', perform: () => router.push('/') },
       { id: 'nav-projects', label: 'Projects', hint: '/all-projects', group: 'Navigate', perform: () => router.push('/all-projects/') },
+      { id: 'nav-journal', label: 'Journal', hint: '/journal', group: 'Navigate', perform: () => router.push('/journal/'), keywords: ['journal', 'case studies', 'notes', 'writing', 'archive'] },
+      { id: 'nav-ai-craft', label: 'AI-craft notes', hint: '/ai-craft', group: 'Navigate', perform: () => router.push('/ai-craft/'), keywords: ['ai craft', 'notes', 'design ai', 'agentic', 'trust contract', 'pov'] },
       { id: 'nav-about', label: 'About', hint: '/about-me', group: 'Navigate', perform: () => router.push('/about-me/') },
       { id: 'nav-recotap', label: 'Recotap chapter', hint: '/recotap', group: 'Navigate', perform: () => router.push('/recotap/'), keywords: ['recotap', 'adradar', 'adninja', 'abm'] },
       { id: 'nav-recotap-cs', label: 'Recotap — case study', hint: '/recotap/improving-the-platform', group: 'Navigate', perform: () => router.push('/recotap/improving-the-platform/'), keywords: ['recotap', 'case study', 'abm', 'platform'] },
