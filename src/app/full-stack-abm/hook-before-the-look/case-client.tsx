@@ -268,6 +268,451 @@ function Figure({
 }
 
 // ──────────────────────────────────────────────────────────────────────────
+// Inline chart components — replace duplicate figures + fill prose gaps.
+// All use the violet/purple/pink accent palette via CSS variables on the
+// case-study root, so they stay theme-aware (light/dark) without extra work.
+// ──────────────────────────────────────────────────────────────────────────
+
+const chartCard: CSSProperties = {
+  background: 'var(--bg-card, #fff)',
+  border: '1px solid var(--border, rgba(0,0,0,.08))',
+  borderRadius: 12,
+  padding: '32px 36px',
+  position: 'relative',
+  overflow: 'hidden',
+};
+
+const chartEyebrow: CSSProperties = {
+  fontSize: 11,
+  letterSpacing: 0.8,
+  textTransform: 'uppercase',
+  color: 'var(--fg-faint, rgba(0,0,0,0.45))',
+  marginBottom: 24,
+  fontWeight: 700,
+};
+
+function ImpressionsVsClicksChart() {
+  return (
+    <figure className={s.figure}>
+      <div style={chartCard}>
+        <div style={chartEyebrow}>
+          The window we were looking at · early-2025 at-risk cohort
+        </div>
+
+        {/* Impressions */}
+        <div style={{ display: 'flex', alignItems: 'baseline', gap: 16, marginBottom: 10 }}>
+          <span style={{ fontSize: 44, fontWeight: 800, lineHeight: 1, letterSpacing: -1, color: 'var(--fg-strong)' }}>1,200,000</span>
+          <span style={{ fontSize: 13, color: 'var(--fg-muted)' }}>Impressions</span>
+        </div>
+        <div style={{
+          height: 14,
+          background: 'linear-gradient(90deg, #7C3AED, #A78BFF 55%, #F472B6)',
+          borderRadius: 7,
+          marginBottom: 28,
+        }} />
+
+        {/* Clicks */}
+        <div style={{ display: 'flex', alignItems: 'baseline', gap: 16, marginBottom: 10 }}>
+          <span style={{ fontSize: 44, fontWeight: 800, lineHeight: 1, letterSpacing: -1, color: 'var(--fg-strong)' }}>47</span>
+          <span style={{ fontSize: 13, color: 'var(--fg-muted)' }}>Clicks</span>
+        </div>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 24 }}>
+          <div style={{
+            height: 14,
+            width: 2,
+            background: 'var(--accent, #7C3AED)',
+            borderRadius: 7,
+            flex: 'none',
+          }} />
+          <span style={{ fontSize: 11, color: 'var(--fg-faint)', fontStyle: 'italic' }}>
+            same scale as Impressions
+          </span>
+        </div>
+
+        {/* CTR */}
+        <div style={{
+          display: 'flex',
+          alignItems: 'baseline',
+          justifyContent: 'space-between',
+          paddingTop: 20,
+          borderTop: '1px solid var(--border, rgba(0,0,0,.08))',
+        }}>
+          <span style={{ fontSize: 13, color: 'var(--fg-muted)', letterSpacing: 0.4 }}>CTR</span>
+          <span style={{ fontSize: 28, fontWeight: 700, color: 'var(--accent)', letterSpacing: -0.3 }}>0.004%</span>
+        </div>
+        <div style={{ marginTop: 14, fontSize: 14, color: 'var(--fg-secondary)', fontStyle: 'italic' }}>
+          Targeting: on. Creative: dead.
+        </div>
+      </div>
+      <figcaption className={s.figureCaption}>
+        The dashboard shape that started Full-Stack ABM — twelve at-risk customers with the same anatomy: full-spec reach, single-digit clicks, the blame pointed at the platform.
+      </figcaption>
+    </figure>
+  );
+}
+
+function HookVsLookChart() {
+  return (
+    <figure className={s.figure}>
+      <div style={chartCard}>
+        <div style={chartEyebrow}>
+          The half-second before the thumb scrolls past
+        </div>
+
+        {/* Timeline track */}
+        <div style={{ position: 'relative', marginBottom: 32 }}>
+          {/* Hook segment */}
+          <div style={{
+            display: 'inline-block',
+            width: '30%',
+            verticalAlign: 'top',
+          }}>
+            <div style={{
+              height: 18,
+              background: 'linear-gradient(90deg, #7C3AED, #A78BFF)',
+              borderRadius: '9px 0 0 9px',
+            }} />
+          </div>
+          {/* Look segment */}
+          <div style={{
+            display: 'inline-block',
+            width: '70%',
+            verticalAlign: 'top',
+          }}>
+            <div style={{
+              height: 18,
+              background: 'var(--bg-elevated, rgba(0,0,0,0.06))',
+              borderRadius: '0 9px 9px 0',
+              border: '1px solid var(--border)',
+              borderLeft: 'none',
+            }} />
+          </div>
+
+          {/* Tick labels */}
+          <div style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            marginTop: 8,
+            fontSize: 10,
+            letterSpacing: 0.6,
+            color: 'var(--fg-faint)',
+            fontWeight: 700,
+          }}>
+            <span>0 ms</span>
+            <span style={{ marginLeft: '28%' }}>~150 ms</span>
+            <span>500 ms</span>
+          </div>
+        </div>
+
+        {/* Two columns */}
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24 }}>
+          <div>
+            <div style={{
+              fontSize: 10,
+              letterSpacing: 0.7,
+              fontWeight: 800,
+              color: 'var(--accent)',
+              marginBottom: 6,
+            }}>
+              01 · THE HOOK
+            </div>
+            <div style={{ fontSize: 15, fontWeight: 700, color: 'var(--fg-strong)', marginBottom: 6 }}>
+              Lizard brain
+            </div>
+            <div style={{ fontSize: 13, color: 'var(--fg-secondary)', lineHeight: 1.5 }}>
+              Feel something — fear, recognition, curiosity, humor, status.
+              <strong style={{ color: 'var(--fg)' }}> Before reading anything.</strong>
+            </div>
+          </div>
+          <div>
+            <div style={{
+              fontSize: 10,
+              letterSpacing: 0.7,
+              fontWeight: 800,
+              color: 'var(--fg-muted)',
+              marginBottom: 6,
+            }}>
+              02 · THE LOOK
+            </div>
+            <div style={{ fontSize: 15, fontWeight: 700, color: 'var(--fg-strong)', marginBottom: 6 }}>
+              Visual cortex
+            </div>
+            <div style={{ fontSize: 13, color: 'var(--fg-secondary)', lineHeight: 1.5 }}>
+              Read the brand, headline, CTA. Only happens if the hook earned the
+              attention.
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom note */}
+        <div style={{
+          marginTop: 24,
+          paddingTop: 18,
+          borderTop: '1px solid var(--border)',
+          fontSize: 13,
+          color: 'var(--fg-secondary)',
+          fontStyle: 'italic',
+        }}>
+          Get the order wrong — design the look without owning the hook —
+          and the prettiest ad in the feed dies to a scroll.
+        </div>
+      </div>
+      <figcaption className={s.figureCaption}>
+        The attention window — the case study&apos;s thesis as a diagram. Hook is the smaller slice and the louder lever; look is the larger slice and the necessary follow-through.
+      </figcaption>
+    </figure>
+  );
+}
+
+function MVPBrandSystemChart() {
+  const cells = [
+    { label: 'LOGO', sub: '+ monogram variant', tone: 'mark' },
+    { label: 'COLOURS', sub: 'two — feed-tested', tone: 'colours' },
+    { label: 'TYPE', sub: 'two families, fallback', tone: 'type' },
+    { label: 'VOICE', sub: 'headline-mode rules', tone: 'voice' },
+  ] as const;
+
+  return (
+    <figure className={s.figure}>
+      <div style={chartCard}>
+        <div style={chartEyebrow}>
+          MVP brand system · primitives that ship the first ads
+        </div>
+
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(4, 1fr)',
+          gap: 14,
+          marginBottom: 28,
+        }}>
+          {cells.map((c) => (
+            <div key={c.label} style={{
+              padding: '20px 16px',
+              border: '1px solid var(--border)',
+              borderRadius: 10,
+              background: 'var(--bg-elevated, rgba(0,0,0,0.02))',
+              minHeight: 132,
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'space-between',
+            }}>
+              <div style={{
+                height: 56,
+                marginBottom: 14,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}>
+                {c.tone === 'mark' && (
+                  <div style={{
+                    width: 44, height: 44,
+                    borderRadius: 10,
+                    background: 'linear-gradient(135deg, #7C3AED, #F472B6)',
+                    color: '#fff',
+                    fontWeight: 900,
+                    fontSize: 24,
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  }}>A</div>
+                )}
+                {c.tone === 'colours' && (
+                  <div style={{ display: 'flex', gap: 6 }}>
+                    <div style={{ width: 36, height: 36, borderRadius: 8, background: '#7C3AED' }} />
+                    <div style={{ width: 36, height: 36, borderRadius: 8, background: '#F472B6' }} />
+                  </div>
+                )}
+                {c.tone === 'type' && (
+                  <div style={{ display: 'flex', alignItems: 'baseline', gap: 10, color: 'var(--fg-strong)' }}>
+                    <span style={{ fontWeight: 800, fontSize: 30, letterSpacing: -0.5 }}>Aa</span>
+                    <span style={{ fontWeight: 400, fontSize: 18, fontFamily: 'Georgia, serif' }}>Aa</span>
+                  </div>
+                )}
+                {c.tone === 'voice' && (
+                  <div style={{
+                    width: '100%',
+                    color: 'var(--fg-secondary)',
+                    fontSize: 11,
+                    lineHeight: 1.4,
+                    fontStyle: 'italic',
+                  }}>
+                    &ldquo;Outcome-led<br />
+                    headlines.<br />
+                    No filler.&rdquo;
+                  </div>
+                )}
+              </div>
+              <div>
+                <div style={{
+                  fontSize: 10,
+                  letterSpacing: 0.7,
+                  fontWeight: 800,
+                  color: 'var(--accent)',
+                  marginBottom: 4,
+                }}>{c.label}</div>
+                <div style={{ fontSize: 11.5, color: 'var(--fg-muted)' }}>{c.sub}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Pipeline timeline */}
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 18, marginTop: 8 }}>
+          <div style={{
+            padding: '14px 18px',
+            background: 'var(--accent-bg, rgba(124,58,237,0.08))',
+            border: '1px solid var(--accent-line, rgba(124,58,237,0.3))',
+            borderRadius: 10,
+          }}>
+            <div style={{ fontSize: 10, letterSpacing: 0.7, fontWeight: 700, color: 'var(--accent)', marginBottom: 4 }}>
+              DAY 2
+            </div>
+            <div style={{ fontSize: 13, color: 'var(--fg-strong)' }}>
+              MVP primitives done · first ads in motion
+            </div>
+          </div>
+          <div style={{
+            padding: '14px 18px',
+            border: '1px solid var(--border)',
+            borderRadius: 10,
+          }}>
+            <div style={{ fontSize: 10, letterSpacing: 0.7, fontWeight: 700, color: 'var(--fg-muted)', marginBottom: 4 }}>
+              IN PARALLEL · WEEKS 1–4
+            </div>
+            <div style={{ fontSize: 13, color: 'var(--fg-strong)' }}>
+              Full brand system fills in around the ads
+            </div>
+          </div>
+        </div>
+      </div>
+      <figcaption className={s.figureCaption}>
+        The MVP brand system — the four primitives an ad actually needs. Once these ship, ads can run while the full system fills in behind them. Day-two creative beats week-four creative every time.
+      </figcaption>
+    </figure>
+  );
+}
+
+function ClientGrowthChart() {
+  // Stylized 90-day cumulative client signups — accelerating curve.
+  // Points are illustrative (not exact telemetry); shape tells the story.
+  const points = [
+    { d: 0,  c: 0  },
+    { d: 7,  c: 2  },
+    { d: 14, c: 5  },
+    { d: 21, c: 9  },
+    { d: 30, c: 14 },
+    { d: 45, c: 22 },
+    { d: 60, c: 30 },
+    { d: 75, c: 36 },
+    { d: 90, c: 42 },
+  ];
+  const W = 560, H = 220, PL = 44, PR = 16, PT = 16, PB = 32;
+  const innerW = W - PL - PR, innerH = H - PT - PB;
+  const xFor = (d: number) => PL + (d / 90) * innerW;
+  const yFor = (c: number) => PT + innerH - (c / 45) * innerH;
+  const linePath = points.map((p, i) => `${i === 0 ? 'M' : 'L'} ${xFor(p.d).toFixed(1)} ${yFor(p.c).toFixed(1)}`).join(' ');
+  const areaPath = `${linePath} L ${xFor(90).toFixed(1)} ${PT + innerH} L ${xFor(0).toFixed(1)} ${PT + innerH} Z`;
+
+  return (
+    <figure className={s.figure}>
+      <div style={chartCard}>
+        <div style={chartEyebrow}>
+          90 days · cumulative Full-Stack ABM client signups
+        </div>
+
+        <svg viewBox={`0 0 ${W} ${H}`} style={{ width: '100%', height: 'auto', display: 'block' }}>
+          <defs>
+            <linearGradient id="growthArea" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="#7C3AED" stopOpacity="0.32" />
+              <stop offset="100%" stopColor="#7C3AED" stopOpacity="0.02" />
+            </linearGradient>
+            <linearGradient id="growthLine" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stopColor="#7C3AED" />
+              <stop offset="60%" stopColor="#A78BFF" />
+              <stop offset="100%" stopColor="#F472B6" />
+            </linearGradient>
+          </defs>
+
+          {/* Y gridlines */}
+          {[0, 10, 20, 30, 40].map((c) => (
+            <g key={c}>
+              <line
+                x1={PL} x2={W - PR}
+                y1={yFor(c)} y2={yFor(c)}
+                stroke="currentColor"
+                strokeOpacity="0.10"
+                strokeWidth="1"
+              />
+              <text
+                x={PL - 8}
+                y={yFor(c) + 4}
+                textAnchor="end"
+                fontSize="10"
+                fill="currentColor"
+                opacity="0.45"
+                fontFamily="inherit"
+              >
+                {c}
+              </text>
+            </g>
+          ))}
+
+          {/* X tick labels */}
+          {[0, 30, 60, 90].map((d) => (
+            <text
+              key={d}
+              x={xFor(d)}
+              y={H - 8}
+              textAnchor="middle"
+              fontSize="10"
+              fill="currentColor"
+              opacity="0.45"
+              fontFamily="inherit"
+            >
+              Day {d}
+            </text>
+          ))}
+
+          {/* Area fill */}
+          <path d={areaPath} fill="url(#growthArea)" />
+
+          {/* Line */}
+          <path d={linePath} fill="none" stroke="url(#growthLine)" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+
+          {/* Final dot + label */}
+          <circle cx={xFor(90)} cy={yFor(42)} r="6" fill="#F472B6" stroke="#fff" strokeWidth="2" />
+          <text
+            x={xFor(90) - 8}
+            y={yFor(42) - 10}
+            textAnchor="end"
+            fontSize="13"
+            fontWeight="700"
+            fill="currentColor"
+          >
+            40+ clients
+          </text>
+        </svg>
+
+        {/* Bottom note */}
+        <div style={{
+          marginTop: 16,
+          paddingTop: 14,
+          borderTop: '1px solid var(--border)',
+          fontSize: 12,
+          color: 'var(--fg-secondary)',
+          fontStyle: 'italic',
+        }}>
+          Shape, not telemetry — the curve illustrates the acceleration we
+          observed once the trigger framework was in production. Numbers
+          inside the case study are the verifiable ones.
+        </div>
+      </div>
+      <figcaption className={s.figureCaption}>
+        The 90-day signal — cumulative client signups from launch. The framework took the first month to harden; the second month is where it started compounding.
+      </figcaption>
+    </figure>
+  );
+}
+
+// ──────────────────────────────────────────────────────────────────────────
 // Main page
 // ──────────────────────────────────────────────────────────────────────────
 
@@ -448,13 +893,9 @@ export default function CaseClient() {
 
           {/* CONTENT */}
           <main className={s.content}>
-            {/* HERO IMAGE */}
+            {/* HERO CHART */}
             <Reveal>
-              <Figure
-                src={IMG.deckAshield}
-                caption="The Statement of Work cover for AShield — one of the first three customers to take Full-Stack ABM Services. The deck is where every engagement starts, before a single ad is designed."
-                onOpen={openLightbox}
-              />
+              <ImpressionsVsClicksChart />
             </Reveal>
 
             {/* ABOUT */}
@@ -763,11 +1204,7 @@ export default function CaseClient() {
                   and the prettiest design in the world dies in the
                   feed.
                 </p>
-                <Figure
-                  src={IMG.adRefoldSnail}
-                  caption="Refold AI &mdash; the snail ad. &quot;Months do integrations? Incorta did it in hours.&quot; Two snails &mdash; one chained, one with rockets. The visual is the hook. It&apos;s funny, it&apos;s a pattern interrupt, it makes a complex technical claim instantly readable. The look serves the hook, not the other way around."
-                  onOpen={openLightbox}
-                />
+                <HookVsLookChart />
                 <p className={s.p}>
                   <strong>The call.</strong> I could have kept making
                   beautiful, polished ads in the brand&apos;s visual
@@ -1018,11 +1455,7 @@ export default function CaseClient() {
                   The cost: more design judgment per ad. The win:
                   brand-coherent campaigns that still surprise.
                 </p>
-                <Figure
-                  src={IMG.deckGalent}
-                  caption="Galant — the proposal cover. &quot;From Strategy to Measurable Pipeline Growth.&quot; The brand system that came out of this engagement was built around the same outcome-first sentence the deck opens with. Brand language and ad language converge on the same north star."
-                  onOpen={openLightbox}
-                />
+                <MVPBrandSystemChart />
               </Reveal>
             </section>
 
@@ -1119,6 +1552,7 @@ export default function CaseClient() {
                     </div>
                   </div>
                 </div>
+                <ClientGrowthChart />
                 <p className={s.p}>
                   The qualitative result I&apos;m proudest of is what
                   customers stopped saying. The &quot;impressions but no
