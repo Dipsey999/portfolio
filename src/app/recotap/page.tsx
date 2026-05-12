@@ -46,15 +46,15 @@ const PROJECTS: ProjectCardItem[] = [
     action: 'Open →',
   },
   {
-    href: 'mailto:jizan.ux@gmail.com?subject=Full-Stack%20ABM%20Services',
-    external: true,
+    href: '/full-stack-abm/hook-before-the-look/',
     company: 'Full-Stack ABM Services',
-    title: 'Strategy, creative, and execution for B2B teams.',
-    meta: 'Service offering · The operating layer over Recotap',
+    title: 'Hook before the look — winning ads, end to end.',
+    meta: 'Case study · 40+ clients in 90 days · Lead Designer',
     art: '/images/orchastration-img.png',
     artBg: 'linear-gradient(140deg, #2a1f4a 0%, #16112a 60%, #16112a 100%)',
     accent: '#A78BFF',
-    action: 'Request ↗',
+    cursor: 'open',
+    action: 'Open →',
   },
 ];
 
