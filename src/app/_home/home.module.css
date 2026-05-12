@@ -672,83 +672,10 @@
   color: rgba(245, 241, 232, 0.4);
 }
 
-/* —— Blueprint theme override —————————————————————————————————
-   When .blueprint is added to .root the entire page swaps to a
-   technical schematic palette: cyan accent, deep navy bg, faint
-   grid lines, and a more monospace typographic voice for headlines. */
-.root:global(.blueprint) {
-  background: #06121a;
-}
-.root:global(.blueprint)::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 1;
-  background:
-    linear-gradient(rgba(98, 214, 255, 0.05) 1px, transparent 1px) 0 0 / 56px 56px,
-    linear-gradient(90deg, rgba(98, 214, 255, 0.05) 1px, transparent 1px) 0 0 / 56px 56px;
-  mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
-  -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
-}
-
-.root:global(.blueprint) .name {
-  background: linear-gradient(100deg, #d8f5ff, #62d6ff 50%, #d8f5ff 100%);
-  background-size: 220% 100%;
-  background-position: 0% 50%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-.root:global(.blueprint) .recotapInk {
-  background: linear-gradient(90deg, #62d6ff, #6ce0d6);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-.root:global(.blueprint) .warmInk {
-  color: #62d6ff;
-}
-.root:global(.blueprint) .skillTitle,
-.root:global(.blueprint) .ctaTitle em,
-.root:global(.blueprint) .title em {
-  background: linear-gradient(135deg, #62d6ff, #6ce0d6);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  font-family: var(--font-geist-mono), ui-monospace, monospace;
-  font-style: normal;
-  letter-spacing: 0;
-}
-.root:global(.blueprint) .ctaPrimary {
-  background: #62d6ff;
-  color: #06121a;
-}
-.root:global(.blueprint) .ctaButton {
-  background: linear-gradient(90deg, #62d6ff, #6ce0d6);
-  color: #06121a;
-  box-shadow: 0 10px 40px -10px rgba(98, 214, 255, 0.5);
-}
-.root:global(.blueprint) .ctaButton:hover {
-  box-shadow: 0 22px 60px -10px rgba(98, 214, 255, 0.7);
-}
-.root:global(.blueprint) .roleLine .live {
-  background: #62d6ff;
-  box-shadow: 0 0 10px rgba(98, 214, 255, 0.6);
-}
-.root:global(.blueprint) .navInner,
-.root:global(.blueprint) .toolbeltChip,
-.root:global(.blueprint) .roleLine,
-.root:global(.blueprint) .skillCell,
-.root:global(.blueprint) .card {
-  border-color: rgba(98, 214, 255, 0.18);
-}
-.root:global(.blueprint) .navDot {
-  background: linear-gradient(90deg, #62d6ff, #6ce0d6);
-}
-.root:global(.blueprint) .skillCell {
-  background: rgba(98, 214, 255, 0.04);
-}
+/* Theme overrides (Particles / Space / Ocean) live on the Three.js
+   hero scene, not in the foreground content. The page content is
+   theme-neutral so the case studies read identically across the three
+   ambient backgrounds. */
 
 /* Simple fade-in-up that doesn't depend on JS / IntersectionObserver. */
 .reveal {

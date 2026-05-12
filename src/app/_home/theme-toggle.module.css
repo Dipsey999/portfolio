@@ -16,21 +16,29 @@
   border-color: rgba(245, 241, 232, 0.3);
   color: #f5f1e8;
 }
+
 .knob {
   display: inline-block;
   width: 14px;
   height: 14px;
   border-radius: 999px;
   background: linear-gradient(135deg, #f6a340, #ea4aaa);
-  transition: background 280ms cubic-bezier(0.16, 1, 0.3, 1);
+  transition: background 320ms cubic-bezier(0.16, 1, 0.3, 1);
 }
+
+/* Per-theme knob gradient — driven by data-theme on the button itself */
+.toggle[data-theme="particles"] .knob {
+  background: linear-gradient(135deg, #f6a340, #ea4aaa);
+}
+.toggle[data-theme="space"] .knob {
+  background: linear-gradient(135deg, #4f6bff, #b06bff);
+}
+.toggle[data-theme="ocean"] .knob {
+  background: linear-gradient(135deg, #34d2ff, #4ce0c6);
+}
+
 .label {
   font-size: 10px;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-}
-
-/* In Blueprint mode, swap the knob to cyan to mirror the theme. */
-:global(.blueprint) .knob {
-  background: linear-gradient(135deg, #62d6ff, #6ce0d6);
 }

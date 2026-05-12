@@ -71,10 +71,10 @@ export function CommandPalette() {
       },
       {
         id: 'act-theme',
-        label: 'Toggle theme — Studio ↔ Blueprint',
+        label: 'Cycle theme — Particles · Space · Ocean',
         group: 'Action',
         perform: () => window.dispatchEvent(new CustomEvent('jizan:theme:toggle')),
-        keywords: ['theme', 'mode', 'dark', 'light', 'blueprint', 'studio'],
+        keywords: ['theme', 'mode', 'particles', 'space', 'ocean', 'cycle'],
       },
 
       // Easter eggs — designed to make recruiters smile

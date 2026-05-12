@@ -11,7 +11,7 @@ import { SmoothScroll } from './smooth-scroll';
 import { Boot } from './boot';
 import { ThemeToggleButton, useHomeTheme } from './theme-toggle';
 
-const HeroScene = dynamic(
+const HeroScene = dynamic<{ theme: 'particles' | 'space' | 'ocean' }>(
   () => import('./hero-scene').then((m) => m.HeroScene),
   { ssr: false },
 );
@@ -39,13 +39,13 @@ export function PageShell({ children }: { children: ReactNode }) {
   const isAbout = pathStartsWithAny(pathname, ['/about-me']);
 
   return (
-    <div className={`${s.root} ${s.grain} ${theme === 'blueprint' ? 'blueprint' : ''}`}>
+    <div className={`${s.root} ${s.grain} theme-${theme}`} data-theme={theme}>
       <Boot />
       <SmoothScroll />
       <Cursor />
       <CommandPalette />
       <div className={s.canvasShell} aria-hidden>
-        <HeroScene />
+        <HeroScene theme={theme} />
       </div>
 
       <header className={s.nav}>
