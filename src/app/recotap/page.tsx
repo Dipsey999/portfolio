@@ -241,15 +241,17 @@ export default function RecotapPage() {
             <Reveal>
               <header className={s.sectionHead}>
                 <div>
-                  <p className={s.sectionLabel}>§ 04 — The Recotap surface area</p>
+                  <p className={s.sectionLabel}>§ 04 — Where I design at Recotap</p>
                   <h2 className={s.sectionTitle}>
-                    One platform. Three companions.{' '}
+                    Four surfaces.{' '}
                     <em className={r.chapterAccent}>One designer.</em>
                   </h2>
                 </div>
                 <p className={s.sectionLede}>
-                  Each card below is a real production surface I lead design on. Two are
-                  public products you can poke at right now; two are internal / on-request.
+                  Three live products and the service layer that wraps them
+                  — every card below is a real surface I lead, end-to-end.
+                  One design language across all four. Two are public; two
+                  are internal or by request.
                 </p>
               </header>
             </Reveal>
