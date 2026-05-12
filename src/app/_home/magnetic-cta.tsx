@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import type { ReactNode } from 'react';
+import type { CSSProperties, ReactNode } from 'react';
 import { useMagnetic } from './use-magnetic';
 
 /** A magnetic Link/anchor wrapper. The button gently pulls toward the
@@ -11,12 +11,14 @@ export function MagneticCta({
   external,
   className,
   cursor,
+  style,
   children,
 }: {
   href: string;
   external?: boolean;
   className: string;
   cursor?: string;
+  style?: CSSProperties;
   children: ReactNode;
 }) {
   const ref = useMagnetic<HTMLAnchorElement>(0.32, 100);
@@ -27,6 +29,7 @@ export function MagneticCta({
         href={href}
         className={className}
         data-cursor={cursor ?? 'hover'}
+        style={style}
         target="_blank"
         rel="noopener noreferrer"
       >
@@ -35,7 +38,13 @@ export function MagneticCta({
     );
   }
   return (
-    <Link ref={ref as never} href={href} className={className} data-cursor={cursor ?? 'hover'}>
+    <Link
+      ref={ref as never}
+      href={href}
+      className={className}
+      data-cursor={cursor ?? 'hover'}
+      style={style}
+    >
       {children}
     </Link>
   );

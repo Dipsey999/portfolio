@@ -106,14 +106,20 @@ export default function HomePage() {
               </Reveal>
               <Reveal delay={0.32}>
                 <div className={s.ctaRow}>
-                  <MagneticCta href="/all-projects/" className={s.ctaPrimary}>
-                    See selected work <span className={s.arrow}>→</span>
+                  <MagneticCta
+                    href="mailto:jizan.ux@gmail.com"
+                    external
+                    className={s.ctaPrimary}
+                    style={{
+                      background: 'linear-gradient(135deg, #f6a340, #ea4aaa)',
+                      color: '#fff',
+                      boxShadow: '0 10px 28px rgba(246, 163, 64, 0.25), 0 2px 8px rgba(234, 74, 170, 0.18)',
+                    }}
+                  >
+                    Get in touch <span className={s.arrow}>→</span>
                   </MagneticCta>
                   <MagneticCta href="/ai-craft/" className={s.ctaGhost}>
                     Read AI-craft notes
-                  </MagneticCta>
-                  <MagneticCta href="mailto:jizan.ux@gmail.com" external className={s.ctaGhost}>
-                    Get in touch
                   </MagneticCta>
                 </div>
               </Reveal>
@@ -162,19 +168,6 @@ export default function HomePage() {
                 </p>
               </Reveal>
               <Reveal delay={0.42}>
-                <p className={s.bioLine}>
-                  <span className={s.bioMuted}>
-                    I ship end-to-end — strategy, design, and the live
-                    front-end code. The Angular SPA at{' '}
-                  </span>
-                  <strong>adradar.app</strong>
-                  <span className={s.bioMuted}>, the Webflow site at </span>
-                  <strong>recotap.com</strong>
-                  <span className={s.bioMuted}>, and this Next.js portfolio</span>
-                  <span className={s.bioMuted}> are all mine, top to bottom.</span>
-                </p>
-              </Reveal>
-              <Reveal delay={0.5}>
                 <p className={s.askLine}>
                   Looking for a <strong>Product Designer</strong> role at an{' '}
                   <strong>AI startup or gaming studio</strong> for the 2026 cycle.
