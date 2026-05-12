@@ -30,11 +30,19 @@
 .toggle[data-theme="particles"] .knob {
   background: linear-gradient(135deg, #f6a340, #ea4aaa);
 }
-.toggle[data-theme="space"] .knob {
-  background: linear-gradient(135deg, #4f6bff, #b06bff);
-}
-.toggle[data-theme="ocean"] .knob {
-  background: linear-gradient(135deg, #34d2ff, #4ce0c6);
+/* Aurora — iridescent rainbow band, mimics the oil-slick sheen of the
+   form on the canvas. */
+.toggle[data-theme="aurora"] .knob {
+  background: conic-gradient(
+    from 180deg,
+    #ffb3b3,
+    #ffd58a,
+    #b5f5b5,
+    #8ed7ff,
+    #c290ff,
+    #ff8fc8,
+    #ffb3b3
+  );
 }
 
 .label {

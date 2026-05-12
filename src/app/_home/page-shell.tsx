@@ -11,7 +11,7 @@ import { SmoothScroll } from './smooth-scroll';
 import { Boot } from './boot';
 import { ThemeToggleButton, useHomeTheme } from './theme-toggle';
 
-const HeroScene = dynamic<{ theme: 'particles' | 'space' | 'ocean' }>(
+const HeroScene = dynamic<{ theme: 'particles' | 'aurora' }>(
   () => import('./hero-scene').then((m) => m.HeroScene),
   { ssr: false },
 );
