@@ -11,6 +11,112 @@ import { ProjectCard, type ProjectCardItem } from '../_home/project-card';
 
 const ACCENT = '#5CF0A4';
 
+// ──────────────────────────────────────────────────────────────────────────
+// Logo marks — inline SVG approximations of the marks I designed.
+// If you want pixel-perfect, swap each component body for an <img> pointing
+// at /images/recotap-mark.svg and /images/adradar-mark.svg respectively.
+// ──────────────────────────────────────────────────────────────────────────
+
+function RecotapMark() {
+  // "REC" + chat-bubble target (the redesigned mark replacing the "O") + "TAP"
+  // Mark colour: Recotap blue. Wordmark: heavy sans-serif, near-black.
+  const BLUE = '#28A9E0';
+  const INK = '#0F1216';
+  return (
+    <svg
+      viewBox="0 0 540 130"
+      role="img"
+      aria-label="Recotap"
+      style={{ width: '100%', maxWidth: 360, height: 'auto', display: 'block' }}
+    >
+      <text
+        x="0"
+        y="92"
+        fill={INK}
+        fontFamily="Inter, system-ui, sans-serif"
+        fontWeight="900"
+        fontSize="100"
+        letterSpacing="-3"
+      >
+        REC
+      </text>
+      {/* Target mark — replaces the "O" */}
+      <g transform="translate(225, 22)">
+        <circle cx="50" cy="50" r="46" fill="none" stroke={BLUE} strokeWidth="14" />
+        <circle cx="50" cy="50" r="18" fill={BLUE} />
+        <path d="M 38 92 L 50 120 L 62 92 Z" fill={BLUE} />
+      </g>
+      <text
+        x="345"
+        y="92"
+        fill={INK}
+        fontFamily="Inter, system-ui, sans-serif"
+        fontWeight="900"
+        fontSize="100"
+        letterSpacing="-3"
+      >
+        TAP
+      </text>
+    </svg>
+  );
+}
+
+function AdRadarMark() {
+  // Coral radar (3 concentric broken arcs) + pink inner circle + dark wedge,
+  // then "adRadar" wordmark in mixed case.
+  const CORAL = '#E55B5B';
+  const CORAL_DEEP = '#C4453E';
+  const PINK = '#F3C2BD';
+  const INK = '#0F1216';
+  return (
+    <svg
+      viewBox="0 0 540 150"
+      role="img"
+      aria-label="adRadar"
+      style={{ width: '100%', maxWidth: 360, height: 'auto', display: 'block' }}
+    >
+      <g transform="translate(8, 8)">
+        {/* Three concentric radar arcs — each one is a broken ring */}
+        {/* Outermost */}
+        <path
+          d="M 130 70 A 60 60 0 1 1 70 10"
+          fill="none"
+          stroke={CORAL}
+          strokeWidth="9"
+          strokeLinecap="round"
+        />
+        {/* Middle */}
+        <path
+          d="M 110 70 A 40 40 0 0 0 32 78"
+          fill="none"
+          stroke={CORAL}
+          strokeWidth="9"
+          strokeLinecap="round"
+        />
+        {/* Inner pink fill */}
+        <circle cx="70" cy="70" r="22" fill={PINK} />
+        {/* Wedge / cursor */}
+        <path
+          d="M 70 70 L 88 56 L 92 68 Z"
+          fill={CORAL_DEEP}
+        />
+      </g>
+      {/* Wordmark */}
+      <text
+        x="170"
+        y="100"
+        fill={INK}
+        fontFamily="Inter, system-ui, sans-serif"
+        fontWeight="700"
+        fontSize="78"
+        letterSpacing="-2"
+      >
+        adRadar
+      </text>
+    </svg>
+  );
+}
+
 const PROJECTS: ProjectCardItem[] = [
   {
     href: '/recotap/improving-the-platform/',
@@ -235,13 +341,162 @@ export default function RecotapPage() {
           </div>
         </section>
 
+        {/* Brand & web — logos I designed, sites I built */}
+        <section className={s.section}>
+          <div className={s.container}>
+            <Reveal>
+              <header className={s.sectionHead}>
+                <div>
+                  <p className={s.sectionLabel}>§ 04 — Brand &amp; web</p>
+                  <h2 className={s.sectionTitle}>
+                    Two marks.{' '}
+                    <em className={r.chapterAccent}>Two stacks.</em>
+                  </h2>
+                </div>
+                <p className={s.sectionLede}>
+                  I redesigned the <strong>Recotap</strong> mark and
+                  designed the <strong>AdRadar</strong> mark — and then
+                  built both marketing sites that live behind them, on
+                  two deliberately different stacks: Recotap on{' '}
+                  <strong>Webflow</strong> for design-to-publish speed,
+                  AdRadar on <strong>Angular</strong> for the custom
+                  product-style interactions the new mark deserved.
+                </p>
+              </header>
+            </Reveal>
+
+            <Reveal delay={0.1}>
+              <div
+                style={{
+                  display: 'grid',
+                  gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+                  gap: 20,
+                  marginTop: 28,
+                }}
+              >
+                {/* Recotap card */}
+                <a
+                  href="https://www.recotap.com/"
+                  target="_blank"
+                  rel="noreferrer"
+                  data-cursor="open"
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    padding: 28,
+                    borderRadius: 16,
+                    border: '1px solid rgba(255,255,255,0.10)',
+                    background:
+                      'linear-gradient(140deg, rgba(40, 169, 224, 0.08) 0%, rgba(40, 169, 224, 0.02) 100%)',
+                    color: 'inherit',
+                    textDecoration: 'none',
+                    minHeight: 240,
+                    position: 'relative',
+                    overflow: 'hidden',
+                  }}
+                >
+                  <div
+                    style={{
+                      flex: '1 1 auto',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'flex-start',
+                      paddingBottom: 24,
+                    }}
+                  >
+                    <RecotapMark />
+                  </div>
+                  <div
+                    style={{
+                      display: 'grid',
+                      gridTemplateColumns: '64px 1fr auto',
+                      rowGap: 8,
+                      columnGap: 16,
+                      paddingTop: 18,
+                      borderTop: '1px solid rgba(255,255,255,0.08)',
+                      fontSize: 13,
+                      lineHeight: 1.45,
+                    }}
+                  >
+                    <span style={{ opacity: 0.55, letterSpacing: 0.4, textTransform: 'uppercase', fontSize: 11, fontWeight: 700 }}>Mark</span>
+                    <span>Redesign · 2024</span>
+                    <span />
+                    <span style={{ opacity: 0.55, letterSpacing: 0.4, textTransform: 'uppercase', fontSize: 11, fontWeight: 700 }}>Site</span>
+                    <span>Built on Webflow</span>
+                    <span />
+                    <span style={{ opacity: 0.55, letterSpacing: 0.4, textTransform: 'uppercase', fontSize: 11, fontWeight: 700 }}>Visit</span>
+                    <span>recotap.com</span>
+                    <span style={{ color: '#28A9E0', fontWeight: 700 }}>↗</span>
+                  </div>
+                </a>
+
+                {/* AdRadar card */}
+                <a
+                  href="https://www.adradar.app/"
+                  target="_blank"
+                  rel="noreferrer"
+                  data-cursor="open"
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    padding: 28,
+                    borderRadius: 16,
+                    border: '1px solid rgba(255,255,255,0.10)',
+                    background:
+                      'linear-gradient(140deg, rgba(229, 91, 91, 0.08) 0%, rgba(229, 91, 91, 0.02) 100%)',
+                    color: 'inherit',
+                    textDecoration: 'none',
+                    minHeight: 240,
+                    position: 'relative',
+                    overflow: 'hidden',
+                  }}
+                >
+                  <div
+                    style={{
+                      flex: '1 1 auto',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'flex-start',
+                      paddingBottom: 24,
+                    }}
+                  >
+                    <AdRadarMark />
+                  </div>
+                  <div
+                    style={{
+                      display: 'grid',
+                      gridTemplateColumns: '64px 1fr auto',
+                      rowGap: 8,
+                      columnGap: 16,
+                      paddingTop: 18,
+                      borderTop: '1px solid rgba(255,255,255,0.08)',
+                      fontSize: 13,
+                      lineHeight: 1.45,
+                    }}
+                  >
+                    <span style={{ opacity: 0.55, letterSpacing: 0.4, textTransform: 'uppercase', fontSize: 11, fontWeight: 700 }}>Mark</span>
+                    <span>New · 2025</span>
+                    <span />
+                    <span style={{ opacity: 0.55, letterSpacing: 0.4, textTransform: 'uppercase', fontSize: 11, fontWeight: 700 }}>Site</span>
+                    <span>Custom Angular build</span>
+                    <span />
+                    <span style={{ opacity: 0.55, letterSpacing: 0.4, textTransform: 'uppercase', fontSize: 11, fontWeight: 700 }}>Visit</span>
+                    <span>adradar.app</span>
+                    <span style={{ color: '#E55B5B', fontWeight: 700 }}>↗</span>
+                  </div>
+                </a>
+              </div>
+            </Reveal>
+          </div>
+        </section>
+
         {/* Surface area cards */}
         <section className={s.section}>
           <div className={s.container}>
             <Reveal>
               <header className={s.sectionHead}>
                 <div>
-                  <p className={s.sectionLabel}>§ 04 — Where I design at Recotap</p>
+                  <p className={s.sectionLabel}>§ 05 — Where I design at Recotap</p>
                   <h2 className={s.sectionTitle}>
                     Four surfaces.{' '}
                     <em className={r.chapterAccent}>One designer.</em>
@@ -267,7 +522,7 @@ export default function RecotapPage() {
         <section className={s.cta}>
           <div className={s.container}>
             <Reveal>
-              <p className={s.sectionLabel}>§ 05 — Want the case studies?</p>
+              <p className={s.sectionLabel}>§ 06 — Want the case studies?</p>
               <h2 className={s.ctaTitle}>
                 I&apos;ll walk you through it. <em>Live.</em>
               </h2>
