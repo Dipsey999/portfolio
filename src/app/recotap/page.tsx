@@ -277,34 +277,82 @@ export default function RecotapPage() {
                   style={{
                     display: 'flex',
                     flexDirection: 'column',
-                    padding: 28,
+                    padding: 24,
                     borderRadius: 16,
                     border: '1px solid rgba(255,255,255,0.10)',
                     background:
-                      'linear-gradient(140deg, rgba(40, 169, 224, 0.08) 0%, rgba(40, 169, 224, 0.02) 100%)',
+                      'linear-gradient(140deg, rgba(40, 169, 224, 0.10) 0%, rgba(40, 169, 224, 0.02) 100%)',
                     color: 'inherit',
                     textDecoration: 'none',
-                    minHeight: 240,
                     position: 'relative',
                     overflow: 'hidden',
+                    gap: 18,
                   }}
                 >
+                  {/* Logo */}
                   <div
                     style={{
-                      flex: '1 1 auto',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'flex-start',
-                      paddingBottom: 24,
+                      minHeight: 56,
                     }}
                   >
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src="/images/recotap-logo.svg"
                       alt="Recotap"
-                      style={{ width: '100%', maxWidth: 280, height: 'auto', display: 'block' }}
+                      style={{ width: '100%', maxWidth: 200, height: 'auto', display: 'block' }}
                     />
                   </div>
+
+                  {/* Website preview — browser-style frame */}
+                  <div
+                    style={{
+                      borderRadius: 10,
+                      overflow: 'hidden',
+                      border: '1px solid rgba(255,255,255,0.10)',
+                      background: '#fff',
+                      boxShadow: '0 12px 32px rgba(0,0,0,0.18)',
+                    }}
+                  >
+                    {/* Browser chrome bar */}
+                    <div
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: 8,
+                        padding: '8px 12px',
+                        background: 'rgba(255,255,255,0.04)',
+                        borderBottom: '1px solid rgba(255,255,255,0.06)',
+                      }}
+                    >
+                      <span style={{ width: 10, height: 10, borderRadius: 5, background: 'rgba(255,255,255,0.18)' }} />
+                      <span style={{ width: 10, height: 10, borderRadius: 5, background: 'rgba(255,255,255,0.18)' }} />
+                      <span style={{ width: 10, height: 10, borderRadius: 5, background: 'rgba(255,255,255,0.18)' }} />
+                      <span style={{
+                        marginLeft: 8,
+                        padding: '3px 12px',
+                        borderRadius: 999,
+                        background: 'rgba(0,0,0,0.20)',
+                        fontSize: 11,
+                        color: 'rgba(255,255,255,0.70)',
+                        fontFamily: 'ui-monospace, SFMono-Regular, Menlo, monospace',
+                      }}>
+                        recotap.com
+                      </span>
+                    </div>
+                    {/* Screenshot */}
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src="/images/recotap-site.png"
+                      alt="recotap.com homepage"
+                      loading="lazy"
+                      style={{ width: '100%', display: 'block', aspectRatio: '16 / 10', objectFit: 'cover', objectPosition: 'top' }}
+                    />
+                  </div>
+
+                  {/* Metadata */}
                   <div
                     style={{
                       display: 'grid',
@@ -321,7 +369,7 @@ export default function RecotapPage() {
                     <span>Redesign · 2024</span>
                     <span />
                     <span style={{ opacity: 0.55, letterSpacing: 0.4, textTransform: 'uppercase', fontSize: 11, fontWeight: 700 }}>Site</span>
-                    <span>Built on Webflow</span>
+                    <span>Designed &amp; built on Webflow</span>
                     <span />
                     <span style={{ opacity: 0.55, letterSpacing: 0.4, textTransform: 'uppercase', fontSize: 11, fontWeight: 700 }}>Visit</span>
                     <span>recotap.com</span>
@@ -338,34 +386,82 @@ export default function RecotapPage() {
                   style={{
                     display: 'flex',
                     flexDirection: 'column',
-                    padding: 28,
+                    padding: 24,
                     borderRadius: 16,
                     border: '1px solid rgba(255,255,255,0.10)',
                     background:
-                      'linear-gradient(140deg, rgba(229, 91, 91, 0.08) 0%, rgba(229, 91, 91, 0.02) 100%)',
+                      'linear-gradient(140deg, rgba(229, 91, 91, 0.10) 0%, rgba(229, 91, 91, 0.02) 100%)',
                     color: 'inherit',
                     textDecoration: 'none',
-                    minHeight: 240,
                     position: 'relative',
                     overflow: 'hidden',
+                    gap: 18,
                   }}
                 >
+                  {/* Logo */}
                   <div
                     style={{
-                      flex: '1 1 auto',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'flex-start',
-                      paddingBottom: 24,
+                      minHeight: 56,
                     }}
                   >
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src="/images/adradar-logo.png"
                       alt="adRadar"
-                      style={{ width: '100%', maxWidth: 280, height: 'auto', display: 'block' }}
+                      style={{ width: '100%', maxWidth: 220, height: 'auto', display: 'block' }}
                     />
                   </div>
+
+                  {/* Website preview — browser-style frame */}
+                  <div
+                    style={{
+                      borderRadius: 10,
+                      overflow: 'hidden',
+                      border: '1px solid rgba(255,255,255,0.10)',
+                      background: '#fff',
+                      boxShadow: '0 12px 32px rgba(0,0,0,0.18)',
+                    }}
+                  >
+                    {/* Browser chrome bar */}
+                    <div
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: 8,
+                        padding: '8px 12px',
+                        background: 'rgba(255,255,255,0.04)',
+                        borderBottom: '1px solid rgba(255,255,255,0.06)',
+                      }}
+                    >
+                      <span style={{ width: 10, height: 10, borderRadius: 5, background: 'rgba(255,255,255,0.18)' }} />
+                      <span style={{ width: 10, height: 10, borderRadius: 5, background: 'rgba(255,255,255,0.18)' }} />
+                      <span style={{ width: 10, height: 10, borderRadius: 5, background: 'rgba(255,255,255,0.18)' }} />
+                      <span style={{
+                        marginLeft: 8,
+                        padding: '3px 12px',
+                        borderRadius: 999,
+                        background: 'rgba(0,0,0,0.20)',
+                        fontSize: 11,
+                        color: 'rgba(255,255,255,0.70)',
+                        fontFamily: 'ui-monospace, SFMono-Regular, Menlo, monospace',
+                      }}>
+                        adradar.app
+                      </span>
+                    </div>
+                    {/* Screenshot */}
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src="/images/adradar-site.png"
+                      alt="adradar.app homepage"
+                      loading="lazy"
+                      style={{ width: '100%', display: 'block', aspectRatio: '16 / 10', objectFit: 'cover', objectPosition: 'top' }}
+                    />
+                  </div>
+
+                  {/* Metadata */}
                   <div
                     style={{
                       display: 'grid',
@@ -382,7 +478,7 @@ export default function RecotapPage() {
                     <span>New · 2025</span>
                     <span />
                     <span style={{ opacity: 0.55, letterSpacing: 0.4, textTransform: 'uppercase', fontSize: 11, fontWeight: 700 }}>Site</span>
-                    <span>Custom Angular build</span>
+                    <span>Hand-built in Angular &mdash; from scratch</span>
                     <span />
                     <span style={{ opacity: 0.55, letterSpacing: 0.4, textTransform: 'uppercase', fontSize: 11, fontWeight: 700 }}>Visit</span>
                     <span>adradar.app</span>
