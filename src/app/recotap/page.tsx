@@ -432,7 +432,7 @@ export default function RecotapPage() {
                   marginTop: 28,
                 }}
               >
-                {/* Recotap site card */}
+                {/* Recotap site card — in iPad mockup */}
                 <a
                   href="https://www.recotap.com/"
                   target="_blank"
@@ -441,7 +441,7 @@ export default function RecotapPage() {
                   style={{
                     display: 'flex',
                     flexDirection: 'column',
-                    padding: 16,
+                    padding: 28,
                     borderRadius: 16,
                     border: '1px solid rgba(255,255,255,0.10)',
                     background:
@@ -449,54 +449,53 @@ export default function RecotapPage() {
                     color: 'inherit',
                     textDecoration: 'none',
                     overflow: 'hidden',
-                    gap: 16,
+                    gap: 24,
                   }}
                 >
-                  {/* Browser-framed screenshot */}
+                  {/* iPad device mockup */}
                   <div
                     style={{
-                      borderRadius: 10,
-                      overflow: 'hidden',
-                      border: '1px solid rgba(255,255,255,0.08)',
-                      background: '#fff',
-                      boxShadow: '0 16px 40px rgba(0,0,0,0.22)',
+                      background: '#0a0a0c',
+                      padding: 14,
+                      borderRadius: 30,
+                      border: '1px solid #1d1d22',
+                      boxShadow:
+                        '0 28px 70px rgba(0,0,0,0.45), 0 8px 20px rgba(0,0,0,0.25), inset 0 0 0 1px rgba(255,255,255,0.05)',
+                      position: 'relative',
                     }}
                   >
-                    <div
+                    {/* Camera dot */}
+                    <span
+                      aria-hidden
                       style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: 8,
-                        padding: '10px 14px',
-                        background: 'rgba(0,0,0,0.45)',
-                        borderBottom: '1px solid rgba(255,255,255,0.06)',
+                        position: 'absolute',
+                        top: 4,
+                        left: '50%',
+                        transform: 'translateX(-50%)',
+                        width: 4,
+                        height: 4,
+                        borderRadius: 2,
+                        background: '#2c2c30',
+                        boxShadow: 'inset 0 0 0 0.5px rgba(255,255,255,0.10)',
                       }}
-                    >
-                      <span style={{ width: 11, height: 11, borderRadius: 6, background: '#ff5f57' }} />
-                      <span style={{ width: 11, height: 11, borderRadius: 6, background: '#febc2e' }} />
-                      <span style={{ width: 11, height: 11, borderRadius: 6, background: '#28c840' }} />
-                      <span style={{
-                        marginLeft: 10,
-                        padding: '4px 14px',
-                        borderRadius: 999,
-                        background: 'rgba(255,255,255,0.10)',
-                        fontSize: 12,
-                        color: 'rgba(255,255,255,0.85)',
-                        fontFamily: 'ui-monospace, SFMono-Regular, Menlo, monospace',
-                      }}>
-                        recotap.com
-                      </span>
-                    </div>
+                    />
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
-                      src="/images/recotap-site.png"
-                      alt="recotap.com — homepage"
+                      src="/images/recotap-ipad.png"
+                      alt="recotap.com — homepage on iPad"
                       loading="lazy"
-                      style={{ width: '100%', display: 'block', aspectRatio: '16 / 10', objectFit: 'cover', objectPosition: 'top' }}
+                      style={{
+                        width: '100%',
+                        aspectRatio: '4 / 3',
+                        display: 'block',
+                        borderRadius: 18,
+                        objectFit: 'cover',
+                        objectPosition: 'top',
+                      }}
                     />
                   </div>
                   {/* Card meta */}
-                  <div style={{ padding: '4px 12px 12px' }}>
+                  <div style={{ padding: '0 4px' }}>
                     <div style={{ display: 'flex', alignItems: 'baseline', gap: 10, flexWrap: 'wrap', marginBottom: 6 }}>
                       <span style={{ fontSize: 17, fontWeight: 700, letterSpacing: -0.3 }}>recotap.com</span>
                       <span style={{ fontSize: 11, opacity: 0.55, letterSpacing: 0.5, textTransform: 'uppercase', fontWeight: 700, color: '#28A9E0' }}>Designed &amp; built · Webflow</span>
@@ -509,7 +508,7 @@ export default function RecotapPage() {
                   </div>
                 </a>
 
-                {/* AdRadar site card */}
+                {/* AdRadar site card — in iPad mockup */}
                 <a
                   href="https://www.adradar.app/"
                   target="_blank"
@@ -518,7 +517,7 @@ export default function RecotapPage() {
                   style={{
                     display: 'flex',
                     flexDirection: 'column',
-                    padding: 16,
+                    padding: 28,
                     borderRadius: 16,
                     border: '1px solid rgba(255,255,255,0.10)',
                     background:
@@ -526,54 +525,53 @@ export default function RecotapPage() {
                     color: 'inherit',
                     textDecoration: 'none',
                     overflow: 'hidden',
-                    gap: 16,
+                    gap: 24,
                   }}
                 >
-                  {/* Browser-framed screenshot */}
+                  {/* iPad device mockup */}
                   <div
                     style={{
-                      borderRadius: 10,
-                      overflow: 'hidden',
-                      border: '1px solid rgba(255,255,255,0.08)',
-                      background: '#fff',
-                      boxShadow: '0 16px 40px rgba(0,0,0,0.22)',
+                      background: '#0a0a0c',
+                      padding: 14,
+                      borderRadius: 30,
+                      border: '1px solid #1d1d22',
+                      boxShadow:
+                        '0 28px 70px rgba(0,0,0,0.45), 0 8px 20px rgba(0,0,0,0.25), inset 0 0 0 1px rgba(255,255,255,0.05)',
+                      position: 'relative',
                     }}
                   >
-                    <div
+                    {/* Camera dot */}
+                    <span
+                      aria-hidden
                       style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: 8,
-                        padding: '10px 14px',
-                        background: 'rgba(0,0,0,0.45)',
-                        borderBottom: '1px solid rgba(255,255,255,0.06)',
+                        position: 'absolute',
+                        top: 4,
+                        left: '50%',
+                        transform: 'translateX(-50%)',
+                        width: 4,
+                        height: 4,
+                        borderRadius: 2,
+                        background: '#2c2c30',
+                        boxShadow: 'inset 0 0 0 0.5px rgba(255,255,255,0.10)',
                       }}
-                    >
-                      <span style={{ width: 11, height: 11, borderRadius: 6, background: '#ff5f57' }} />
-                      <span style={{ width: 11, height: 11, borderRadius: 6, background: '#febc2e' }} />
-                      <span style={{ width: 11, height: 11, borderRadius: 6, background: '#28c840' }} />
-                      <span style={{
-                        marginLeft: 10,
-                        padding: '4px 14px',
-                        borderRadius: 999,
-                        background: 'rgba(255,255,255,0.10)',
-                        fontSize: 12,
-                        color: 'rgba(255,255,255,0.85)',
-                        fontFamily: 'ui-monospace, SFMono-Regular, Menlo, monospace',
-                      }}>
-                        adradar.app
-                      </span>
-                    </div>
+                    />
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
-                      src="/images/adradar-site.png"
-                      alt="adradar.app — homepage"
+                      src="/images/adradar-ipad.png"
+                      alt="adradar.app — homepage on iPad"
                       loading="lazy"
-                      style={{ width: '100%', display: 'block', aspectRatio: '16 / 10', objectFit: 'cover', objectPosition: 'top' }}
+                      style={{
+                        width: '100%',
+                        aspectRatio: '4 / 3',
+                        display: 'block',
+                        borderRadius: 18,
+                        objectFit: 'cover',
+                        objectPosition: 'top',
+                      }}
                     />
                   </div>
                   {/* Card meta */}
-                  <div style={{ padding: '4px 12px 12px' }}>
+                  <div style={{ padding: '0 4px' }}>
                     <div style={{ display: 'flex', alignItems: 'baseline', gap: 10, flexWrap: 'wrap', marginBottom: 6 }}>
                       <span style={{ fontSize: 17, fontWeight: 700, letterSpacing: -0.3 }}>adradar.app</span>
                       <span style={{ fontSize: 11, opacity: 0.55, letterSpacing: 0.5, textTransform: 'uppercase', fontWeight: 700, color: '#E55B5B' }}>Hand-coded · Angular</span>
