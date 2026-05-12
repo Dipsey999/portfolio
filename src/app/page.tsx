@@ -124,16 +124,28 @@ export default function HomePage() {
               </Reveal>
               <Reveal delay={0.18}>
                 <p className={s.bioLine}>
-                  I&apos;m an <strong>AI Product Designer</strong> based in{' '}
-                  <span className={s.bioMuted}>Bengaluru, India.</span>
+                  I design <strong>AI products</strong>.{' '}
+                  <span className={s.bioMuted}>
+                    Three are live; one took home{' '}
+                  </span>
+                  <strong>₹5 crore</strong>
+                  <span className={s.bioMuted}>
+                    {' '}at Sun TV&apos;s Startup Singam — the first AI-native
+                    startup to win the show.
+                  </span>
                 </p>
               </Reveal>
               <Reveal delay={0.26}>
                 <p className={s.bioLine}>
                   Currently at <span className={s.recotapInk}>Recotap</span>
                   <span className={s.bioMuted}>
-                    , designing the system and the entire process across product,
-                    marketing and brand.
+                    , leading design across the platform, the AI copilot{' '}
+                  </span>
+                  <strong>AdRadar</strong>
+                  <span className={s.bioMuted}>, the in-product canvas </span>
+                  <strong>AdNinja</strong>
+                  <span className={s.bioMuted}>
+                    , and the Full-Stack ABM service.
                   </span>
                 </p>
               </Reveal>
@@ -149,16 +161,20 @@ export default function HomePage() {
               <Reveal delay={0.42}>
                 <p className={s.bioLine}>
                   <span className={s.bioMuted}>
-                    I ship products end-to-end — research, design, and live front-end
-                    code. AI is in every part of how I work; one person can be a
-                    whole product team now.
+                    I ship end-to-end — strategy, design, and the live
+                    front-end code. The Angular SPA at{' '}
                   </span>
+                  <strong>adradar.app</strong>
+                  <span className={s.bioMuted}>, the Webflow site at </span>
+                  <strong>recotap.com</strong>
+                  <span className={s.bioMuted}>, and this Next.js portfolio</span>
+                  <span className={s.bioMuted}> are all mine, top to bottom.</span>
                 </p>
               </Reveal>
               <Reveal delay={0.5}>
                 <p className={s.askLine}>
-                  Looking for a <strong>Lead role</strong> at an{' '}
-                  <strong>AI or Gaming studio</strong> for the 2026 cycle.
+                  Looking for a <strong>Product Designer</strong> role at an{' '}
+                  <strong>AI startup or gaming studio</strong> for the 2026 cycle.
                 </p>
               </Reveal>
             </div>
