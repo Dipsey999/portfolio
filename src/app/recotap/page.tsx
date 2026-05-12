@@ -235,268 +235,13 @@ export default function RecotapPage() {
           </div>
         </section>
 
-        {/* Brand & web — logos I designed, sites I built */}
-        <section className={s.section}>
-          <div className={s.container}>
-            <Reveal>
-              <header className={s.sectionHead}>
-                <div>
-                  <p className={s.sectionLabel}>§ 04 — Brand &amp; web</p>
-                  <h2 className={s.sectionTitle}>
-                    Two marks.{' '}
-                    <em className={r.chapterAccent}>Two stacks.</em>
-                  </h2>
-                </div>
-                <p className={s.sectionLede}>
-                  I redesigned the <strong>Recotap</strong> mark and
-                  designed the <strong>AdRadar</strong> mark — and then
-                  built both marketing sites that live behind them, on
-                  two deliberately different stacks: Recotap on{' '}
-                  <strong>Webflow</strong> for design-to-publish speed,
-                  AdRadar on <strong>Angular</strong> for the custom
-                  product-style interactions the new mark deserved.
-                </p>
-              </header>
-            </Reveal>
-
-            <Reveal delay={0.1}>
-              <div
-                style={{
-                  display: 'grid',
-                  gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-                  gap: 20,
-                  marginTop: 28,
-                }}
-              >
-                {/* Recotap card */}
-                <a
-                  href="https://www.recotap.com/"
-                  target="_blank"
-                  rel="noreferrer"
-                  data-cursor="open"
-                  style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    padding: 24,
-                    borderRadius: 16,
-                    border: '1px solid rgba(255,255,255,0.10)',
-                    background:
-                      'linear-gradient(140deg, rgba(40, 169, 224, 0.10) 0%, rgba(40, 169, 224, 0.02) 100%)',
-                    color: 'inherit',
-                    textDecoration: 'none',
-                    position: 'relative',
-                    overflow: 'hidden',
-                    gap: 18,
-                  }}
-                >
-                  {/* Logo */}
-                  <div
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'flex-start',
-                      minHeight: 56,
-                    }}
-                  >
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src="/images/recotap-logo.svg"
-                      alt="Recotap"
-                      style={{ width: '100%', maxWidth: 200, height: 'auto', display: 'block' }}
-                    />
-                  </div>
-
-                  {/* Website preview — browser-style frame */}
-                  <div
-                    style={{
-                      borderRadius: 10,
-                      overflow: 'hidden',
-                      border: '1px solid rgba(255,255,255,0.10)',
-                      background: '#fff',
-                      boxShadow: '0 12px 32px rgba(0,0,0,0.18)',
-                    }}
-                  >
-                    {/* Browser chrome bar */}
-                    <div
-                      style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: 8,
-                        padding: '8px 12px',
-                        background: 'rgba(255,255,255,0.04)',
-                        borderBottom: '1px solid rgba(255,255,255,0.06)',
-                      }}
-                    >
-                      <span style={{ width: 10, height: 10, borderRadius: 5, background: 'rgba(255,255,255,0.18)' }} />
-                      <span style={{ width: 10, height: 10, borderRadius: 5, background: 'rgba(255,255,255,0.18)' }} />
-                      <span style={{ width: 10, height: 10, borderRadius: 5, background: 'rgba(255,255,255,0.18)' }} />
-                      <span style={{
-                        marginLeft: 8,
-                        padding: '3px 12px',
-                        borderRadius: 999,
-                        background: 'rgba(0,0,0,0.20)',
-                        fontSize: 11,
-                        color: 'rgba(255,255,255,0.70)',
-                        fontFamily: 'ui-monospace, SFMono-Regular, Menlo, monospace',
-                      }}>
-                        recotap.com
-                      </span>
-                    </div>
-                    {/* Screenshot */}
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src="/images/recotap-site.png"
-                      alt="recotap.com homepage"
-                      loading="lazy"
-                      style={{ width: '100%', display: 'block', aspectRatio: '16 / 10', objectFit: 'cover', objectPosition: 'top' }}
-                    />
-                  </div>
-
-                  {/* Metadata */}
-                  <div
-                    style={{
-                      display: 'grid',
-                      gridTemplateColumns: '64px 1fr auto',
-                      rowGap: 8,
-                      columnGap: 16,
-                      paddingTop: 18,
-                      borderTop: '1px solid rgba(255,255,255,0.08)',
-                      fontSize: 13,
-                      lineHeight: 1.45,
-                    }}
-                  >
-                    <span style={{ opacity: 0.55, letterSpacing: 0.4, textTransform: 'uppercase', fontSize: 11, fontWeight: 700 }}>Mark</span>
-                    <span>Redesign · 2024</span>
-                    <span />
-                    <span style={{ opacity: 0.55, letterSpacing: 0.4, textTransform: 'uppercase', fontSize: 11, fontWeight: 700 }}>Site</span>
-                    <span>Designed &amp; built on Webflow</span>
-                    <span />
-                    <span style={{ opacity: 0.55, letterSpacing: 0.4, textTransform: 'uppercase', fontSize: 11, fontWeight: 700 }}>Visit</span>
-                    <span>recotap.com</span>
-                    <span style={{ color: '#28A9E0', fontWeight: 700 }}>↗</span>
-                  </div>
-                </a>
-
-                {/* AdRadar card */}
-                <a
-                  href="https://www.adradar.app/"
-                  target="_blank"
-                  rel="noreferrer"
-                  data-cursor="open"
-                  style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    padding: 24,
-                    borderRadius: 16,
-                    border: '1px solid rgba(255,255,255,0.10)',
-                    background:
-                      'linear-gradient(140deg, rgba(229, 91, 91, 0.10) 0%, rgba(229, 91, 91, 0.02) 100%)',
-                    color: 'inherit',
-                    textDecoration: 'none',
-                    position: 'relative',
-                    overflow: 'hidden',
-                    gap: 18,
-                  }}
-                >
-                  {/* Logo */}
-                  <div
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'flex-start',
-                      minHeight: 56,
-                    }}
-                  >
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src="/images/adradar-logo.png"
-                      alt="adRadar"
-                      style={{ width: '100%', maxWidth: 220, height: 'auto', display: 'block' }}
-                    />
-                  </div>
-
-                  {/* Website preview — browser-style frame */}
-                  <div
-                    style={{
-                      borderRadius: 10,
-                      overflow: 'hidden',
-                      border: '1px solid rgba(255,255,255,0.10)',
-                      background: '#fff',
-                      boxShadow: '0 12px 32px rgba(0,0,0,0.18)',
-                    }}
-                  >
-                    {/* Browser chrome bar */}
-                    <div
-                      style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: 8,
-                        padding: '8px 12px',
-                        background: 'rgba(255,255,255,0.04)',
-                        borderBottom: '1px solid rgba(255,255,255,0.06)',
-                      }}
-                    >
-                      <span style={{ width: 10, height: 10, borderRadius: 5, background: 'rgba(255,255,255,0.18)' }} />
-                      <span style={{ width: 10, height: 10, borderRadius: 5, background: 'rgba(255,255,255,0.18)' }} />
-                      <span style={{ width: 10, height: 10, borderRadius: 5, background: 'rgba(255,255,255,0.18)' }} />
-                      <span style={{
-                        marginLeft: 8,
-                        padding: '3px 12px',
-                        borderRadius: 999,
-                        background: 'rgba(0,0,0,0.20)',
-                        fontSize: 11,
-                        color: 'rgba(255,255,255,0.70)',
-                        fontFamily: 'ui-monospace, SFMono-Regular, Menlo, monospace',
-                      }}>
-                        adradar.app
-                      </span>
-                    </div>
-                    {/* Screenshot */}
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src="/images/adradar-site.png"
-                      alt="adradar.app homepage"
-                      loading="lazy"
-                      style={{ width: '100%', display: 'block', aspectRatio: '16 / 10', objectFit: 'cover', objectPosition: 'top' }}
-                    />
-                  </div>
-
-                  {/* Metadata */}
-                  <div
-                    style={{
-                      display: 'grid',
-                      gridTemplateColumns: '64px 1fr auto',
-                      rowGap: 8,
-                      columnGap: 16,
-                      paddingTop: 18,
-                      borderTop: '1px solid rgba(255,255,255,0.08)',
-                      fontSize: 13,
-                      lineHeight: 1.45,
-                    }}
-                  >
-                    <span style={{ opacity: 0.55, letterSpacing: 0.4, textTransform: 'uppercase', fontSize: 11, fontWeight: 700 }}>Mark</span>
-                    <span>New · 2025</span>
-                    <span />
-                    <span style={{ opacity: 0.55, letterSpacing: 0.4, textTransform: 'uppercase', fontSize: 11, fontWeight: 700 }}>Site</span>
-                    <span>Hand-built in Angular &mdash; from scratch</span>
-                    <span />
-                    <span style={{ opacity: 0.55, letterSpacing: 0.4, textTransform: 'uppercase', fontSize: 11, fontWeight: 700 }}>Visit</span>
-                    <span>adradar.app</span>
-                    <span style={{ color: '#E55B5B', fontWeight: 700 }}>↗</span>
-                  </div>
-                </a>
-              </div>
-            </Reveal>
-          </div>
-        </section>
-
         {/* Surface area cards */}
         <section className={s.section}>
           <div className={s.container}>
             <Reveal>
               <header className={s.sectionHead}>
                 <div>
-                  <p className={s.sectionLabel}>§ 05 — Where I design at Recotap</p>
+                  <p className={s.sectionLabel}>§ 04 — Where I design at Recotap</p>
                   <h2 className={s.sectionTitle}>
                     Four surfaces.{' '}
                     <em className={r.chapterAccent}>One designer.</em>
@@ -518,11 +263,339 @@ export default function RecotapPage() {
           </div>
         </section>
 
+        {/* Logos I designed */}
+        <section className={s.section}>
+          <div className={s.container}>
+            <Reveal>
+              <header className={s.sectionHead}>
+                <div>
+                  <p className={s.sectionLabel}>§ 05 — Logos</p>
+                  <h2 className={s.sectionTitle}>
+                    I designed both marks.{' '}
+                    <em className={r.chapterAccent}>Recotap and AdRadar.</em>
+                  </h2>
+                </div>
+                <p className={s.sectionLede}>
+                  Two products. Two visual identities. Same hand. I
+                  refreshed the Recotap mark for the platform&apos;s
+                  2024 redesign, and drew the AdRadar mark from a
+                  blank canvas in 2025 — every curve, every weight,
+                  every variant.
+                </p>
+              </header>
+            </Reveal>
+
+            <Reveal delay={0.1}>
+              <div
+                style={{
+                  display: 'grid',
+                  gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+                  gap: 20,
+                  marginTop: 28,
+                }}
+              >
+                {/* Recotap logo card */}
+                <div
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    padding: 40,
+                    borderRadius: 16,
+                    border: '1px solid rgba(255,255,255,0.10)',
+                    background:
+                      'linear-gradient(140deg, rgba(40, 169, 224, 0.10) 0%, rgba(40, 169, 224, 0.02) 100%)',
+                    position: 'relative',
+                    overflow: 'hidden',
+                    minHeight: 280,
+                    gap: 28,
+                  }}
+                >
+                  <div
+                    style={{
+                      flex: '1 1 auto',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      padding: '24px 8px',
+                    }}
+                  >
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src="/images/recotap-logo.svg"
+                      alt="Recotap"
+                      style={{ width: '100%', maxWidth: 320, height: 'auto', display: 'block' }}
+                    />
+                  </div>
+                  <div
+                    style={{
+                      paddingTop: 22,
+                      borderTop: '1px solid rgba(255,255,255,0.08)',
+                    }}
+                  >
+                    <div style={{ display: 'flex', alignItems: 'baseline', gap: 12, flexWrap: 'wrap', marginBottom: 8 }}>
+                      <span style={{ fontSize: 17, fontWeight: 700, letterSpacing: -0.3 }}>Recotap</span>
+                      <span style={{ fontSize: 12, opacity: 0.55, letterSpacing: 0.4, textTransform: 'uppercase', fontWeight: 700, color: '#28A9E0' }}>Redesign · 2024</span>
+                    </div>
+                    <p style={{ margin: 0, fontSize: 13.5, lineHeight: 1.55, opacity: 0.78 }}>
+                      Kept the spirit of the original chat-bubble target — sharpened
+                      the wordmark for in-feed legibility and tuned the blue for
+                      higher contrast on the platform&apos;s dark surfaces.
+                    </p>
+                  </div>
+                </div>
+
+                {/* AdRadar logo card */}
+                <div
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    padding: 40,
+                    borderRadius: 16,
+                    border: '1px solid rgba(255,255,255,0.10)',
+                    background:
+                      'linear-gradient(140deg, rgba(229, 91, 91, 0.10) 0%, rgba(229, 91, 91, 0.02) 100%)',
+                    position: 'relative',
+                    overflow: 'hidden',
+                    minHeight: 280,
+                    gap: 28,
+                  }}
+                >
+                  <div
+                    style={{
+                      flex: '1 1 auto',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      padding: '24px 8px',
+                    }}
+                  >
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src="/images/adradar-logo.png"
+                      alt="adRadar"
+                      style={{ width: '100%', maxWidth: 340, height: 'auto', display: 'block' }}
+                    />
+                  </div>
+                  <div
+                    style={{
+                      paddingTop: 22,
+                      borderTop: '1px solid rgba(255,255,255,0.08)',
+                    }}
+                  >
+                    <div style={{ display: 'flex', alignItems: 'baseline', gap: 12, flexWrap: 'wrap', marginBottom: 8 }}>
+                      <span style={{ fontSize: 17, fontWeight: 700, letterSpacing: -0.3 }}>AdRadar</span>
+                      <span style={{ fontSize: 12, opacity: 0.55, letterSpacing: 0.4, textTransform: 'uppercase', fontWeight: 700, color: '#E55B5B' }}>New mark · 2025</span>
+                    </div>
+                    <p style={{ margin: 0, fontSize: 13.5, lineHeight: 1.55, opacity: 0.78 }}>
+                      Drawn from scratch — a coral radar with a cursor wedge,
+                      pairing visual signal with the product&apos;s signal-led
+                      story. Shipped in three weights for product, marketing,
+                      and favicon use.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </Reveal>
+          </div>
+        </section>
+
+        {/* Websites I built */}
+        <section className={s.section}>
+          <div className={s.container}>
+            <Reveal>
+              <header className={s.sectionHead}>
+                <div>
+                  <p className={s.sectionLabel}>§ 06 — Websites</p>
+                  <h2 className={s.sectionTitle}>
+                    I built both marketing sites.{' '}
+                    <em className={r.chapterAccent}>Webflow and Angular.</em>
+                  </h2>
+                </div>
+                <p className={s.sectionLede}>
+                  Same designer, two stacks — chosen deliberately.
+                  Recotap lives on <strong>Webflow</strong> for
+                  design-to-publish speed and a CMS the marketing team
+                  could own. AdRadar is a <strong>hand-coded Angular
+                  app</strong> — a custom SPA with motion and
+                  interactions the product surface deserved. Click
+                  either screenshot below to visit the live site.
+                </p>
+              </header>
+            </Reveal>
+
+            <Reveal delay={0.1}>
+              <div
+                style={{
+                  display: 'grid',
+                  gridTemplateColumns: 'repeat(auto-fit, minmax(360px, 1fr))',
+                  gap: 24,
+                  marginTop: 28,
+                }}
+              >
+                {/* Recotap site card */}
+                <a
+                  href="https://www.recotap.com/"
+                  target="_blank"
+                  rel="noreferrer"
+                  data-cursor="open"
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    padding: 16,
+                    borderRadius: 16,
+                    border: '1px solid rgba(255,255,255,0.10)',
+                    background:
+                      'linear-gradient(140deg, rgba(40, 169, 224, 0.10) 0%, rgba(40, 169, 224, 0.02) 100%)',
+                    color: 'inherit',
+                    textDecoration: 'none',
+                    overflow: 'hidden',
+                    gap: 16,
+                  }}
+                >
+                  {/* Browser-framed screenshot */}
+                  <div
+                    style={{
+                      borderRadius: 10,
+                      overflow: 'hidden',
+                      border: '1px solid rgba(255,255,255,0.08)',
+                      background: '#fff',
+                      boxShadow: '0 16px 40px rgba(0,0,0,0.22)',
+                    }}
+                  >
+                    <div
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: 8,
+                        padding: '10px 14px',
+                        background: 'rgba(0,0,0,0.45)',
+                        borderBottom: '1px solid rgba(255,255,255,0.06)',
+                      }}
+                    >
+                      <span style={{ width: 11, height: 11, borderRadius: 6, background: '#ff5f57' }} />
+                      <span style={{ width: 11, height: 11, borderRadius: 6, background: '#febc2e' }} />
+                      <span style={{ width: 11, height: 11, borderRadius: 6, background: '#28c840' }} />
+                      <span style={{
+                        marginLeft: 10,
+                        padding: '4px 14px',
+                        borderRadius: 999,
+                        background: 'rgba(255,255,255,0.10)',
+                        fontSize: 12,
+                        color: 'rgba(255,255,255,0.85)',
+                        fontFamily: 'ui-monospace, SFMono-Regular, Menlo, monospace',
+                      }}>
+                        recotap.com
+                      </span>
+                    </div>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src="/images/recotap-site.png"
+                      alt="recotap.com — homepage"
+                      loading="lazy"
+                      style={{ width: '100%', display: 'block', aspectRatio: '16 / 10', objectFit: 'cover', objectPosition: 'top' }}
+                    />
+                  </div>
+                  {/* Card meta */}
+                  <div style={{ padding: '4px 12px 12px' }}>
+                    <div style={{ display: 'flex', alignItems: 'baseline', gap: 10, flexWrap: 'wrap', marginBottom: 6 }}>
+                      <span style={{ fontSize: 17, fontWeight: 700, letterSpacing: -0.3 }}>recotap.com</span>
+                      <span style={{ fontSize: 11, opacity: 0.55, letterSpacing: 0.5, textTransform: 'uppercase', fontWeight: 700, color: '#28A9E0' }}>Designed &amp; built · Webflow</span>
+                    </div>
+                    <p style={{ margin: 0, fontSize: 13.5, lineHeight: 1.55, opacity: 0.78 }}>
+                      Marketing site, blog, and CMS — all in Webflow. One
+                      designer-developer, no handoffs. Visit{' '}
+                      <span style={{ color: '#28A9E0', fontWeight: 600 }}>recotap.com ↗</span>
+                    </p>
+                  </div>
+                </a>
+
+                {/* AdRadar site card */}
+                <a
+                  href="https://www.adradar.app/"
+                  target="_blank"
+                  rel="noreferrer"
+                  data-cursor="open"
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    padding: 16,
+                    borderRadius: 16,
+                    border: '1px solid rgba(255,255,255,0.10)',
+                    background:
+                      'linear-gradient(140deg, rgba(229, 91, 91, 0.10) 0%, rgba(229, 91, 91, 0.02) 100%)',
+                    color: 'inherit',
+                    textDecoration: 'none',
+                    overflow: 'hidden',
+                    gap: 16,
+                  }}
+                >
+                  {/* Browser-framed screenshot */}
+                  <div
+                    style={{
+                      borderRadius: 10,
+                      overflow: 'hidden',
+                      border: '1px solid rgba(255,255,255,0.08)',
+                      background: '#fff',
+                      boxShadow: '0 16px 40px rgba(0,0,0,0.22)',
+                    }}
+                  >
+                    <div
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: 8,
+                        padding: '10px 14px',
+                        background: 'rgba(0,0,0,0.45)',
+                        borderBottom: '1px solid rgba(255,255,255,0.06)',
+                      }}
+                    >
+                      <span style={{ width: 11, height: 11, borderRadius: 6, background: '#ff5f57' }} />
+                      <span style={{ width: 11, height: 11, borderRadius: 6, background: '#febc2e' }} />
+                      <span style={{ width: 11, height: 11, borderRadius: 6, background: '#28c840' }} />
+                      <span style={{
+                        marginLeft: 10,
+                        padding: '4px 14px',
+                        borderRadius: 999,
+                        background: 'rgba(255,255,255,0.10)',
+                        fontSize: 12,
+                        color: 'rgba(255,255,255,0.85)',
+                        fontFamily: 'ui-monospace, SFMono-Regular, Menlo, monospace',
+                      }}>
+                        adradar.app
+                      </span>
+                    </div>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src="/images/adradar-site.png"
+                      alt="adradar.app — homepage"
+                      loading="lazy"
+                      style={{ width: '100%', display: 'block', aspectRatio: '16 / 10', objectFit: 'cover', objectPosition: 'top' }}
+                    />
+                  </div>
+                  {/* Card meta */}
+                  <div style={{ padding: '4px 12px 12px' }}>
+                    <div style={{ display: 'flex', alignItems: 'baseline', gap: 10, flexWrap: 'wrap', marginBottom: 6 }}>
+                      <span style={{ fontSize: 17, fontWeight: 700, letterSpacing: -0.3 }}>adradar.app</span>
+                      <span style={{ fontSize: 11, opacity: 0.55, letterSpacing: 0.5, textTransform: 'uppercase', fontWeight: 700, color: '#E55B5B' }}>Hand-coded · Angular</span>
+                    </div>
+                    <p style={{ margin: 0, fontSize: 13.5, lineHeight: 1.55, opacity: 0.78 }}>
+                      Custom Angular SPA — no template, no page builder.
+                      Hand-coded animations, hand-tuned type, hand-built
+                      from a blank repo. Visit{' '}
+                      <span style={{ color: '#E55B5B', fontWeight: 600 }}>adradar.app ↗</span>
+                    </p>
+                  </div>
+                </a>
+              </div>
+            </Reveal>
+          </div>
+        </section>
+
         {/* CTA closer */}
         <section className={s.cta}>
           <div className={s.container}>
             <Reveal>
-              <p className={s.sectionLabel}>§ 06 — Want the case studies?</p>
+              <p className={s.sectionLabel}>§ 07 — Want the case studies?</p>
               <h2 className={s.ctaTitle}>
                 I&apos;ll walk you through it. <em>Live.</em>
               </h2>
