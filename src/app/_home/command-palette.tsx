@@ -42,6 +42,7 @@ export function CommandPalette() {
       { id: 'nav-recotap', label: 'Recotap chapter', hint: '/recotap', group: 'Navigate', perform: () => router.push('/recotap/'), keywords: ['recotap', 'adradar', 'adninja', 'abm'] },
       { id: 'nav-recotap-cs', label: 'Recotap — case study', hint: '/recotap/improving-the-platform', group: 'Navigate', perform: () => router.push('/recotap/improving-the-platform/'), keywords: ['recotap', 'case study', 'abm', 'platform'] },
       { id: 'nav-adradar-cs', label: 'AdRadar — case study', hint: '/adradar/the-affordable-abm-copilot', group: 'Navigate', perform: () => router.push('/adradar/the-affordable-abm-copilot/'), keywords: ['adradar', 'ads', 'ai agents', 'abm', 'case study'] },
+      { id: 'nav-adninja-cs', label: 'AdNinja — case study', hint: '/adninja/inside-the-ad-canvas', group: 'Navigate', perform: () => router.push('/adninja/inside-the-ad-canvas/'), keywords: ['adninja', 'ad canvas', 'recoai', 'editor', 'case study'] },
       { id: 'nav-hiresense', label: 'HireSense AI chapter', hint: '/hiresense', group: 'Navigate', perform: () => router.push('/hiresense/'), keywords: ['hiresense', 'hiretap', 'compsense', 'ai', 'hiring'] },
       { id: 'nav-ziroh', label: 'Ziroh Labs chapter', hint: '/ziroh', group: 'Navigate', perform: () => router.push('/ziroh/'), keywords: ['ziroh', 'zunu', 'drive', 'mail', 'privacy'] },
       { id: 'ext-hiresense', label: 'HireSense — visit live site', hint: 'hiresense.ai ↗', group: 'Action', perform: () => window.open('https://www.hiresense.ai/', '_blank'), keywords: ['hiresense'] },
