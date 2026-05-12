@@ -101,6 +101,7 @@ const TOC: TocEntry[] = [
   { id: 'agent-fatigue', label: 'Ad Rotation', sub: true },
   { id: 'agent-competitor', label: 'Competitor Watch', sub: true },
   { id: 'orchestration', label: 'The orchestration layer', sub: true },
+  { id: 'failure-mode', label: 'When an agent is wrong', sub: true },
   { id: 'chapter-4', label: 'Ch 4 — Human-in-the-loop' },
   { id: 'attention', label: 'Attention AdRadar', sub: true },
   { id: 'chapter-5', label: 'Ch 5 — One-screen ABM' },
@@ -1047,6 +1048,72 @@ export default function CaseClient() {
                   caption="Per-agent detail — settings, history, last 30 days of recommendations. The same shape across every agent, so learning one teaches you all seven."
                   onOpen={openLightbox}
                 />
+
+                {/* 08 — FAILURE MODE */}
+                <h3 className={s.h3} id="failure-mode">08 — What happens when an agent is wrong.</h3>
+                <p className={s.p}>
+                  Most AI demo videos skip this because it&apos;s harder to
+                  make beautiful. Real products live here. An agent that
+                  can&apos;t articulate <em>&quot;I&apos;m not sure&quot;</em>{' '}
+                  or <em>&quot;I was wrong&quot;</em> caps the user&apos;s
+                  trust at the ceiling of their own ability to catch its
+                  mistakes — and that ceiling is the ceiling on every
+                  metric the product will ever report.
+                </p>
+                <p className={s.p}>
+                  AdRadar ships three failure-mode patterns, and the chapter
+                  isn&apos;t complete without naming them:
+                </p>
+                <div className={s.list}>
+                  <div className={s.listItem}>
+                    <strong>The undo trail.</strong> Every applied
+                    recommendation is reversible in a single click for 30
+                    days. Pause an exclusion, rotate a creative,
+                    re-allocate budget — all of it has a one-click
+                    revert in the agent&apos;s history. Undo is not a
+                    polish detail. It&apos;s the only reason a marketer lets
+                    the agent touch the budget.
+                  </div>
+                  <div className={s.listItem}>
+                    <strong>Reject teaches.</strong> When a marketer rejects
+                    a recommendation, the rejection reason (free-text or
+                    one of five quick-tags) is stored against the agent&apos;s
+                    memory. The next recommendation in the same shape
+                    references the prior rejection in its reasoning line
+                    — &quot;not surfacing Career Coach again because you
+                    rejected this pattern last Tuesday.&quot; Rejection is
+                    a teaching signal, not an opinion to ignore.
+                  </div>
+                  <div className={s.listItem}>
+                    <strong>The retraction signal.</strong> When new data
+                    invalidates a previous recommendation, the agent says
+                    so — unprompted. &quot;I was wrong about the Career
+                    Coach exclusion — your last campaign&apos;s
+                    engagement looks different. Want me to
+                    re-evaluate?&quot; Self-correction is the most
+                    trust-building action an agent can take. Most products
+                    don&apos;t ship them because they&apos;re embarrassing.
+                    We shipped it anyway.
+                  </div>
+                </div>
+                <p className={s.p}>
+                  <strong>The call.</strong> The cost of building these
+                  three surfaces was significant — an undo-history
+                  infrastructure, a rejection-reason store with the
+                  agent-memory plumbing to use it, and the retraction-flow
+                  UX that has to surface gracefully without alarming the
+                  marketer. Engineering pushed to defer all three to v2.
+                  I argued for all three at v1 and lost on retraction, won
+                  on undo and reject-teaches; retraction shipped two months
+                  later. In hindsight, retraction should have been v1 —
+                  it&apos;s the single most trust-building surface the
+                  product has, and we shipped without it for one cycle.
+                </p>
+                <Figure
+                  caption="The failure surface — undo trail, reject-teaches memory, and the retraction signal. Three surfaces; one agent that admits when it doesn&apos;t know. Screenshot to follow."
+                  ratio="16 / 9"
+                  onOpen={openLightbox}
+                />
               </Reveal>
             </section>
 
@@ -1372,6 +1439,9 @@ export default function CaseClient() {
                     >
                       Visit AdRadar <span aria-hidden>↗</span>
                     </a>
+                    <Link className={s.ctaGhost} href="/ai-craft/">
+                      Read the AI-craft notes
+                    </Link>
                     <Link className={s.ctaGhost} href="/recotap/improving-the-platform/">
                       Read the Recotap case study
                     </Link>
