@@ -13,14 +13,15 @@ const ACCENT = '#5C8DFF';
 
 const PROJECTS: ProjectCardItem[] = [
   {
-    href: 'https://zunuprivacy.com/',
+    href: '/zunu/index.html',
     external: true,
     company: 'Zunu Suite',
     title: 'The privacy-preserving software suite — drive, mail, computing.',
-    meta: 'Cross-platform · Live · Product Designer',
+    meta: 'Case study · Cross-platform · Product Designer',
     art: '/images/Zunu.png',
     artBg: 'linear-gradient(140deg, #14233a 0%, #0c1422 60%, #0c1422 100%)',
     accent: '#5C8DFF',
+    action: 'Open case study ↗',
   },
   {
     href: '/case-study/zunu-drive/',
