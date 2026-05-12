@@ -1641,6 +1641,9 @@ export default function CaseClient() {
                     >
                       Talk to me about Full-Stack <span aria-hidden>↗</span>
                     </a>
+                    <Link className={s.ctaGhost} href="/ai-craft/">
+                      Read the AI-craft notes
+                    </Link>
                     <Link className={s.ctaGhost} href="/recotap/improving-the-platform/">
                       Read the Recotap case study
                     </Link>

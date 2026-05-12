@@ -1327,6 +1327,9 @@ export default function CaseClient() {
                     >
                       Walk me through AdNinja <span aria-hidden>↗</span>
                     </a>
+                    <Link className={s.ctaGhost} href="/ai-craft/">
+                      Read the AI-craft notes
+                    </Link>
                     <Link className={s.ctaGhost} href="/adradar/the-affordable-abm-copilot/">
                       Read the AdRadar case study
                     </Link>
