@@ -11,112 +11,6 @@ import { ProjectCard, type ProjectCardItem } from '../_home/project-card';
 
 const ACCENT = '#5CF0A4';
 
-// ──────────────────────────────────────────────────────────────────────────
-// Logo marks — inline SVG approximations of the marks I designed.
-// If you want pixel-perfect, swap each component body for an <img> pointing
-// at /images/recotap-mark.svg and /images/adradar-mark.svg respectively.
-// ──────────────────────────────────────────────────────────────────────────
-
-function RecotapMark() {
-  // "REC" + chat-bubble target (the redesigned mark replacing the "O") + "TAP"
-  // Mark colour: Recotap blue. Wordmark: heavy sans-serif, near-black.
-  const BLUE = '#28A9E0';
-  const INK = '#0F1216';
-  return (
-    <svg
-      viewBox="0 0 540 130"
-      role="img"
-      aria-label="Recotap"
-      style={{ width: '100%', maxWidth: 360, height: 'auto', display: 'block' }}
-    >
-      <text
-        x="0"
-        y="92"
-        fill={INK}
-        fontFamily="Inter, system-ui, sans-serif"
-        fontWeight="900"
-        fontSize="100"
-        letterSpacing="-3"
-      >
-        REC
-      </text>
-      {/* Target mark — replaces the "O" */}
-      <g transform="translate(225, 22)">
-        <circle cx="50" cy="50" r="46" fill="none" stroke={BLUE} strokeWidth="14" />
-        <circle cx="50" cy="50" r="18" fill={BLUE} />
-        <path d="M 38 92 L 50 120 L 62 92 Z" fill={BLUE} />
-      </g>
-      <text
-        x="345"
-        y="92"
-        fill={INK}
-        fontFamily="Inter, system-ui, sans-serif"
-        fontWeight="900"
-        fontSize="100"
-        letterSpacing="-3"
-      >
-        TAP
-      </text>
-    </svg>
-  );
-}
-
-function AdRadarMark() {
-  // Coral radar (3 concentric broken arcs) + pink inner circle + dark wedge,
-  // then "adRadar" wordmark in mixed case.
-  const CORAL = '#E55B5B';
-  const CORAL_DEEP = '#C4453E';
-  const PINK = '#F3C2BD';
-  const INK = '#0F1216';
-  return (
-    <svg
-      viewBox="0 0 540 150"
-      role="img"
-      aria-label="adRadar"
-      style={{ width: '100%', maxWidth: 360, height: 'auto', display: 'block' }}
-    >
-      <g transform="translate(8, 8)">
-        {/* Three concentric radar arcs — each one is a broken ring */}
-        {/* Outermost */}
-        <path
-          d="M 130 70 A 60 60 0 1 1 70 10"
-          fill="none"
-          stroke={CORAL}
-          strokeWidth="9"
-          strokeLinecap="round"
-        />
-        {/* Middle */}
-        <path
-          d="M 110 70 A 40 40 0 0 0 32 78"
-          fill="none"
-          stroke={CORAL}
-          strokeWidth="9"
-          strokeLinecap="round"
-        />
-        {/* Inner pink fill */}
-        <circle cx="70" cy="70" r="22" fill={PINK} />
-        {/* Wedge / cursor */}
-        <path
-          d="M 70 70 L 88 56 L 92 68 Z"
-          fill={CORAL_DEEP}
-        />
-      </g>
-      {/* Wordmark */}
-      <text
-        x="170"
-        y="100"
-        fill={INK}
-        fontFamily="Inter, system-ui, sans-serif"
-        fontWeight="700"
-        fontSize="78"
-        letterSpacing="-2"
-      >
-        adRadar
-      </text>
-    </svg>
-  );
-}
-
 const PROJECTS: ProjectCardItem[] = [
   {
     href: '/recotap/improving-the-platform/',
@@ -404,7 +298,12 @@ export default function RecotapPage() {
                       paddingBottom: 24,
                     }}
                   >
-                    <RecotapMark />
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src="/images/recotap-logo.svg"
+                      alt="Recotap"
+                      style={{ width: '100%', maxWidth: 280, height: 'auto', display: 'block' }}
+                    />
                   </div>
                   <div
                     style={{
@@ -460,7 +359,12 @@ export default function RecotapPage() {
                       paddingBottom: 24,
                     }}
                   >
-                    <AdRadarMark />
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src="/images/adradar-logo.png"
+                      alt="adRadar"
+                      style={{ width: '100%', maxWidth: 280, height: 'auto', display: 'block' }}
+                    />
                   </div>
                   <div
                     style={{
