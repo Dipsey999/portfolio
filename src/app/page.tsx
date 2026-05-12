@@ -109,6 +109,9 @@ export default function HomePage() {
                   <MagneticCta href="/all-projects/" className={s.ctaPrimary}>
                     See selected work <span className={s.arrow}>→</span>
                   </MagneticCta>
+                  <MagneticCta href="/ai-craft/" className={s.ctaGhost}>
+                    Read AI-craft notes
+                  </MagneticCta>
                   <MagneticCta href="mailto:jizan.ux@gmail.com" external className={s.ctaGhost}>
                     Get in touch
                   </MagneticCta>
